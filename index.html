@@ -1,0 +1,1526 @@
+<!-- =========
+
+	Template Name: Play
+	Author: UIdeck
+	Author URI: https://uideck.com/
+	Support: https://uideck.com/support/
+	Version: 1.1
+
+========== -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ScheduleFlow | Free and Powerfull AI Management Dashboard</title>
+
+    <!-- Primary Meta Tags -->
+<meta name="title" content="Play - Free Open Source HTML Bootstrap Template by UIdeck">
+<meta name="description" content="Play - Free Open Source HTML Bootstrap Template by UIdeck Team">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://uideck.com/play/">
+<meta property="og:title" content="Play - Free Open Source HTML Bootstrap Template by UIdeck">
+<meta property="og:description" content="Play - Free Open Source HTML Bootstrap Template by UIdeck Team">
+<meta property="og:image" content="https://uideck.com/wp-content/uploads/2021/09/play-meta-bs.jpg">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://uideck.com/play/">
+<meta property="twitter:title" content="Play - Free Open Source HTML Bootstrap Template by UIdeck">
+<meta property="twitter:description" content="Play - Free Open Source HTML Bootstrap Template by UIdeck Team">
+<meta property="twitter:image" content="https://uideck.com/wp-content/uploads/2021/09/play-meta-bs.jpg">
+
+    <!--====== Favicon Icon ======-->
+    <link
+      rel="shortcut icon"
+      href="assets/images/favicon.png"
+      type="image/svg"
+    />
+
+    <!-- ===== All CSS files ===== -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/animate.css" />
+    <link rel="stylesheet" href="assets/css/lineicons.css" />
+    <link rel="stylesheet" href="assets/css/ud-styles.css" />
+    <style>
+      /* Soft breathing gradient for the whole site except footer */
+      body {
+        background: linear-gradient(135deg, #edd4b6, #f2eeef, #d9b6a7);
+        background-size: 200% 200%;
+        animation: site-breathing-gradient 12s ease-in-out infinite;
+        color: #121212;
+      }
+      @keyframes site-breathing-gradient {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+      /* Hero section: keep breathing, but override for extra depth */
+      .ud-hero {
+        background: linear-gradient(135deg, #edd4b6, #f2eeef, #d9b6a7);
+        background-size: 200% 200%;
+        animation: hero-breathing-gradient 8s ease-in-out infinite;
+        box-shadow: 0 0 40px 5px #edd4b6, 0 0 60px 10px #d9b6a7;
+      }
+      @keyframes hero-breathing-gradient {
+        0% {
+          background-position: 0% 50%;
+          box-shadow: 0 0 40px 5px #edd4b6, 0 0 60px 10px #d9b6a7;
+        }
+        50% {
+          background-position: 100% 50%;
+          box-shadow: 0 0 60px 10px #f2eeef, 0 0 80px 20px #edd4b6;
+        }
+        100% {
+          background-position: 0% 50%;
+          box-shadow: 0 0 40px 5px #edd4b6, 0 0 60px 10px #d9b6a7;
+        }
+      }
+      /* Section backgrounds: lighter breathing effect */
+      section,
+      .container,
+      .ud-section-title,
+      .ud-about-wrapper,
+      .ud-single-feature,
+      .ud-single-pricing,
+      .ud-single-faq,
+      .ud-single-testimonial,
+      .ud-team,
+      .ud-contact,
+      .ud-contact-form-wrapper {
+        background: transparent !important;
+        color: #121212 !important;
+      }
+      /* Card-like elements: light background with subtle shadow */
+      .card,
+      .ud-single-feature,
+      .ud-single-pricing,
+      .ud-single-faq,
+      .ud-single-testimonial,
+      .ud-contact-form-wrapper {
+        background: rgba(255,255,255,0.85) !important;
+        box-shadow: 0 2px 24px 0 rgba(237, 212, 182, 0.12);
+        border-radius: 1rem;
+        color: #121212 !important;
+      }
+      /* Section titles and headings */
+      .ud-section-title h2,
+      .ud-section-title span,
+      .ud-section-title p,
+      h1, h2, h3, h4, h5, h6 {
+        color: #121212 !important;
+      }
+      /* Navbar */
+      .ud-header,
+      .navbar,
+      .navbar-collapse,
+      .navbar-nav {
+        background: transparent !important;
+        color: #121212 !important;
+      }
+      /* Navbar links: selected/active is #121212, hover is #e5bb89 */
+      .navbar-nav .nav-item .ud-menu-scroll {
+        color: #383737 !important;
+        transition: color 0.2s;
+      }
+      .navbar-nav .nav-item .ud-menu-scroll.active {
+        color: #121212 !important;
+      }
+      .navbar-nav .nav-item .ud-menu-scroll:hover {
+        color: #e5bb89 !important;
+      }
+      /* Buttons */
+      .ud-main-btn,
+      .ud-link-btn,
+      .ud-border-btn {
+        background: #121212 !important;
+        color: #e5bb89 !important;
+        border: none !important;
+        box-shadow: none !important;
+        transition: background 0.2s, color 0.2s;
+      }
+      .ud-main-btn:hover,
+      .ud-link-btn:hover,
+      .ud-border-btn:hover {
+        background: #e5bb89 !important;
+        color: #121212 !important;
+      }
+      /* "Get Started" and "Purchase Now" buttons: golden bg, black text, only text gets bolder/focused on hover, no color change */
+      .ud-white-btn,
+      .ud-main-btn.ud-white-btn,
+      .ud-main-btn.ud-border-btn {
+        background: #e5bb89 !important;
+        color: #121212 !important;
+        font-weight: 600;
+        border: none !important;
+        box-shadow: none !important;
+        transition: font-weight 0.2s, box-shadow 0.2s;
+      }
+      .ud-white-btn:hover,
+      .ud-main-btn.ud-white-btn:hover,
+      .ud-main-btn.ud-border-btn:hover {
+        background: #e5bb89 !important;
+        color: #121212 !important;
+        font-weight: 800;
+        box-shadow: 0 0 0 2px #e5bb89;
+      }
+      /* White/golden button: bg #e5bb89, text #121212, no glow */
+      .ud-white-btn {
+        background: #e5bb89 !important;
+        color: #121212 !important;
+        border: none !important;
+        box-shadow: none !important;
+        transition: background 0.2s, color 0.2s;
+      }
+      .ud-white-btn:hover {
+        background: #121212 !important;
+        color: #e5bb89 !important;
+      }
+      /* Remove background from footer to keep it as is */
+      footer.ud-footer,
+      .ud-footer {
+        background: unset !important;
+      }
+      /* All text that was white is now #383737 */
+      .ud-hero-desc,
+      .ud-hero-buttons .ud-main-btn,
+      .ud-hero-buttons .ud-link-btn,
+      .ud-hero-buttons .ud-white-btn,
+      .ud-footer .ud-widget-desc,
+      .ud-section-title span,
+      .ud-section-title h2,
+      .ud-section-title p,
+      .ud-footer .ud-widget-title,
+      .ud-footer .ud-widget-links a,
+      .ud-footer .ud-footer-bottom-left a,
+      .ud-footer .ud-footer-bottom-right,
+      .ud-footer .ud-footer-bottom-right a,
+      .ud-footer .ud-widget-links li a,
+      .ud-footer .ud-widget-socials a,
+      .ud-footer .ud-widget-brands a,
+      .ud-footer .ud-popular-tag,
+      .ud-footer .ud-widget-links li,
+      .ud-footer .ud-widget-links li a,
+      .ud-footer .ud-widget-title,
+      .ud-footer .ud-widget-links,
+      .ud-footer .ud-widget-links a,
+      .ud-footer .ud-widget-links li a,
+      .ud-footer .ud-footer-bottom-left li a,
+      .ud-footer .ud-footer-bottom-right,
+      .ud-footer .ud-footer-bottom-right a {
+        color: #383737 !important;
+      }
+      /* Navbar links */
+      .navbar-nav .nav-item .ud-menu-scroll {
+        color: #383737 !important;
+        transition: color 0.2s;
+      }
+      .navbar-nav .nav-item .ud-menu-scroll:hover,
+      .navbar-nav .nav-item .ud-menu-scroll.active {
+        color: #e5bb89 !important;
+      }
+      /* About Us tag */
+      .tag,
+      .ud-about-content .tag {
+        color: #383737 !important;
+      }
+      /* Footer widget titles and links */
+      .ud-footer .ud-widget-title,
+      .ud-footer .ud-widget-links a,
+      .ud-footer .ud-footer-bottom-left a,
+      .ud-footer .ud-footer-bottom-right,
+      .ud-footer .ud-footer-bottom-right a {
+        color: #383737 !important;
+      }
+      /* Pricing, FAQ, and other section titles */
+      .ud-section-title span,
+      .ud-section-title h2,
+      .ud-section-title p {
+        color: #383737 !important;
+      }
+      /* Buttons */
+      .ud-main-btn,
+      .ud-link-btn {
+        color: #383737 !important;
+      }
+      .ud-white-btn {
+        color: #383737 !important;
+      }
+      .ud-main-btn:hover,
+      .ud-link-btn:hover,
+      .ud-white-btn:hover {
+        color: #121212 !important;
+      }
+      /* Footer copyright */
+      .ud-footer-bottom-right,
+      .ud-footer-bottom-right a {
+        color: #383737 !important;
+      }
+      /* Remove !important from background for .ud-white-btn so text color applies */
+      .ud-hero-buttons .ud-white-btn {
+        background: #e5bb89 !important;
+      }
+      /* Features section: uniform card size and attractive alignment */
+      .ud-features .row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 2rem 0;
+      }
+      .ud-single-feature {
+        min-width: 260px;
+        max-width: 320px;
+        flex: 1 1 260px;
+        margin: 0 16px 32px 16px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        background: rgba(255,255,255,0.95) !important;
+        border-radius: 1.25rem;
+        box-shadow: 0 4px 24px 0 rgba(237, 212, 182, 0.16);
+        padding: 2rem 1.5rem 1.5rem 1.5rem;
+        transition: box-shadow 0.2s, transform 0.2s;
+        min-height: 230px;
+      }
+      .ud-single-feature:hover {
+        box-shadow: 0 8px 32px 0 #e5bb89, 0 0 0 2px #e5bb89;
+        transform: translateY(-6px) scale(1.03);
+      }
+      .ud-feature-icon {
+        margin-bottom: 1.2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 56px;
+        height: 56px;
+        background: #3b5ddd;
+        border-radius: 16px;
+        box-shadow: 0 2px 12px 0 rgba(59,93,221,0.08);
+      }
+      .ud-feature-icon i {
+        font-size: 2rem;
+        color: #fff;
+      }
+      .ud-feature-title {
+        font-size: 1.18rem;
+        font-weight: 700;
+        color: #121212;
+        margin-bottom: 0.5rem;
+        margin-top: 0;
+        letter-spacing: 0.01em;
+      }
+      .ud-feature-desc {
+        font-size: 1rem;
+        color: #383737;
+        margin-bottom: 0;
+        margin-top: 0;
+        line-height: 1.6;
+      }
+      /* Responsive: stack on mobile */
+      @media (max-width: 991px) {
+        .ud-features .row {
+          flex-direction: column;
+          align-items: center;
+        }
+        .ud-single-feature {
+          max-width: 95vw;
+        }
+      }
+      /* Section title alignment and spacing */
+      .ud-section-title {
+        text-align: left !important;
+        margin-bottom: 2.5rem;
+        margin-left: 0.5rem;
+      }
+      .ud-section-title h2 {
+        font-size: 2.5rem;
+        font-weight: 800;
+        margin-bottom: 1rem;
+        color: #121212 !important;
+        letter-spacing: 0.01em;
+      }
+      .ud-section-title span {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #e5bb89 !important;
+        letter-spacing: 0.08em;
+        margin-bottom: 0.5rem;
+        display: block;
+      }
+      .ud-section-title p {
+        font-size: 1.15rem;
+        color: #383737 !important;
+        margin-bottom: 0;
+        max-width: 700px;
+      }
+      /* Popular pricing plan: details text from white to #121212, keep visible */
+      .ud-single-pricing.active {
+        background: rgba(255,255,255,0.97) !important;
+      }
+      .ud-single-pricing.active .ud-pricing-header h3,
+      .ud-single-pricing.active .ud-pricing-header h4,
+      .ud-single-pricing.active .ud-pricing-body ul li,
+      .ud-single-pricing.active .ud-pricing-footer a,
+      .ud-single-pricing.active .ud-pricing-body,
+      .ud-single-pricing.active .ud-pricing-header {
+        color: #121212 !important;
+      }
+      .ud-single-pricing.active .ud-pricing-footer a {
+        font-weight: 600;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ====== Header Start ====== -->
+    <header class="ud-header">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <nav class="navbar navbar-expand-lg">
+              <a class="navbar-brand" href="index.html">
+                <h2 alt="Logo">ScheduleFlow</h2>
+              </a>
+              <button class="navbar-toggler">
+                <span class="toggler-icon"> </span>
+                <span class="toggler-icon"> </span>
+                <span class="toggler-icon"> </span>
+              </button>
+
+              <div class="navbar-collapse">
+                <ul id="nav" class="navbar-nav mx-auto">
+                  <li class="nav-item">
+                    <a class="ud-menu-scroll" href="#home">Home</a>
+                  </li>
+
+                  <li class="nav-item">
+                    <a class="ud-menu-scroll" href="#about">About</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="ud-menu-scroll" href="#pricing">Pricing</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="ud-menu-scroll" href="#team">Team</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="ud-menu-scroll" href="#contact">Contact</a>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="navbar-btn d-none d-sm-inline-block">
+                <!-- <a href="login.html" class="ud-main-btn ud-login-btn">
+                  Sign In
+                </a> -->
+                <a href="/dashboard-with-stepper/dashboard.html" class="ud-main-btn ud-white-btn" href="javascript:void(0)">
+                  Get Started
+                </a>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- ====== Header End ====== -->
+
+    <!-- ====== Hero Start ====== -->
+    <section class="ud-hero" id="home">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="ud-hero-content wow fadeInUp" data-wow-delay=".2s">
+              <h1 class="ud-hero-title">
+                Unified Timetable and College Solutions Powered by AI
+              </h1>
+              <p class="ud-hero-desc">
+                Smart TimeTable Mapping, Effortless Event Management <br>
+                All Synced in One Platform.
+              </p>
+              <ul class="ud-hero-buttons">
+                <li>
+                  <a href="" rel="Tutorial Video" target="_blank" class="ud-main-btn ud-white-btn">
+                    Watch Video ►
+                  </a>
+                </li>
+                <li>
+                  <a href="https://github.com/" rel="nofollow noopener" target="_blank" class="ud-main-btn ud-link-btn">
+                    Learn More <i class="lni lni-arrow-right"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div
+              class="ud-hero-brands-wrapper wow fadeInUp"
+              data-wow-delay=".3s"
+            >
+              <!-- <img src="assets/images/hero/brand.svg" alt="brand" />
+            </div> -->
+             <div class="ud-hero-image wow fadeInUp" data-wow-delay=".25s">
+              <img src="assets/images/hero/hero-image.jpg" alt="hero-image" />
+              <img
+                src="assets/images/hero/dotted-shape.svg"
+                alt="shape"
+                class="shape shape-1"
+              />
+              <img
+                src="assets/images/hero/dotted-shape.svg"
+                alt="shape"
+                class="shape shape-2"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ====== Hero End ====== -->
+
+    <!-- ====== Features Start ====== -->
+    <section id="features" class="ud-features">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="ud-section-title">
+              <span>Features</span>
+              <h2>Our core Features</h2>
+              <p>
+                Even today there are so many colleges, schools and universities which face manual timetable scheduling problems. ScheduleFlow is here to solve all your timetable and event management problems.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xl-3 col-lg-3 col-sm-6">
+            <div class="ud-single-feature wow fadeInUp" data-wow-delay=".1s">
+              <div class="ud-feature-icon">
+                <i class="lni lni-gift"></i>
+              </div>
+              <div class="ud-feature-content">
+                <h3 class="ud-feature-title">Free and Easy to Use</h3>
+                <p class="ud-feature-desc">
+                  It is super easy to use and it is completely free.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-3 col-sm-6">
+            <div class="ud-single-feature wow fadeInUp" data-wow-delay=".15s">
+              <div class="ud-feature-icon">
+                <i class="lni lni-move"></i>
+              </div>
+              <div class="ud-feature-content">
+                <h3 class="ud-feature-title">AI Chatbot Support</h3>
+                <p class="ud-feature-desc">
+                  For all your queries AI is there 24/7.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-3 col-sm-6">
+            <div class="ud-single-feature wow fadeInUp" data-wow-delay=".2s">
+              <div class="ud-feature-icon">
+                <i class="lni lni-layout"></i>
+              </div>
+              <div class="ud-feature-content">
+                <h3 class="ud-feature-title">Precise and well structured Time-Table</h3>
+                <p class="ud-feature-desc">
+                  Avoing clashes and ensuring all requirements are met.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-3 col-sm-6">
+            <div class="ud-single-feature wow fadeInUp" data-wow-delay=".25s">
+              <div class="ud-feature-icon">
+                <i class="lni lni-layers"></i>
+              </div>
+              <div class="ud-feature-content">
+                <h3 class="ud-feature-title">Event, Holiday & Leave Mangement</h3>
+                <p class="ud-feature-desc">
+                  Manage all your events, holidays and leaves in one dashboard.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ====== Features End ====== -->
+
+    <!-- ====== About Start ====== -->
+    <section id="about" class="ud-about">
+      <div class="container">
+        <div class="ud-about-wrapper wow fadeInUp" data-wow-delay=".2s">
+          <div class="ud-about-content-wrapper">
+            <div class="ud-about-content">
+              <span class="tag">About Us</span>
+              <h2>Empowering Organizations with Intelligent Scheduling.</h2>
+              <p>
+                Our platform harnesses the power of AI to revolutionize timetable creation, event requests, holiday planning, and leave management for colleges and businesses. We believe smart automation should do more than replace manual work—it should create new possibilities for collaboration, flexibility, and transparency.<br></br>
+                Our mission: Eliminate scheduling chaos by providing a brilliant platform, where every event and time-off request is handled with precision and care. Join us and experience a smarter, unified approach to timetable and leave management—where your time is valued and your organization is future-ready.
+              </p>
+              <!-- <a href="javascript:void(0)" class="ud-main-btn">Learn More</a> -->
+            </div>
+          </div>
+          <div class="ud-about-image">
+            <img src="assets/images/about/about-image.svg" alt="about-image" />
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ====== About End ====== -->
+
+    <!-- ====== Pricing Start ====== -->
+    <section id="pricing" class="ud-pricing">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="ud-section-title mx-auto text-center">
+              <span>Pricing</span>
+              <h2>Our Pricing Plans</h2>
+              <p>
+                There are many variations of passages of ScheduleFlow available
+                but the majority have suffered alteration in some form.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row g-0 align-items-center justify-content-center">
+          <div class="col-lg-4 col-md-6 col-sm-10">
+            <div
+              class="ud-single-pricing first-item wow fadeInUp"
+              data-wow-delay=".15s"
+            >
+              <div class="ud-pricing-header">
+                <h3>STARTING FROM</h3>
+                <h4>$ 19.99/mo</h4>
+              </div>
+              <div class="ud-pricing-body">
+                <ul>
+                  <li>5 User</li>
+                  <li>All UI components</li>
+                  <li>Lifetime access</li>
+                  <li>Free updates</li>
+                  <li>Use on 1 (one) project</li>
+                  <li>4 Months support</li>
+                </ul>
+              </div>
+              <div class="ud-pricing-footer">
+                <a href="javascript:void(0)" class="ud-main-btn ud-border-btn">
+                  Purchase Now
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 col-sm-10">
+            <div
+              class="ud-single-pricing active wow fadeInUp"
+              data-wow-delay=".1s"
+            >
+              <span class="ud-popular-tag">POPULAR</span>
+              <div class="ud-pricing-header">
+                <h3>STARTING FROM</h3>
+                <h4>$ 30.99/mo</h4>
+              </div>
+              <div class="ud-pricing-body">
+                <ul>
+                  <li>5 User</li>
+                  <li>All UI components</li>
+                  <li>Lifetime access</li>
+                  <li>Free updates</li>
+                  <li>Use on 1 (one) project</li>
+                  <li>4 Months support</li>
+                </ul>
+              </div>
+              <div class="ud-pricing-footer">
+                <a href="javascript:void(0)" class="ud-main-btn ud-white-btn">
+                  Purchase Now
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 col-sm-10">
+            <div
+              class="ud-single-pricing last-item wow fadeInUp"
+              data-wow-delay=".15s"
+            >
+              <div class="ud-pricing-header">
+                <h3>STARTING FROM</h3>
+                <h4>$ 70.99/mo</h4>
+              </div>
+              <div class="ud-pricing-body">
+                <ul>
+                  <li>5 User</li>
+                  <li>All UI components</li>
+                  <li>Lifetime access</li>
+                  <li>Free updates</li>
+                  <li>Use on 1 (one) project</li>
+                  <li>4 Months support</li>
+                </ul>
+              </div>
+              <div class="ud-pricing-footer">
+                <a href="javascript:void(0)" class="ud-main-btn ud-border-btn">
+                  Purchase Now
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ====== Pricing End ====== -->
+
+    <!-- ====== FAQ Start ====== -->
+    <section id="faq" class="ud-faq">
+      <div class="shape">
+        <img src="assets/images/faq/shape.svg" alt="shape" />
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="ud-section-title text-center mx-auto">
+              <span>FAQ</span>
+              <h2>Any Questions? Answered</h2>
+              <p>
+                There are many questions those are frequently asked.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="ud-single-faq wow fadeInUp" data-wow-delay=".1s">
+              <div class="accordion">
+                <button
+                  class="ud-faq-btn collapsed"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseOne"
+                >
+                  <span class="icon flex-shrink-0">
+                    <i class="lni lni-chevron-down"></i>
+                  </span>
+                  <span>How quickly can I create a timetable using this AI platform?</span>
+                </button>
+                <div id="collapseOne" class="accordion-collapse collapse">
+                  <div class="ud-faq-body">
+                    The AI can generate optimized timetables within minutes, saving significant planning time compared to manual scheduling.
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="ud-single-faq wow fadeInUp" data-wow-delay=".15s">
+              <div class="accordion">
+                <button
+                  class="ud-faq-btn collapsed"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseTwo"
+                >
+                  <span class="icon flex-shrink-0">
+                    <i class="lni lni-chevron-down"></i>
+                  </span>
+                  <span>Can the timetable be customized for unique events, holidays, or teacher leave?</span>
+                </button>
+                <div id="collapseTwo" class="accordion-collapse collapse">
+                  <div class="ud-faq-body">
+                    Yes, schedules can be easily adjusted to accommodate holidays, leave requests, special events, and changing staff availability
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="ud-single-faq wow fadeInUp" data-wow-delay=".2s">
+              <div class="accordion">
+                <button
+                  class="ud-faq-btn collapsed"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseThree"
+                >
+                  <span class="icon flex-shrink-0">
+                    <i class="lni lni-chevron-down"></i>
+                  </span>
+                  <span>Will the system work for multiple buildings or departments with different scheduling needs?</span>
+                </button>
+                <div id="collapseThree" class="accordion-collapse collapse">
+                  <div class="ud-faq-body">
+                    Absolutely; the system can handle complex setups including multiple locations, unique time slots, and distinct room groups simultaneously.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="ud-single-faq wow fadeInUp" data-wow-delay=".1s">
+              <div class="accordion">
+                <button
+                  class="ud-faq-btn collapsed"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseFour"
+                >
+                  <span class="icon flex-shrink-0">
+                    <i class="lni lni-chevron-down"></i>
+                  </span>
+                  <span>Can I export, print, or share schedules with students, staff, or teams?</span>
+                </button>
+                <div id="collapseFour" class="accordion-collapse collapse">
+                  <div class="ud-faq-body">
+                    Timetables can be exported in various formats, printed, or shared directly so everyone stays informed and updated
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="ud-single-faq wow fadeInUp" data-wow-delay=".15s">
+              <div class="accordion">
+                <button
+                  class="ud-faq-btn collapsed"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseFive"
+                >
+                  <span class="icon flex-shrink-0">
+                    <i class="lni lni-chevron-down"></i>
+                  </span>
+                  <span>What happens if there’s a sudden change, like a teacher’s absence or a new holiday?</span>
+                </button>
+                <div id="collapseFive" class="accordion-collapse collapse">
+                  <div class="ud-faq-body">
+                    The AI automatically updates schedules, detects conflicts, and suggests optimal adjustments to keep operations running smoothly
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="ud-single-faq wow fadeInUp" data-wow-delay=".2s">
+              <div class="accordion">
+                <button
+                  class="ud-faq-btn collapsed"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseSix"
+                >
+                  <span class="icon flex-shrink-0">
+                    <i class="lni lni-chevron-down"></i>
+                  </span>
+                  <span>Where and how to host this template?</span>
+                </button>
+                <div id="collapseSix" class="accordion-collapse collapse">
+                  <div class="ud-faq-body">
+                    121
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ====== FAQ End ====== -->
+
+    <!-- ====== Testimonials Start ====== -->
+    <section id="testimonials" class="ud-testimonials">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="ud-section-title mx-auto text-center">
+              <span>Testimonials</span>
+              <h2>What our Customers Says</h2>
+              <p>
+                There are many variations of passages of Lorem Ipsum available
+                but the majority have suffered alteration in some form.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-4 col-md-6">
+            <div
+              class="ud-single-testimonial wow fadeInUp"
+              data-wow-delay=".1s"
+            >
+              <div class="ud-testimonial-ratings">
+                <i class="lni lni-star-filled"></i>
+                <i class="lni lni-star-filled"></i>
+                <i class="lni lni-star-filled"></i>
+                <i class="lni lni-star-filled"></i>
+                <i class="lni lni-star-filled"></i>
+              </div>
+              <div class="ud-testimonial-content">
+                <p>
+                  “Our members are so impressed. It's intuitive. It's clean.
+                  It's distraction free. If you're building a community.
+                </p>
+              </div>
+              <div class="ud-testimonial-info">
+                <div class="ud-testimonial-image">
+                  <img
+                    src="assets/images/testimonials/author-01.png"
+                    alt="author"
+                  />
+                </div>
+                <div class="ud-testimonial-meta">
+                  <h4>Sabo Masties</h4>
+                  <p>Founder @UIdeck</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div
+              class="ud-single-testimonial wow fadeInUp"
+              data-wow-delay=".15s"
+            >
+              <div class="ud-testimonial-ratings">
+                <i class="lni lni-star-filled"></i>
+                <i class="lni lni-star-filled"></i>
+                <i class="lni lni-star-filled"></i>
+                <i class="lni lni-star-filled"></i>
+                <i class="lni lni-star-filled"></i>
+              </div>
+              <div class="ud-testimonial-content">
+                <p>
+                  “Our members are so impressed. It's intuitive. It's clean.
+                  It's distraction free. If you're building a community.
+                </p>
+              </div>
+              <div class="ud-testimonial-info">
+                <div class="ud-testimonial-image">
+                  <img
+                    src="assets/images/testimonials/author-02.png"
+                    alt="author"
+                  />
+                </div>
+                <div class="ud-testimonial-meta">
+                  <h4>Margin Gesmu</h4>
+                  <p>Founder @Lineicons</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div
+              class="ud-single-testimonial wow fadeInUp"
+              data-wow-delay=".2s"
+            >
+              <div class="ud-testimonial-ratings">
+                <i class="lni lni-star-filled"></i>
+                <i class="lni lni-star-filled"></i>
+                <i class="lni lni-star-filled"></i>
+                <i class="lni lni-star-filled"></i>
+                <i class="lni lni-star-filled"></i>
+              </div>
+              <div class="ud-testimonial-content">
+                <p>
+                  “Our members are so impressed. It's intuitive. It's clean.
+                  It's distraction free. If you're building a community.
+                </p>
+              </div>
+              <div class="ud-testimonial-info">
+                <div class="ud-testimonial-image">
+                  <img
+                    src="assets/images/testimonials/author-03.png"
+                    alt="author"
+                  />
+                </div>
+                <div class="ud-testimonial-meta">
+                  <h4>William Smith</h4>
+                  <p>Founder @GrayGrids</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ====== Testimonials End ====== -->
+
+    <!-- ====== Team Start ====== -->
+    <section id="team" class="ud-team">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="ud-section-title mx-auto text-center">
+              <span>Our Team</span>
+              <h2>Meet The Team</h2>
+              <p>
+                Meet the talented individuals behind our success.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xl-3 col-lg-3 col-sm-6">
+            <div class="ud-single-team wow fadeInUp" data-wow-delay=".1s">
+              <div class="ud-team-image-wrapper">
+                <div class="ud-team-image">
+                  <img src="assets/images/team/I3.JPG" alt="team" />
+                </div>
+
+                <img
+                  src="assets/images/team/dotted-shape.svg"
+                  alt="shape"
+                  class="shape shape-1"
+                />
+                <img
+                  src="assets/images/team/shape-2.svg"
+                  alt="shape"
+                  class="shape shape-2"
+                />
+              </div>
+              <div class="ud-team-info">
+                <h5>Kirath Kumar Sharma</h5>
+                <h6>Leader</h6>
+              </div>
+              <ul class="ud-team-socials">
+                <li>
+                  <a href="https://twitter.com/">
+                    <i class="lni lni-github-filled"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://twitter.com/">
+                    <i class="lni lni-twitter-filled"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://twitter.com/">
+                    <i class="lni lni-instagram-filled"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-3 col-sm-6">
+            <div class="ud-single-team wow fadeInUp" data-wow-delay=".15s">
+              <div class="ud-team-image-wrapper">
+                <div class="ud-team-image">
+                  <img src="assets/images/team/I2.jpg" alt="team" />
+                </div>
+
+                <img
+                  src="assets/images/team/dotted-shape.svg"
+                  alt="shape"
+                  class="shape shape-1"
+                />
+                <img
+                  src="assets/images/team/shape-2.svg"
+                  alt="shape"
+                  class="shape shape-2"
+                />
+              </div>
+              <div class="ud-team-info">
+                <h5>Soumya Upadhyay</h5>
+                <h6>Frontend Developer</h6>
+              </div>
+              <ul class="ud-team-socials">
+                <li>
+                  <a href="https://twitter.com/MusharofChy">
+                    <i class="lni lni-facebook-filled"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://twitter.com/MusharofChy">
+                    <i class="lni lni-twitter-filled"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://twitter.com/MusharofChy">
+                    <i class="lni lni-instagram-filled"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-3 col-sm-6">
+            <div class="ud-single-team wow fadeInUp" data-wow-delay=".2s">
+              <div class="ud-team-image-wrapper">
+                <div class="ud-team-image">
+                  <img src="assets/images/team/I1.jpg" alt="team" />
+                </div>
+
+                <img
+                  src="assets/images/team/dotted-shape.svg"
+                  alt="shape"
+                  class="shape shape-1"
+                />
+                <img
+                  src="assets/images/team/shape-2.svg"
+                  alt="shape"
+                  class="shape shape-2"
+                />
+              </div>
+              <div class="ud-team-info">
+                <h5>Aditya Yadav</h5>
+                <h6>Backend Developer</h6>
+              </div>
+              <ul class="ud-team-socials">
+                <li>
+                  <a href="https://twitter.com/MusharofChy">
+                    <i class="lni lni-facebook-filled"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://twitter.com/MusharofChy">
+                    <i class="lni lni-twitter-filled"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://twitter.com/MusharofChy">
+                    <i class="lni lni-instagram-filled"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-3 col-sm-6">
+            <div class="ud-single-team wow fadeInUp" data-wow-delay=".2s">
+              <div class="ud-team-image-wrapper">
+                <div class="ud-team-image">
+                  <img src="assets/images/team/I5.png" alt="team" />
+                </div>
+
+                <img
+                  src="assets/images/team/dotted-shape.svg"
+                  alt="shape"
+                  class="shape shape-1"
+                />
+                <img
+                  src="assets/images/team/shape-2.svg"
+                  alt="shape"
+                  class="shape shape-2"
+                />
+              </div>
+              <div class="ud-team-info">
+                <h5>Kinjal Gupta</h5>
+                <h6>AIML Developer</h6>
+              </div>
+              <ul class="ud-team-socials">
+                <li>
+                  <a href="https://twitter.com/MusharofChy">
+                    <i class="lni lni-facebook-filled"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://twitter.com/MusharofChy">
+                    <i class="lni lni-twitter-filled"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://twitter.com/MusharofChy">
+                    <i class="lni lni-instagram-filled"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-3 col-sm-6">
+            <div class="ud-single-team wow fadeInUp" data-wow-delay=".2s">
+              <div class="ud-team-image-wrapper">
+                <div class="ud-team-image">
+                  <img src="assets/images/team/I4.jpg" alt="team" />
+                </div>
+
+                <img
+                  src="assets/images/team/dotted-shape.svg"
+                  alt="shape"
+                  class="shape shape-1"
+                />
+                <img
+                  src="assets/images/team/shape-2.svg"
+                  alt="shape"
+                  class="shape shape-2"
+                />
+              </div>
+              <div class="ud-team-info">
+                <h5>Priya Kumari</h5>
+                <h6>AIML Developer</h6>
+              </div>
+              <ul class="ud-team-socials">
+                <li>
+                  <a href="https://twitter.com/MusharofChy">
+                    <i class="lni lni-facebook-filled"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://twitter.com/MusharofChy">
+                    <i class="lni lni-twitter-filled"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://twitter.com/MusharofChy">
+                    <i class="lni lni-instagram-filled"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-3 col-sm-6">
+            <div class="ud-single-team wow fadeInUp" data-wow-delay=".25s">
+              <div class="ud-team-image-wrapper">
+                <div class="ud-team-image">
+                  <img src="assets/images/team/I6.jpg" alt="team" />
+                </div>
+
+                <img
+                  src="assets/images/team/dotted-shape.svg"
+                  alt="shape"
+                  class="shape shape-1"
+                />
+                <img
+                  src="assets/images/team/shape-2.svg"
+                  alt="shape"
+                  class="shape shape-2"
+                />
+              </div>
+              <div class="ud-team-info">
+                <h5>Bhav Kumar Mangal</h5>
+                <h6>Frontend Developer</h6>
+              </div>
+              <ul class="ud-team-socials">
+                <li>
+                  <a href="https://twitter.com/">
+                    <i class="lni lni-facebook-filled"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://twitter.com/">
+                    <i class="lni lni-twitter-filled"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://twitter.com/">
+                    <i class="lni lni-instagram-filled"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ====== Team End ====== -->
+
+    <!-- ====== Contact Start ====== -->
+    <section id="contact" class="ud-contact">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-xl-8 col-lg-7">
+            <div class="ud-contact-content-wrapper">
+              <div class="ud-contact-title">
+                <span>CONTACT US</span>
+                <h2>
+                  Let’s talk about <br />
+                  Love to hear from you!
+                </h2>
+              </div>
+              <div class="ud-contact-info-wrapper">
+                <div class="ud-single-info">
+                  <div class="ud-info-icon">
+                    <i class="lni lni-map-marker"></i>
+                  </div>
+                  <div class="ud-info-meta">
+                    <h5>Our Location</h5>
+                    <p>401 Broadway, 24th Floor, Orchard Cloud View, London</p>
+                  </div>
+                </div>
+                <div class="ud-single-info">
+                  <div class="ud-info-icon">
+                    <i class="lni lni-envelope"></i>
+                  </div>
+                  <div class="ud-info-meta">
+                    <h5>How Can We Help?</h5>
+                    <p>info@yourdomain.com</p>
+                    <p>contact@yourdomain.com</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-4 col-lg-5">
+            <div
+              class="ud-contact-form-wrapper wow fadeInUp"
+              data-wow-delay=".2s"
+            >
+              <h3 class="ud-contact-form-title">Send us a Message</h3>
+              <form class="ud-contact-form">
+                <div class="ud-form-group">
+                  <label for="fullName">Full Name*</label>
+                  <input
+                    type="text"
+                    name="fullName"
+                    placeholder="Adam Gelius"
+                  />
+                </div>
+                <div class="ud-form-group">
+                  <label for="email">Email*</label>
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="example@yourmail.com"
+                  />
+                </div>
+                <div class="ud-form-group">
+                  <label for="phone">Phone*</label>
+                  <input
+                    type="text"
+                    name="phone"
+                    placeholder="+885 1254 5211 552"
+                  />
+                </div>
+                <div class="ud-form-group">
+                  <label for="message">Message*</label>
+                  <textarea
+                    name="message"
+                    rows="1"
+                    placeholder="type your message here"
+                  ></textarea>
+                </div>
+                <div class="ud-form-group mb-0">
+                  <button type="submit" class="ud-main-btn">
+                    Send Message
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ====== Contact End ====== -->
+
+    <!-- ====== Footer Start ====== -->
+    <footer class="ud-footer wow fadeInUp" data-wow-delay=".15s">
+        <div class="footer-watermark">FEELFINITY</div>
+        <style>
+          .footer-watermark {
+              position: absolute;
+              top: 76%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              font-size: 8rem;
+              font-weight: var(--font-weight-bold);
+              color: rgba(65, 62, 62, 0.508);
+              pointer-events: none;
+              z-index: 1;
+              white-space: nowrap;
+              letter-spacing: 0.2em;
+          }
+        </style>
+      <div class="shape shape-1">
+        <img src="assets/images/footer/shape-1.svg" alt="shape" />
+      </div>
+      <div class="shape shape-2">
+        <img src="assets/images/footer/shape-2.svg" alt="shape" />
+      </div>
+      <div class="shape shape-3">
+        <img src="assets/images/footer/shape-3.svg" alt="shape" />
+      </div>
+      <div class="ud-footer-widgets">
+        <div class="container">
+          <div class="row">
+            <div class="col-xl-3 col-lg-4 col-md-6">
+              <div class="ud-widget">
+                
+                <p class="ud-widget-desc">
+                  We create digital experiences for brands and companies by
+                  using technology.
+                </p>
+                <ul class="ud-widget-socials">
+                  <li>
+                    <a href="https://twitter.com/MusharofChy">
+                      <i class="lni lni-facebook-filled"></i>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://twitter.com/MusharofChy">
+                      <i class="lni lni-twitter-filled"></i>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://twitter.com/MusharofChy">
+                      <i class="lni lni-instagram-filled"></i>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://twitter.com/MusharofChy">
+                      <i class="lni lni-linkedin-original"></i>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="col-xl-2 col-lg-2 col-md-6 col-sm-6">
+              <div class="ud-widget">
+                <h5 class="ud-widget-title">About Us</h5>
+                <ul class="ud-widget-links">
+                  <li>
+                    <a href="javascript:void(0)">Home</a>
+                  </li>
+                  <li>
+                    <a href="javascript:void(0)">Features</a>
+                  </li>
+                  <li>
+                    <a href="javascript:void(0)">About</a>
+                  </li>
+                  <li>
+                    <a href="javascript:void(0)">Testimonial</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-xl-2 col-lg-3 col-md-6 col-sm-6">
+              <div class="ud-widget">
+                <h5 class="ud-widget-title">Features</h5>
+                <ul class="ud-widget-links">
+                  <li>
+                    <a href="javascript:void(0)">How it works</a>
+                  </li>
+                  <li>
+                    <a href="javascript:void(0)">Privacy policy</a>
+                  </li>
+                  <li>
+                    <a href="javascript:void(0)">Terms of service</a>
+                  </li>
+                  <li>
+                    <a href="javascript:void(0)">Refund policy</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-xl-2 col-lg-3 col-md-6 col-sm-6">
+              <div class="ud-widget">
+                <h5 class="ud-widget-title">Our Products</h5>
+                <ul class="ud-widget-links">
+                  <li>
+                    <a
+                      href=""
+                      rel="nofollow noopner"
+                      target="_blank"
+                      >Lineicons
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href=""
+                      rel="nofollow noopner"
+                      target="_blank"
+                      >Ecommerce HTML</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href=""
+                      rel="nofollow noopner"
+                      target="_blank"
+                      >Ayro UI</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href=""
+                      rel="nofollow noopner"
+                      target="_blank"
+                      >Plain Admin</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-xl-3 col-lg-6 col-md-8 col-sm-10">
+              <div class="ud-widget">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="ud-footer-bottom">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-8">
+              <ul class="ud-footer-bottom-left">
+                <li>
+                  <a href="javascript:void(0)">Privacy policy</a>
+                </li>
+                <li>
+                  <a href="javascript:void(0)">Support policy</a>
+                </li>
+                <li>
+                  <a href="javascript:void(0)">Terms of service</a>
+                </li>
+              </ul>
+            </div>
+            <div class="col-md-4">
+              <p class="ud-footer-bottom-right">
+                Designed and Developed by : 
+                <a href="https://feelfinity.co" rel="nofollow">FEELFINITY</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- ====== Footer End ====== -->
+
+    <!-- ====== Back To Top Start ====== -->
+    <a href="javascript:void(0)" class="back-to-top">
+      <i class="lni lni-chevron-up"> </i>
+    </a>
+    <!-- ====== Back To Top End ====== -->
+
+    <!-- ====== All Javascript Files ====== -->
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/wow.min.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+      // ==== for menu scroll
+      const pageLink = document.querySelectorAll(".ud-menu-scroll");
+
+      pageLink.forEach((elem) => {
+        elem.addEventListener("click", (e) => {
+          e.preventDefault();
+          document.querySelector(elem.getAttribute("href")).scrollIntoView({
+            behavior: "smooth",
+            offsetTop: 1 - 60,
+          });
+        });
+      });
+
+      // section menu active
+      function onScroll(event) {
+        const sections = document.querySelectorAll(".ud-menu-scroll");
+        const scrollPos =
+          window.pageYOffset ||
+          document.documentElement.scrollTop ||
+          document.body.scrollTop;
+
+        for (let i = 0; i < sections.length; i++) {
+          const currLink = sections[i];
+          const val = currLink.getAttribute("href");
+          const refElement = document.querySelector(val);
+          const scrollTopMinus = scrollPos + 73;
+          if (
+            refElement.offsetTop <= scrollTopMinus &&
+            refElement.offsetTop + refElement.offsetHeight > scrollTopMinus
+          ) {
+            document
+              .querySelector(".ud-menu-scroll")
+              .classList.remove("active");
+            currLink.classList.add("active");
+          } else {
+            currLink.classList.remove("active");
+          }
+        }
+      }
+
+      window.document.addEventListener("scroll", onScroll);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,617 @@
+<!-- =========
+
+	Template Name: Play
+	Author: UIdeck
+	Author URI: https://uideck.com/
+	Support: https://uideck.com/support/
+	Version: 1.1
+
+========== -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ScheduleFlow | Authentication</title>
+
+    <!--====== Favicon Icon ======-->
+    <link
+      rel="shortcut icon"
+      href="assets/images/favicon.svg"
+      type="image/svg"
+    />
+
+    <!-- ===== All CSS files ===== -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/animate.css" />
+    <link rel="stylesheet" href="assets/css/lineicons.css" />
+    <link rel="stylesheet" href="assets/css/ud-styles.css" />
+
+    <style>
+      /* Simple animation and layout for auth container */
+      .auth-container {
+        display: flex;
+        min-height: 80vh;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+      }
+      .auth-image {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        opacity: 1;
+      }
+      .auth-form-section {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+      }
+      .auth-panel {
+        width: 100%;
+        max-width: 400px;
+        background: #fff;
+        border-radius: 16px;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+        padding: 2rem;
+        position: relative;
+        z-index: 2;
+      }
+      .auth-toggle {
+        color: #4f8cff;
+        cursor: pointer;
+        font-weight: 600;
+        transition: color 0.2s;
+      }
+      .auth-toggle:hover {
+        color: #0056b3;
+      }
+      .auth-container.signup-mode .auth-image {
+        order: 2;
+      }
+      .auth-container.signup-mode .auth-form-section {
+        order: 1;
+      }
+      .auth-image img {
+        max-width: 80%;
+        height: auto;
+        border-radius: 12px;
+        box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+      }
+      @media (max-width: 900px) {
+        .auth-container {
+          flex-direction: column;
+        }
+        .auth-image, .auth-form-section {
+          order: unset !important;
+          width: 100%;
+        }
+        .auth-image {
+          margin-bottom: 2rem;
+        }
+      }
+
+      /* New styles for refactored layout */
+      .auth-root {
+        min-height: 100vh;
+        background: #f7fafd;
+        display: flex;
+        flex-direction: column;
+      }
+      .auth-header {
+        width: 100%;
+        padding: 2rem 0 1rem 0;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+      }
+      .auth-header h2 {
+        margin: 0 0 0 2rem;
+        font-weight: 700;
+        color: #2d3a4b;
+        letter-spacing: 1px;
+      }
+      .auth-main {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .auth-switcher {
+        display: flex;
+        width: 900px;
+        max-width: 98vw;
+        min-height: 500px;
+        background: #fff;
+        border-radius: 24px;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+        overflow: hidden;
+        position: relative;
+        transition: box-shadow 0.3s;
+      }
+      .auth-gif-section, .auth-form-section {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.7s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        background: #f7fafd;
+      }
+      .auth-gif-section {
+        background: #f7fafd;
+        z-index: 1;
+      }
+      .auth-gif-section img {
+        width: 340px;
+        max-width: 90%;
+        border-radius: 18px;
+        box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+        object-fit: contain;
+      }
+      .auth-panel {
+        width: 100%;
+        max-width: 350px;
+        background: #fff;
+        border-radius: 16px;
+        box-shadow: none;
+        padding: 2rem 1.5rem;
+        position: relative;
+        z-index: 2;
+      }
+      .auth-toggle {
+        color: #4f8cff;
+        cursor: pointer;
+        font-weight: 600;
+        transition: color 0.2s;
+      }
+      .auth-toggle:hover {
+        color: #0056b3;
+      }
+      /* Animation for switching sides */
+      .auth-switcher.signup-mode .auth-gif-section {
+        order: 2;
+        animation: slideRight 0.7s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+      }
+      .auth-switcher.signup-mode .auth-form-section {
+        order: 1;
+        animation: slideLeft 0.7s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+      }
+      .auth-switcher:not(.signup-mode) .auth-gif-section {
+        order: 1;
+        animation: slideLeftBack 0.7s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+      }
+      .auth-switcher:not(.signup-mode) .auth-form-section {
+        order: 2;
+        animation: slideRightBack 0.7s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+      }
+      @keyframes slideRight {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(100%); }
+      }
+      @keyframes slideLeft {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-100%); }
+      }
+      @keyframes slideLeftBack {
+        0% { transform: translateX(-100%); }
+        100% { transform: translateX(0); }
+      }
+      @keyframes slideRightBack {
+        0% { transform: translateX(100%); }
+        100% { transform: translateX(0); }
+      }
+      @media (max-width: 900px) {
+        .auth-switcher {
+          flex-direction: column;
+          min-height: 0;
+        }
+        .auth-gif-section, .auth-form-section {
+          order: unset !important;
+          width: 100%;
+          min-height: 220px;
+        }
+        .auth-gif-section {
+          margin-bottom: 1rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="auth-root">
+      <div class="auth-header">
+        <h2>ScheduleFlow</h2>
+        <a href="index.html" class="btn btn-link ms-3" style="font-size:1.1rem;text-decoration:none;">
+          &larr; Back
+        </a>
+      </div>
+      <main class="auth-main">
+        <div class="auth-switcher" id="auth-switcher">
+          <div class="auth-gif-section" id="auth-gif-section">
+            <!-- 
+              === GIF for both Sign In and Sign Up ===
+              Only one <img> tag is used for both sections.
+              Replace the src below with your GIF link.
+            -->
+            <img src="https://camo.githubusercontent.com/2366b34bb903c09617990fb5fff4622f3e941349e846ddb7e73df872a9d21233/68747470733a2f2f63646e2e6472696262626c652e636f6d2f75736572732f3733303730332f73637265656e73686f74732f363538313234332f6176656e746f2e676966" alt="ScheduleFlow GIF" id="auth-gif-img">
+          </div>
+          <div class="auth-form-section">
+            <div class="auth-panel">
+              <form id="signin-form">
+                <h3 class="mb-3 text-center">Sign In</h3>
+                <div class="mb-3">
+                  <input type="email" class="form-control" name="email" placeholder="Email" required />
+                </div>
+                <div class="mb-3">
+                  <input type="password" class="form-control" name="password" placeholder="Password" required />
+                </div>
+                <button type="submit" class="ud-main-btn w-100 mb-2">Sign In</button>
+                <div class="text-center">
+                  <span>Don't have an account? <span class="auth-toggle" id="to-signup">Sign Up</span></span>
+                </div>
+              </form>
+              <form id="signup-form" style="display:none;">
+                <h3 class="mb-3 text-center">Sign Up</h3>
+                <div class="mb-3">
+                  <input type="text" class="form-control" name="name" placeholder="Name" required />
+                </div>
+                <div class="mb-3">
+                  <input type="email" class="form-control" name="email" placeholder="Email" required />
+                </div>
+                <div class="mb-3">
+                  <input type="password" class="form-control" name="password" placeholder="Password" required />
+                </div>
+                <button type="submit" class="ud-main-btn w-100 mb-2">Sign Up</button>
+                <div class="text-center">
+                  <span>Already have an account? <span class="auth-toggle" id="to-signin">Sign In</span></span>
+                </div>
+              </form>
+              <div id="auth-message" class="mt-3 text-center text-danger" style="display:none;"></div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+<!-- 
+     ====== Footer Start ====== 
+    <footer class="ud-footer wow fadeInUp" data-wow-delay=".15s">
+      <div class="shape shape-1">
+        <img src="assets/images/footer/shape-1.svg" alt="shape" />
+      </div>
+      <div class="shape shape-2">
+        <img src="assets/images/footer/shape-2.svg" alt="shape" />
+      </div>
+      <div class="shape shape-3">
+        <img src="assets/images/footer/shape-3.svg" alt="shape" />
+      </div>
+      <div class="ud-footer-widgets">
+        <div class="container">
+          <div class="row">
+            <div class="col-xl-3 col-lg-4 col-md-6">
+              <div class="ud-widget">
+                 <a href="index.html" class="ud-footer-logo">
+                  <img src="assets/images/logo/logo.svg" alt="logo" />
+                </a> 
+                <p class="ud-widget-desc">
+                  We create digital experiences for brands and companies by
+                  using technology.
+                </p>
+                <ul class="ud-widget-socials">
+                  <li>
+                    <a href="https://twitter.com/MusharofChy">
+                      <i class="lni lni-facebook-filled"></i>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://twitter.com/MusharofChy">
+                      <i class="lni lni-twitter-filled"></i>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://twitter.com/MusharofChy">
+                      <i class="lni lni-instagram-filled"></i>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://twitter.com/MusharofChy">
+                      <i class="lni lni-linkedin-original"></i>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="col-xl-2 col-lg-2 col-md-6 col-sm-6">
+              <div class="ud-widget">
+                <h5 class="ud-widget-title">About Us</h5>
+                <ul class="ud-widget-links">
+                  <li>
+                    <a href="javascript:void(0)">Home</a>
+                  </li>
+                  <li>
+                    <a href="javascript:void(0)">Features</a>
+                  </li>
+                  <li>
+                    <a href="javascript:void(0)">About</a>
+                  </li>
+                  <li>
+                    <a href="javascript:void(0)">Testimonial</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-xl-2 col-lg-3 col-md-6 col-sm-6">
+              <div class="ud-widget">
+                <h5 class="ud-widget-title">Features</h5>
+                <ul class="ud-widget-links">
+                  <li>
+                    <a href="javascript:void(0)">How it works</a>
+                  </li>
+                  <li>
+                    <a href="javascript:void(0)">Privacy policy</a>
+                  </li>
+                  <li>
+                    <a href="javascript:void(0)">Terms of service</a>
+                  </li>
+                  <li>
+                    <a href="javascript:void(0)">Refund policy</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-xl-2 col-lg-3 col-md-6 col-sm-6">
+              <div class="ud-widget">
+                <h5 class="ud-widget-title">Our Products</h5>
+                <ul class="ud-widget-links">
+                  <li>
+                    <a
+                      href="https://lineicons.com/"
+                      rel="nofollow noopner"
+                      target="_blank"
+                      >Lineicons
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="https://ecommercehtml.com/"
+                      rel="nofollow noopner"
+                      target="_blank"
+                      >Ecommerce HTML</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://ayroui.com/"
+                      rel="nofollow noopner"
+                      target="_blank"
+                      >Ayro UI</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://graygrids.com/"
+                      rel="nofollow noopner"
+                      target="_blank"
+                      >Plain Admin</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-xl-3 col-lg-6 col-md-8 col-sm-10">
+              <div class="ud-widget">
+                <h5 class="ud-widget-title">Partners</h5>
+                <ul class="ud-widget-brands">
+                  <li>
+                    <a
+                      href="https://ayroui.com/"
+                      rel="nofollow noopner"
+                      target="_blank"
+                    >
+                      <img
+                        src="assets/images/footer/brands/ayroui.svg"
+                        alt="ayroui"
+                      />
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="https://ecommercehtml.com/"
+                      rel="nofollow noopner"
+                      target="_blank"
+                    >
+                      <img
+                        src="assets/images/footer/brands/ecommerce-html.svg"
+                        alt="ecommerce-html"
+                      />
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="https://graygrids.com/"
+                      rel="nofollow noopner"
+                      target="_blank"
+                    >
+                      <img
+                        src="assets/images/footer/brands/graygrids.svg"
+                        alt="graygrids"
+                      />
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="https://lineicons.com/"
+                      rel="nofollow noopner"
+                      target="_blank"
+                    >
+                      <img
+                        src="assets/images/footer/brands/lineicons.svg"
+                        alt="lineicons"
+                      />
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="https://uideck.com/"
+                      rel="nofollow noopner"
+                      target="_blank"
+                    >
+                      <img
+                        src="assets/images/footer/brands/uideck.svg"
+                        alt="uideck"
+                      />
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="https://tailwindtemplates.co/"
+                      rel="nofollow noopner"
+                      target="_blank"
+                    >
+                      <img
+                        src="assets/images/footer/brands/tailwindtemplates.svg"
+                        alt="tailwindtemplates"
+                      />
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="ud-footer-bottom">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-8">
+              <ul class="ud-footer-bottom-left">
+                <li>
+                  <a href="javascript:void(0)">Privacy policy</a>
+                </li>
+                <li>
+                  <a href="javascript:void(0)">Support policy</a>
+                </li>
+                <li>
+                  <a href="javascript:void(0)">Terms of service</a>
+                </li>
+              </ul>
+            </div>
+            <div class="col-md-4">
+              <p class="ud-footer-bottom-right">
+                Designed and Developed by
+                <a href="https://uideck.com" rel="nofollow">UIdeck</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer> -->
+    <!-- ====== Footer End ====== -->
+
+    <!-- ====== Back To Top Start ====== -->
+    <a href="javascript:void(0)" class="back-to-top">
+      <i class="lni lni-chevron-up"> </i>
+    </a>
+    <!-- ====== Back To Top End ====== -->
+
+    <!-- ====== All Javascript Files ====== -->
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/wow.min.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script type="module">
+  import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
+
+  // Elements
+  const authSwitcher = document.getElementById('auth-switcher');
+  const signinForm = document.getElementById('signin-form');
+  const signupForm = document.getElementById('signup-form');
+  const toSignup = document.getElementById('to-signup');
+  const toSignin = document.getElementById('to-signin');
+  const authMessage = document.getElementById('auth-message');
+
+  // Toggle between forms
+  toSignup.onclick = function () {
+    authSwitcher.classList.add('signup-mode');
+    signinForm.style.display = 'none';
+    signupForm.style.display = 'block';
+    authMessage.style.display = 'none';
+  };
+  toSignin.onclick = function () {
+    authSwitcher.classList.remove('signup-mode');
+    signinForm.style.display = 'block';
+    signupForm.style.display = 'none';
+    authMessage.style.display = 'none';
+  };
+
+  // Supabase config
+  const SUPABASE_URL = 'https://qitdixflqjigahbdmgby.supabase.co';
+  // 🔴 Make sure ONLY the real key is here (no placeholder prefix)
+  const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFpdGRpeGZscWppZ2FoYmRtZ2J5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTY1MzcxODcsImV4cCI6MjA3MjExMzE4N30.3_Oa7D8rBuL6mHss_YWqMVj64BLbp9Rx9W3N9N_jtn4';
+
+  const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+  // Sign In
+  signinForm.onsubmit = async function (e) {
+    e.preventDefault();
+    authMessage.textContent = 'Signing in...';
+    authMessage.style.color = 'inherit';
+    authMessage.style.display = 'block';
+    try {
+      const email = signinForm.email.value;
+      const password = signinForm.password.value;
+      const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+      if (error) {
+        authMessage.textContent = error.message?.toLowerCase().includes('invalid login credentials')
+          ? 'No user found or wrong password.'
+          : (error.message || 'Sign in failed.');
+        authMessage.style.color = 'red';
+        return;
+      }
+      authMessage.textContent = 'Sign in successful!';
+      authMessage.style.color = 'green';
+      setTimeout(() => (window.location.href = 'dashboard-with-stepper/dashboard.html'), 800);
+    } catch (err) {
+      console.error(err);
+      authMessage.textContent = 'Unexpected error during sign in.';
+      authMessage.style.color = 'red';
+    }
+  };
+
+  // Sign Up
+  signupForm.onsubmit = async function (e) {
+    e.preventDefault();
+    authMessage.textContent = 'Signing up...';
+    authMessage.style.color = 'inherit';
+    authMessage.style.display = 'block';
+    try {
+      const name = signupForm.name.value;
+      const email = signupForm.email.value;
+      const password = signupForm.password.value;
+      const { data, error } = await supabase.auth.signUp({
+        email,
+        password,
+        options: { data: { name } },
+      });
+      if (error) {
+        authMessage.textContent = error.message?.toLowerCase().includes('user already registered')
+          ? 'User already registered. Please sign in.'
+          : (error.message || 'Sign up failed.');
+        authMessage.style.color = 'red';
+        return;
+      }
+      localStorage.setItem('userName', name);
+      authMessage.textContent = 'Sign up successful! Redirecting to dashboard...';
+      authMessage.style.color = 'green';
+      setTimeout(() => (window.location.href = 'dashboard-with-stepper/dashboard.html'), 800);
+    } catch (err) {
+      console.error(err);
+      authMessage.textContent = 'Unexpected error during sign up.';
+      authMessage.style.color = 'red';
+    }
+  };
+</script>

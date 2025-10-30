@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Professional Timetable Dashboard</title>
+
+  <!-- Tailwind CDN for modern styling -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+  <!-- Custom styles -->
+  <link rel="stylesheet" href="style1.css" />
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+  <!-- Top header -->
+  <header class="bg-white shadow-md">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div class="flex items-center space-x-4">
+        <div class="text-2xl font-bold text-indigo-600">Timetable Admin</div>
+        <div class="text-sm text-gray-500">Section & Timetable Manager</div>
+      </div>
+      <div class="text-sm text-gray-600">Logged in as <strong>You</strong></div>
+    </div>
+  </header>
+
+  <!-- Main content -->
+  <main class="max-w-6xl mx-auto px-6 py-8">
+    <div class="grid grid-cols-12 gap-6">
+
+      <!-- LEFT PANEL -->
+      <aside class="col-span-12 lg:col-span-3">
+        <div class="bg-white shadow rounded-lg p-4 space-y-4 sticky top-6">
+          <div class="font-semibold text-gray-700">Controls</div>
+          <button id="btn-add-section" class="w-full btn-primary">+ Add New Section</button>
+          <button id="btn-review" class="w-full btn-outline">Review All Sections</button>
+          <button id="btn-submit" class="w-full btn-success">Submit to Google Sheet</button>
+          <hr />
+          <div class="font-semibold text-gray-700">View Timetable</div>
+          <select id="sectionSelect" class="w-full border border-gray-300 rounded-md p-2">
+            <option value="">-- Select Section --</option>
+          </select>
+          <button id="btn-view-timetable" class="w-full btn-outline mt-2">Load Timetable</button>
+          <div id="msg" class="text-sm text-center text-green-600 hidden mt-2"></div>
+        </div>
+      </aside>
+
+      <!-- RIGHT PANEL -->
+      <section class="col-span-12 lg:col-span-9">
+        <!-- Section inputs -->
+        <div id="sections-container" class="space-y-6"></div>
+
+        <!-- Timetable display -->
+        <div id="timetable-container" class="mt-8 hidden">
+          <h3 class="text-xl font-semibold mb-4 text-gray-800">Section Timetable</h3>
+          <div id="timetable-content" class="bg-white p-4 rounded-lg shadow overflow-x-auto"></div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Review Modal -->
+    <div id="review-panel" class="fixed inset-0 z-50 flex items-start justify-center p-6 hidden bg-gray-800 bg-opacity-50">
+      <div class="bg-white w-full max-w-4xl rounded-xl shadow-xl overflow-auto max-h-full">
+        <div class="p-4 border-b flex justify-between items-center">
+          <h3 class="text-lg font-semibold">Review Sections</h3>
+          <div>
+            <button id="close-review" class="btn-gray px-3 py-1 mr-2">Close</button>
+            <button id="confirm-submit" class="btn-success px-4 py-1">Confirm & Submit</button>
+          </div>
+        </div>
+        <div id="review-content" class="p-6 space-y-4"></div>
+      </div>
+    </div>
+  </main>
+
+  <script src="app1.js"></script>
+</body>
+</html>

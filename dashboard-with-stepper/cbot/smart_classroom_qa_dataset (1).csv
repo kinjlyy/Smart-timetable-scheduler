@@ -1,0 +1,59 @@
+Question,Answer
+What is A1's class on Monday at 09:00-10:00?,A1 has Mathematics with Mr. Smith in Room 101.
+Who is teaching Mathematics at 09:00-10:00 on Monday?,Mr. Smith is teaching Mathematics in Room 101.
+Is Room 101 occupied at 09:00-10:00 on Monday?,Room 101 is Occupied.
+What is A1's class on Monday at 09:00-10:00?,A1 has Chemistry with Ms. Lee in Room 103.
+Who is teaching Chemistry at 09:00-10:00 on Monday?,Ms. Lee is teaching Chemistry in Room 103.
+Is Room 103 occupied at 09:00-10:00 on Monday?,Room 103 is Occupied.
+What is A1's class on Monday at 10:15-11:15?,A1 has Physics with Dr. Johnson in Room 102.
+Who is teaching Physics at 10:15-11:15 on Monday?,Dr. Johnson is teaching Physics in Room 102.
+Is Room 102 occupied at 10:15-11:15 on Monday?,Room 102 is Occupied.
+What is A1's class on Monday at 10:15-11:15?,A1 has Biology with Dr. Brown in Room 104.
+Who is teaching Biology at 10:15-11:15 on Monday?,Dr. Brown is teaching Biology in Room 104.
+Is Room 104 occupied at 10:15-11:15 on Monday?,Room 104 is Occupied.
+What is B1's class on Monday at 09:00-10:00?,B1 has Mathematics with Mr. Smith in Room 101.
+Who is teaching Mathematics at 09:00-10:00 on Monday?,Mr. Smith is teaching Mathematics in Room 101.
+Is Room 101 occupied at 09:00-10:00 on Monday?,Room 101 is Occupied.
+What is B1's class on Monday at 09:00-10:00?,B1 has History with Mr. Wilson in Room 103.
+Who is teaching History at 09:00-10:00 on Monday?,Mr. Wilson is teaching History in Room 103.
+Is Room 103 occupied at 09:00-10:00 on Monday?,Room 103 is Occupied.
+What is B1's class on Monday at 10:15-11:15?,B1 has English with Ms. Davis in Room 102.
+Who is teaching English at 10:15-11:15 on Monday?,Ms. Davis is teaching English in Room 102.
+Is Room 102 occupied at 10:15-11:15 on Monday?,Room 102 is Occupied.
+What is B1's class on Monday at 10:15-11:15?,B1 has Geography with Ms. Taylor in Room 104.
+Who is teaching Geography at 10:15-11:15 on Monday?,Ms. Taylor is teaching Geography in Room 104.
+Is Room 104 occupied at 10:15-11:15 on Monday?,Room 104 is Occupied.
+What is C1's class on Monday at 09:00-10:00?,C1 has Biology with Dr. Brown in Room 104.
+Who is teaching Biology at 09:00-10:00 on Monday?,Dr. Brown is teaching Biology in Room 104.
+Is Room 104 occupied at 09:00-10:00 on Monday?,Room 104 is Occupied.
+What is C1's class on Monday at 10:15-11:15?,C1 has Physics with Dr. Johnson in Room 102.
+Who is teaching Physics at 10:15-11:15 on Monday?,Dr. Johnson is teaching Physics in Room 102.
+Is Room 102 occupied at 10:15-11:15 on Monday?,Room 102 is Occupied.
+What is C1's class on Monday at 11:30-12:30?,C1 has Mathematics with Mr. Smith in Room 101.
+Who is teaching Mathematics at 11:30-12:30 on Monday?,Mr. Smith is teaching Mathematics in Room 101.
+Is Room 101 occupied at 11:30-12:30 on Monday?,Room 101 is Occupied.
+What is C1's class on Monday at 11:30-12:30?,C1 has Chemistry with Ms. Lee in Room 103.
+Who is teaching Chemistry at 11:30-12:30 on Monday?,Ms. Lee is teaching Chemistry in Room 103.
+Is Room 103 occupied at 11:30-12:30 on Monday?,Room 103 is Occupied.
+What event is scheduled in Auditorium on Monday at 12:30-01:30?,Workshop on AI is scheduled in Auditorium at 12:30-01:30.
+What is A1's class on Tuesday at 09:00-10:00?,A1 has English with Dr. Verma in Room 101.
+Who is teaching English at 09:00-10:00 on Tuesday?,Dr. Verma is teaching English in Room 101.
+Is Room 101 occupied at 09:00-10:00 on Tuesday?,Room 101 is Occupied.
+What is B1's class on Tuesday at 09:00-10:00?,B1 has Chemistry with Prof. Iyer in Room 103.
+Who is teaching Chemistry at 09:00-10:00 on Tuesday?,Prof. Iyer is teaching Chemistry in Room 103.
+Is Room 103 occupied at 09:00-10:00 on Tuesday?,Room 103 is Occupied.
+What is C1's class on Tuesday at 10:15-11:15?,C1 has Electronics Lab with Dr. Nair in Room 102.
+Who is teaching Electronics Lab at 10:15-11:15 on Tuesday?,Dr. Nair is teaching Electronics Lab in Room 102.
+Is Room 102 occupied at 10:15-11:15 on Tuesday?,Room 102 is Occupied.
+What event is scheduled in Auditorium on Tuesday at 12:00-01:00?,Seminar on IoT is scheduled in Auditorium at 12:00-01:00.
+What is A1's class on Wednesday at 09:00-10:00?,A1 has Mathematics with Mr. Smith in Room 105.
+Who is teaching Mathematics at 09:00-10:00 on Wednesday?,Mr. Smith is teaching Mathematics in Room 105.
+Is Room 105 occupied at 09:00-10:00 on Wednesday?,Room 105 is Occupied.
+What is B1's class on Wednesday at 10:15-11:15?,B1 has History with Mr. Singh in Room 106.
+Who is teaching History at 10:15-11:15 on Wednesday?,Mr. Singh is teaching History in Room 106.
+Is Room 106 occupied at 10:15-11:15 on Wednesday?,Room 106 is Occupied.
+What is C1's class on Wednesday at 11:30-12:30?,C1 has Computer Science with Ms. Gupta in Room 101.
+Who is teaching Computer Science at 11:30-12:30 on Wednesday?,Ms. Gupta is teaching Computer Science in Room 101.
+Is Room 101 occupied at 11:30-12:30 on Wednesday?,Room 101 is Occupied.
+What event is scheduled in Auditorium on Wednesday at 12:30-01:30?,Guest Lecture on Cybersecurity is scheduled in Auditorium at 12:30-01:30.
+What is this website for?,"This website is a Smart Classroom and Timetable Manager that creates conflict-free timetables, tracks real-time room availability, notifies about events, and provides dashboards for students, faculty, and admins."
