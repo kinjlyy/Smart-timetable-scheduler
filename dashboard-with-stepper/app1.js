@@ -181,7 +181,33 @@ function buildMapping(id) {
     const lec = el("input", "input");
     lec.type = "number";
     lec.placeholder = "Lectures/week";
-    lec.oninput = () => (s.lectures[sub] = lec.value);
+    lec.min = 0;
+    lec.max = 30;
+    lec.oninput = () => {
+      let val = parseInt(lec.value) || 0;
+
+      // Calculate total of other subjects
+      let otherTotal = 0;
+      s.subjects.forEach(subj => {
+        if (subj !== sub) {
+          otherTotal += parseInt(s.lectures[subj]) || 0;
+        }
+      });
+
+      if (otherTotal + val > 30) {
+        let remaining = 30 - otherTotal;
+        alert(`Total lectures cannot exceed 30. You can add max ${remaining} more.`);
+        val = remaining;
+        lec.value = val;
+      }
+
+      if (val < 0) {
+        val = 0;
+        lec.value = 0;
+      }
+
+      s.lectures[sub] = val;
+    };
     row.append(label, sel, lec);
     list.appendChild(row);
   });
@@ -287,8 +313,29 @@ async function loadTimetables() {
     } else {
       const sheets = Object.keys(data);
       for (const sheetName of sheets) {
-        const rows = data[sheetName];
+        let rows = data[sheetName];
         if (!rows || rows.length === 0) continue;
+
+        // --- Reorder Logic Start ---
+        const desiredOrder = ["Day", "Period", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+        const originalHeaders = rows[0];
+
+        // Map desired columns to their indices in original data
+        const columnIndices = [];
+        desiredOrder.forEach(colName => {
+          const index = originalHeaders.findIndex(h => h.trim().toLowerCase() === colName.toLowerCase());
+          if (index !== -1) columnIndices.push(index);
+        });
+
+        // Add any remaining columns that weren't in desiredOrder (to avoid losing data)
+        originalHeaders.forEach((h, i) => {
+          if (!columnIndices.includes(i)) columnIndices.push(i);
+        });
+
+        // Reconstruct rows with new order
+        const reorderedRows = rows.map(row => columnIndices.map(i => row[i]));
+        rows = reorderedRows;
+        // --- Reorder Logic End ---
 
         const headers = rows[0];
         const table = el("table", "timetable-table");
