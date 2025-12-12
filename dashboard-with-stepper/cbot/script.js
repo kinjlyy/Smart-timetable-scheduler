@@ -2,7 +2,7 @@ let knowledgeBase = {};
 
 async function loadCSV() {
     try {
-        let response = await fetch("timetable_QA_dataset_full.csv");
+        let response = await fetch("csvss.csv");
         let csvText = await response.text();
         let rows = csvText.split("\n").slice(1);
 
@@ -71,7 +71,7 @@ function findClosestMatch(input) {
 function calculateSimilarity(input, storedQuestion) {
     let inputWords = input.toLowerCase().split(/\s+/);
     let storedWords = storedQuestion.toLowerCase().split(/\s+/);
-    
+
     let commonWords = inputWords.filter(word => storedWords.includes(word)).length;
     return commonWords / Math.max(inputWords.length, storedWords.length);
 }
