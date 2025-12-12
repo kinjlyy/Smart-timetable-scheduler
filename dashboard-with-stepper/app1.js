@@ -39,8 +39,9 @@ function createSectionCard() {
   card.id = `section-${id}`;
 
   const header = el("div", "flex justify-between items-center mb-3");
-  header.innerHTML = `<div class="text-lg font-semibold text-indigo-700">Section ${id}</div>`;
-  const removeBtn = el("button", "remove-btn", "Remove");
+  header.innerHTML = `<h3>Section ${id}</h3>`;
+  const removeBtn = el("button", "remove-btn");
+  removeBtn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>`;
   removeBtn.onclick = () => {
     if (confirm("Remove this section?")) {
       sections = sections.filter(s => s.id !== id);
@@ -77,7 +78,7 @@ function createSectionCard() {
   const subjRow = el("div", "flex gap-2 mt-2");
   const subjInput = el("input", "input");
   subjInput.placeholder = "Subject name";
-  const subjBtn = el("button", "btn-primary", "Add");
+  const subjBtn = el("button", "btn btn--primary btn--sm", "Add");
   subjBtn.onclick = () => {
     const val = subjInput.value.trim();
     if (!val) return alert("Enter subject");
@@ -94,7 +95,7 @@ function createSectionCard() {
   const teachRow = el("div", "flex gap-2 mt-2");
   const teachInput = el("input", "input");
   teachInput.placeholder = "Teacher name";
-  const teachBtn = el("button", "btn-primary", "Add");
+  const teachBtn = el("button", "btn btn--primary btn--sm", "Add");
   teachBtn.onclick = () => {
     const val = teachInput.value.trim();
     if (!val) return alert("Enter teacher");
@@ -109,7 +110,7 @@ function createSectionCard() {
   mapArea.appendChild(el("label", "field-label", "Map Subjects → Teachers & Lectures/week"));
   const mapList = el("div", "space-y-2");
   mapArea.appendChild(mapList);
-  const mapBtn = el("button", "btn-outline mt-2", "Update Mapping");
+  const mapBtn = el("button", "btn btn--outline btn--sm mt-2", "Update Mapping");
   mapBtn.onclick = () => buildMapping(id);
   mapArea.appendChild(mapBtn);
   card.appendChild(mapArea);

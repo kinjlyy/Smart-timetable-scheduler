@@ -3,36 +3,71 @@
    Extends style.css
 */
 
+/* === WELCOME SECTION === */
+.welcome-subtitle {
+  color: #4b5563 !important;
+  /* Force darker gray (Gray-600) for visibility */
+  font-weight: 500;
+}
+
+/* === SECTION CARD === */
+/* === SECTION CARD === */
+/* === SECTION CARD === */
 /* === SECTION CARD === */
 .section-card {
-  background: var(--color-surface);
-  border: 1px solid var(--color-card-border);
+  background: rgba(255, 255, 255, 0.95);
+  /* High opacity white */
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: var(--radius-lg);
-  padding: var(--space-16);
-  box-shadow: var(--shadow-sm);
-  transition: box-shadow var(--duration-normal) var(--ease-standard);
-  margin-bottom: var(--space-16);
+  padding: var(--space-24);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  transition: all var(--duration-normal) var(--ease-standard);
+  margin-bottom: var(--space-24);
+  position: relative;
+  overflow: hidden;
+  color: #1f2937;
+  /* Force dark text (Gray-800) */
+}
+
+.section-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(to bottom, var(--color-primary), var(--color-teal-300));
+  opacity: 1;
 }
 
 .section-card:hover {
-  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.03);
   border-color: var(--color-primary);
 }
 
 .section-card h3 {
-  font-size: var(--font-size-lg);
+  font-size: var(--font-size-xl);
   font-weight: var(--font-weight-bold);
-  color: var(--color-text);
-  margin-bottom: var(--space-12);
+  color: #111827;
+  /* Gray-900 */
+  margin-bottom: var(--space-16);
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
 }
 
 /* === INPUT FIELDS (Overrides/Extensions) === */
 .field-label {
-  font-weight: var(--font-weight-medium);
-  color: var(--color-text);
+  font-weight: var(--font-weight-bold);
+  color: #374151;
+  /* Gray-700 */
   font-size: var(--font-size-sm);
-  margin-bottom: var(--space-4);
+  margin-bottom: var(--space-6);
   display: block;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 /* Ensure inputs match dashboard style */
@@ -40,15 +75,17 @@
 .select {
   display: block;
   width: 100%;
-  padding: var(--space-8) var(--space-12);
-  font-size: var(--font-size-md);
+  padding: var(--space-10) var(--space-16);
+  font-size: var(--font-size-base);
   line-height: 1.5;
-  color: var(--color-text);
-  background-color: var(--color-background);
-  /* Slightly distinct from card surface */
-  border: 1px solid var(--color-border);
+  color: #1f2937;
+  /* Gray-800 */
+  background-color: #ffffff;
+  /* White background for inputs */
+  border: 1px solid #d1d5db;
+  /* Gray-300 */
   border-radius: var(--radius-base);
-  transition: border-color var(--duration-fast) var(--ease-standard);
+  transition: all var(--duration-fast) var(--ease-standard);
 }
 
 .input:focus,
@@ -56,25 +93,41 @@
   outline: none;
   border-color: var(--color-primary);
   box-shadow: 0 0 0 3px var(--color-focus-ring);
+  background-color: #ffffff;
+}
+
+.input::placeholder {
+  color: #6b7280;
+  /* Gray-500 */
 }
 
 /* === GRID LAYOUTS === */
 .small-grid {
   display: grid;
-  grid-template-columns: 1fr 120px;
-  gap: var(--space-8);
+  grid-template-columns: 1fr auto;
+  gap: var(--space-12);
   align-items: center;
 }
 
 .kv-row {
   display: flex;
-  gap: var(--space-8);
+  gap: var(--space-12);
   align-items: center;
   margin-top: var(--space-8);
-  background: var(--color-background);
-  padding: var(--space-4) var(--space-8);
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--color-border);
+  background: #f9fafb;
+  /* Gray-50 */
+  padding: var(--space-8) var(--space-12);
+  border-radius: var(--radius-base);
+  border: 1px solid #e5e7eb;
+  /* Gray-200 */
+  transition: all 0.2s;
+  color: #1f2937;
+  /* Gray-800 */
+}
+
+.kv-row:hover {
+  border-color: var(--color-primary);
+  background: #ffffff;
 }
 
 .kv-row input {
@@ -82,6 +135,9 @@
   border: none;
   background: transparent;
   padding: 0;
+  font-weight: var(--font-weight-medium);
+  color: #1f2937;
+  /* Gray-800 */
 }
 
 .kv-row input:focus {
@@ -90,46 +146,54 @@
 
 /* === BUTTONS === */
 .btn--outline {
-  background-color: white !important;
-  border: 1px solid #d1d5db !important;
-  /* Gray-300 */
-  color: #374151 !important;
-  /* Gray-700 */
-  font-weight: 500;
+  background-color: transparent !important;
+  border: 1px solid var(--color-primary) !important;
+  /* Visible border */
+  color: var(--color-primary) !important;
+  /* Visible text */
+  font-weight: 600;
+  transition: all 0.2s;
 }
 
 .btn--outline:hover {
-  background-color: #f3f4f6 !important;
-  /* Gray-100 */
-  border-color: #9ca3af !important;
-  /* Gray-400 */
+  background-color: var(--color-primary) !important;
+  color: white !important;
 }
 
 .btn--primary {
-  background-color: var(--color-primary) !important;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-teal-600)) !important;
   color: white !important;
   border: none !important;
   font-weight: 500;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .btn--primary:hover {
-  background-color: var(--color-primary-hover) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
 }
 
 .remove-btn {
-  background: var(--color-error);
-  color: white;
-  border-radius: var(--radius-sm);
-  padding: 4px 8px;
-  font-size: var(--font-size-xs);
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--color-error);
+  border-radius: var(--radius-base);
+  padding: 6px 10px;
+  font-size: var(--font-size-sm);
   cursor: pointer;
-  border: none;
-  transition: opacity 0.2s;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .remove-btn:hover {
-  opacity: 0.9;
+  background: var(--color-error);
+  color: white;
+  border-color: var(--color-error);
 }
+
+
 
 /* === TIMETABLE TABLE === */
 .timetable-table {
