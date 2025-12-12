@@ -231,6 +231,12 @@ function buildMapping(id) {
     lec.oninput = () => {
       let val = parseInt(lec.value) || 0;
 
+      // POLICY CHECK:
+      // 1. Section Total Limit: Max 30 lectures/week per section (Sum of all subjects).
+      //    -> Implies any single subject is also limited to 30 per section.
+      //    -> Does NOT limit a subject globaly (e.g. Math in Sec A + Sec B = 60 allowed).
+      // 2. Teacher Global Limit: Max 30 lectures/week per teacher (Sum across all sections).
+
       // 1. Check Section Total Limit (Sum of all subjects in this section)
       let sectionOtherTotal = 0;
       s.subjects.forEach(subj => {
