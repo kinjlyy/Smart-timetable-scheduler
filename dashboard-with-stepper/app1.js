@@ -7,7 +7,7 @@ const OUTPUT_SHEET_LINK = "https://docs.google.com/spreadsheets/d/1z_UC47iRkvbic
 
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxTlZjLp5FSk1IIqPo0-tO24e-sHsRkjNbUl9AovOK-IcI1g2LujBAomPY3cZr_oGbLtA/exec";
 const OUTPUT_SHEET_WEBAPP_URL = "https://script.google.com/macros/s/AKfycbzgx9CnlmdecqIPqE3baE1rww4c-AVCTZ8SlGHBMU61YS1PNKjgV0CB9sDCKta8lNTa/exec";
-const N8N_WEBHOOK_URL = "https://we33.app.n8n.cloud/webhook/1dadd5f3-29e4-42a1-935e-b0bf4f1a2190";
+const N8N_WEBHOOK_URL = "https://gaww.app.n8n.cloud/webhook/1dadd5f3-29e4-42a1-935e-b0bf4f1a2190";
 
 const sectionsContainer = document.getElementById("sections-container");
 const addSectionBtn = document.getElementById("btn-add-section");
@@ -301,17 +301,17 @@ async function loadTimetables() {
         rows.slice(1).forEach(r => {
           const tr = el("tr");
           r.forEach(v => {
-           const cell = el("td", "");
-           if (typeof v === "string" && v.includes(" ")) {
-               const parts = v.split(" ");
-               const subject = parts[0];
-               const teacher = parts.slice(1).join(" ");
-               cell.innerHTML = `<div>${subject}</div><div style="font-size: 0.8em; color: #555;">${teacher}</div>`;
-  } else {
-    cell.textContent = v;
-  }
-  tr.appendChild(cell);
-});
+            const cell = el("td", "");
+            if (typeof v === "string" && v.includes(" ")) {
+              const parts = v.split(" ");
+              const subject = parts[0];
+              const teacher = parts.slice(1).join(" ");
+              cell.innerHTML = `<div>${subject}</div><div style="font-size: 0.8em; color: #555;">${teacher}</div>`;
+            } else {
+              cell.textContent = v;
+            }
+            tr.appendChild(cell);
+          });
 
           tbody.appendChild(tr);
         });
