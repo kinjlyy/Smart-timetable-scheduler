@@ -203,13 +203,13 @@
 }
 
 .timetable-table th {
-  background-color: var(--color-background);
-  color: var(--color-text);
+  background-color: #e5e7eb !important;
+  color: #000000 !important;
   font-weight: var(--font-weight-bold);
   text-transform: uppercase;
   letter-spacing: 0.05em;
   padding: var(--space-12);
-  border-bottom: 2px solid var(--color-border);
+  border-bottom: 2px solid #d1d5db;
   text-align: center;
 }
 
@@ -219,7 +219,7 @@
   border-right: 1px solid var(--color-border);
   vertical-align: top;
   text-align: center;
-  color: var(--color-text);
+  color: #000000 !important;
 }
 
 .timetable-table td:last-child {
@@ -241,9 +241,47 @@
     grid-template-columns: 1fr;
   }
 
-  .timetable-table th,
   .timetable-table td {
     padding: var(--space-8);
     font-size: var(--font-size-xs);
   }
+}
+
+/* Ensure Section headers are visible */
+.timetable-section h2 {
+  color: #000000 !important;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 1.5rem 0 0.5rem 0;
+  padding-left: 0.5rem;
+  border-left: 4px solid var(--color-primary);
+}
+
+/* Force visibility for specific UI elements reported as white */
+.user-name {
+  color: #000000 !important;
+}
+
+.welcome-section .welcome-title,
+.welcome-section .welcome-subtitle {
+  color: #111827 !important;
+  /* Dark Gray */
+}
+
+/* Select inputs and options */
+select.form-control,
+select.form-control option {
+  color: #000000 !important;
+  background-color: #ffffff !important;
+}
+
+/* Loading text and dynamic headers */
+#timetable-display p,
+#timetable-display h2 {
+  color: #000000 !important;
+}
+
+/* Ensure global visibility override for this page */
+body {
+  color: #000000;
 }

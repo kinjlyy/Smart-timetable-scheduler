@@ -342,16 +342,16 @@ confirmSubmit.onclick = async () => {
   msgBox.classList.remove("hidden");
   msgBox.innerText = "Submitting...";
   await sendToSheet(buildPayload());
-  msgBox.innerText = "✅ Submitted successfully!";
+  msgBox.innerText = "✅ Submitted! Generating result... (please wait 6s)";
   reviewPanel.classList.add("hidden");
-  setTimeout(loadTimetables, 3000);
+  setTimeout(loadTimetables, 6000);
 };
 submitBtn.onclick = async () => {
   msgBox.classList.remove("hidden");
   msgBox.innerText = "Submitting...";
   await sendToSheet(buildPayload());
-  msgBox.innerText = "✅ Submitted successfully!";
-  setTimeout(loadTimetables, 3000);
+  msgBox.innerText = "✅ Submitted! Generating result... (please wait 6s)";
+  setTimeout(loadTimetables, 6000);
 };
 
 /* === Initialize === */
