@@ -1,974 +1,1054 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ScheduleFlow - Advanced Timetable & Event Management</title>
-    <link rel="stylesheet" href="style.css">
-    <style>
-      /* Force all light text to #121212 for this page only */
-      body, body * {
-        color: #121212 !important;
-        /* Optionally, override text-shadow for better contrast */
-        text-shadow: none !important;
-      }
-      /* If you want to keep button/primary/brand colors, exclude them: */
-      .btn, .status, .nav-icon, .nav-badge, .unlock-badge {
-        color: inherit !important;
-      }
-      /* Chatbot floating logo and container styles */
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ScheduleFlow - Advanced Timetable & Event Management</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Force all light text to #121212 for this page only */
+    body,
+    body * {
+      color: #121212 !important;
+      /* Optionally, override text-shadow for better contrast */
+      text-shadow: none !important;
+    }
+
+    /* If you want to keep button/primary/brand colors, exclude them: */
+    .btn,
+    .status,
+    .nav-icon,
+    .nav-badge,
+    .unlock-badge {
+      color: inherit !important;
+    }
+
+    /* Chatbot floating logo and container styles */
+    #chatbot-logo {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      z-index: 9999;
+      width: 64px;
+      height: 64px;
+      background: #fff;
+      border-radius: 50%;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.18);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: box-shadow 0.2s;
+      touch-action: none;
+    }
+
+    #chatbot-logo img {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    #chatbot-logo:active {
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
+    }
+
+    #chatbot-container {
+      position: fixed;
+      bottom: 110px;
+      right: 32px;
+      z-index: 10000;
+      width: 370px;
+      max-width: 98vw;
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+      touch-action: none;
+    }
+
+    #chatbot-container.active {
+      display: flex !important;
+    }
+
+    #close-chatbot {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      background: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      font-size: 18px;
+      color: #333;
+      cursor: pointer;
+      z-index: 10001;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+      transition: background 0.2s;
+    }
+
+    #close-chatbot:hover {
+      background: #f2f2f2;
+    }
+
+    #chatbot-container iframe {
+      width: 100%;
+      height: 400px;
+      border: none;
+      border-radius: 0 0 18px 18px;
+      background: #fff;
+      pointer-events: auto;
+    }
+
+    @media (max-width: 500px) {
       #chatbot-logo {
-        position: fixed;
-        bottom: 32px;
-        right: 32px;
-        z-index: 9999;
-        width: 64px;
-        height: 64px;
-        background: #fff;
-        border-radius: 50%;
-        box-shadow: 0 2px 12px rgba(0,0,0,0.18);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        transition: box-shadow 0.2s;
-        touch-action: none;
-      }
-      #chatbot-logo img {
+        right: 12px;
+        bottom: 12px;
         width: 48px;
         height: 48px;
-        border-radius: 50%;
-        object-fit: cover;
       }
-      #chatbot-logo:active {
-        box-shadow: 0 4px 24px rgba(0,0,0,0.25);
+
+      #chatbot-logo img {
+        width: 36px;
+        height: 36px;
       }
+
       #chatbot-container {
-        position: fixed;
-        bottom: 110px;
-        right: 32px;
-        z-index: 10000;
-        width: 370px;
-        max-width: 98vw;
-        background: #fff;
-        border-radius: 18px;
-        box-shadow: 0 8px 32px rgba(0,0,0,0.25);
-        display: none;
-        flex-direction: column;
-        overflow: hidden;
-        touch-action: none;
+        right: 2vw;
+        bottom: 70px;
+        width: 96vw;
+        min-width: 0;
+        border-radius: 12px;
       }
-      #chatbot-container.active {
-        display: flex !important;
-      }
-      #close-chatbot {
-        position: absolute;
-        top: 8px;
-        right: 8px;
-        background: #fff;
-        border: none;
-        border-radius: 50%;
-        width: 32px;
-        height: 32px;
-        font-size: 18px;
-        color: #333;
-        cursor: pointer;
-        z-index: 10001;
-        box-shadow: 0 1px 4px rgba(0,0,0,0.08);
-        transition: background 0.2s;
-      }
-      #close-chatbot:hover {
-        background: #f2f2f2;
-      }
+
       #chatbot-container iframe {
-        width: 100%;
-        height: 400px;
-        border: none;
-        border-radius: 0 0 18px 18px;
-        background: #fff;
-        pointer-events: auto;
+        height: 320px;
       }
-      @media (max-width: 500px) {
-        #chatbot-logo {
-          right: 12px;
-          bottom: 12px;
-          width: 48px;
-          height: 48px;
-        }
-        #chatbot-logo img {
-          width: 36px;
-          height: 36px;
-        }
-        #chatbot-container {
-          right: 2vw;
-          bottom: 70px;
-          width: 96vw;
-          min-width: 0;
-          border-radius: 12px;
-        }
-        #chatbot-container iframe {
-          height: 320px;
-        }
-      }
+    }
 
-      /* minimal modal/btn styles in case style.css missing */
-      .modal { position: fixed; left:0; top:0; right:0; bottom:0; display:flex; align-items:center; justify-content:center; z-index:2000; }
-      .modal.hidden { display:none; }
-      .modal-overlay { position:absolute; left:0;top:0;right:0;bottom:0;background:rgba(0,0,0,0.4); }
-      .modal-content { position:relative; background:#fff; padding:16px; border-radius:8px; max-width:900px; width:95%; max-height:90vh; overflow:auto; z-index:2001; }
-      .btn { padding:8px 12px; border-radius:6px; border:none; cursor:pointer; background:#06b6d4; color:#fff; }
-      .btn--outline { background:transparent; border:1px solid #ddd; color:#111; }
-      .btn--primary { background:#06b6d4; color:#fff; }
-    </style>
-    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+    /* minimal modal/btn styles in case style.css missing */
+    .modal {
+      position: fixed;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+    }
+
+    .modal.hidden {
+      display: none;
+    }
+
+    .modal-overlay {
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.4);
+    }
+
+    .modal-content {
+      position: relative;
+      background: #fff;
+      padding: 16px;
+      border-radius: 8px;
+      max-width: 900px;
+      width: 95%;
+      max-height: 90vh;
+      overflow: auto;
+      z-index: 2001;
+    }
+
+    .btn {
+      padding: 8px 12px;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      background: #06b6d4;
+      color: #fff;
+    }
+
+    .btn--outline {
+      background: transparent;
+      border: 1px solid #ddd;
+      color: #111;
+    }
+
+    .btn--primary {
+      background: #06b6d4;
+      color: #fff;
+    }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
 </head>
+
 <body>
-    <div id="chatbot-logo" onclick="toggleChatbot()" tabindex="0" aria-label="Open Chatbot">
-        <img src="../dashboard-with-stepper/cbot/logo.jpg" alt="Chatbot">
+  <div id="chatbot-logo" onclick="toggleChatbot()" tabindex="0" aria-label="Open Chatbot">
+    <img src="../dashboard-with-stepper/cbot/logo.jpg" alt="Chatbot">
+  </div>
+  <div id="chatbot-container">
+    <button id="close-chatbot" onclick="closeChatbot()" aria-label="Close Chatbot">✖</button>
+    <iframe src="../dashboard-with-stepper/cbot/index.html" allow="clipboard-write; microphone; camera"></iframe>
+  </div>
+  <div class="app-container">
+    <!-- Header -->
+    <header class="header">
+      <div class="header-content">
+        <div class="logo">
+          <h1>ScheduleFlow</h1>
+        </div>
+        <div class="user-profile">
+          <img src="https://via.placeholder.com/40x40/4F46E5/FFFFFF?text=AU" alt="User Avatar" class="avatar">
+          <span class="user-name">Welcome ! Kirath</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="main-layout">
+      <!-- Sidebar -->
+      <aside class="sidebar" id="sidebar">
+        <nav class="sidebar-nav">
+          <ul class="nav-list">
+            <li class="nav-item active">
+              <a href="#" class="nav-link" data-section="dashboard">
+                <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2">
+                  <rect x="3" y="3" width="7" height="7" />
+                  <rect x="14" y="3" width="7" height="7" />
+                  <rect x="14" y="14" width="7" height="7" />
+                  <rect x="3" y="14" width="7" height="7" />
+                </svg>
+                Dashboard
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link" data-section="timetable">
+                <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2">
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                  <line x1="16" x2="16" y1="2" y2="6" />
+                  <line x1="8" x2="8" y1="2" y2="6" />
+                  <line x1="3" x2="21" y1="10" y2="10" />
+                </svg>
+                Current Time Table
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link" data-section="users">
+                <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2">
+                  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                  <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                </svg>
+                Users
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link" data-section="settings">
+                <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2">
+                  <circle cx="12" cy="12" r="3" />
+                  <path
+                    d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1 1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z" />
+                </svg>
+                Settings
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link disabled" data-section="classroom">
+                <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="c
+        u         rrentColor" stroke-width="2">
+                  <path d="M2  3h20v18H2z" />
+                  <path d="M8 21v-4a2 2 0 0 1 2-2h4a2 2  0 0 1 2 2v4" />
+                  <path d=" M9 9h6v6H9z" />
+                </svg>
+                Advance Classroom
+                <span class="nav-badge">Enabled Later</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="../index.html" class="nav-link" id="logout-btn">
+                <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2">
+                  <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+                  <polyline points="16,17 21,12 16,7" />
+                  <line x1="21" x2="9" y1="12" y2="12" />
+                </svg>
+                Logout
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <!-- Dashboard Section -->
+        <section class="content-section active" id="dashboard-section">
+          <div class="welcome-section">
+            <h2 class="welcome-title">Welcome Admin</h2>
+            <p class="welcome-subtitle">Manage your timetables and events with ease</p>
+          </div>
+
+          <div class="action-cards">
+            <div class="action-card" id="new-timetable-card">
+              <div class="action-icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                  <line x1="16" x2="16" y1="2" y2="6" />
+                  <line x1="8" x2="8" y1="2" y2="6" />
+                  <line x1="3" x2="21" y1="10" y2="10" />
+                  <line x1="12" x2="12" y1="14" y2="18" />
+                  <line x1="10" x2="14" y1="16" y2="16" />
+                </svg>
+              </div>
+              <h3>New Time Table</h3>
+              <p>Create and manage comprehensive timetables for your institution</p>
+            </div>
+
+            <div class="action-card" id="manage-events-card">
+              <div class="action-icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2"></svg>
+                <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
+                <rect x="8" y="2" width="8" height="4" rx="1" ry="1" />
+                <path d="M9 14l2 2 4-4" />
+                </svg>
+              </div>
+              <h3>Manage Events</h3>
+              <p>Organize events, generate QR codes, and manage registrations</p>
+            </div>
+          </div>
+
+          <div class="latest-events">
+            <h3>Latest Events</h3>
+            <div class="events-list" id="events-list">
+              <div class="event-item">
+                <div class="event-info">
+                  <h4>Annual Tech Symposium</h4>
+                  <p>Feb 15-17, 2024 • Main Auditorium</p>
+                  <span class="event-status active">Active</span>
+                </div>
+                <div class="event-actions">
+                  <button class="btn btn--sm btn--outline">Edit</button>
+                  <button class="btn btn--sm btn--primary">View QR</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tagline-section">
+            <h3>Welcome to ScheduleFlow</h3>
+            <p>Your comprehensive platform for managing timetables and events. Streamline your scheduling process with
+              our advanced tools and intuitive interface.</p>
+          </div>
+        </section>
+
+        <!-- Users Section -->
+        <section class="content-section" id="users-section">
+          <h2>User Management</h2>
+          <p class="section-description">Manage user credentials and access permissions</p>
+
+          <div class="card">
+            <div class="card__body">
+              <div class="users-header">
+                <h3>Active Users</h3>
+                <button class="btn btn--primary" id="add-user-btn">Add User</button>
+              </div>
+              <div class="users-table">
+                <div class="table-container">
+                  <table class="data-table">
+                    <thead>
+                      <tr>
+                        <th>Name</th>
+                        <th>Position</th>
+                        <th>Email</th>
+                        <th>Credentials</th>
+                        <th>Access Level</th>
+                        <th>Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody id="users-tbody">
+                      <tr>
+                        <td>John Doe</td>
+                        <td>Event Coordinator</td>
+                        <td>john.doe@scheduleflow.com</td>
+                        <td><code>EC2024JD</code></td>
+                        <td><span class="status status--info">Editor</span></td>
+                        <td>
+                          <div class="table-actions">
+                            <button class="action-btn">Edit</button>
+                            <button class="action-btn action-btn--danger">Delete</button>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Jane Smith</td>
+                        <td>Timetable Manager</td>
+                        <td>jane.smith@scheduleflow.com</td>
+                        <td><code>TM2024JS</code></td>
+                        <td><span class="status status--success">Admin</span></td>
+                        <td>
+                          <div class="table-actions">
+                            <button class="action-btn">Edit</button>
+                            <button class="action-btn action-btn--danger">Delete</button>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Settings Section -->
+        <section class="content-section" id="settings-section">
+          <h2>Settings</h2>
+          <p class="section-description">Customize your profile and platform preferences</p>
+
+          <div class="settings-grid">
+            <div class="card">
+              <div class="card__body">
+                <h3>Name Display</h3>
+                <div class="form-group">
+                  <label class="form-label">Display Name</label>
+                  <input type="text" class="form-control" value="Admin User">
+                </div>
+                <button class="btn btn--primary">Update</button>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card__body">
+                <h3>Profile Settings</h3>
+                <div class="form-group">
+                  <label class="form-label">Email Address</label>
+                  <input type="email" class="form-control" value="admin@scheduleflow.com">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Phone Number</label>
+                  <input type="tel" class="form-control" placeholder="Enter phone number">
+                </div>
+                <button class="btn btn--primary">Save Changes</button>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card__body">
+                <h3>Refer Platform</h3>
+                <p>Share ScheduleFlow with others and help them streamline their scheduling process.</p>
+                <div class="form-group">
+                  <label class="form-label">Referral Link</label>
+                  <div class="input-group">
+                    <input type="text" class="form-control" value="https://github/KIRATH25" readonly>
+                    <button class="btn btn--outline">Copy</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card__body">
+                <h3>Theme Settings</h3>
+                <div class="theme-option disabled">
+                  <span>Dark Theme</span>
+                  <span class="unlock-badge">Unlock Later</span>
+                </div>
+                <div class="theme-option disabled">
+                  <span>Custom Colors</span>
+                  <span class="unlock-badge">Unlock Later</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Current Time Table Section -->
+        <section class="content-section" id="timetable-section">
+          <h2>Current Time Table</h2>
+          <p class="section-description">View and manage your current timetable</p>
+
+          <div class="card">
+            <div class="card__body">
+              <div class="timetable-header">
+                <h3>Academic Year 2024-2025</h3>
+                <div class="timetable-actions">
+                  <button class="btn btn--outline">Export PDF</button>
+                  <button class="btn btn--primary">Edit Schedule</button>
+                </div>
+              </div>
+              <div class="timetable-placeholder">
+                <p>No active timetable found. Create a new timetable to get started.</p>
+                <button class="btn btn--primary" id="create-timetable-btn"
+                  onclick="window.location.href='timetable.html'">Create New Timetable</button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
     </div>
-    <div id="chatbot-container">
-        <button id="close-chatbot" onclick="closeChatbot()" aria-label="Close Chatbot">✖</button>
-        <iframe src="../dashboard-with-stepper/cbot/index.html" allow="clipboard-write; microphone; camera"></iframe>
-    </div>
-    <div class="app-container">
-        <!-- Header -->
-        <header class="header">
-            <div class="header-content">
-                <div class="logo">
-                    <h1>ScheduleFlow</h1>
-                </div>
-                <div class="user-profile">
-                    <img src="https://via.placeholder.com/40x40/4F46E5/FFFFFF?text=AU" alt="User Avatar" class="avatar">
-                    <span class="user-name">Welcome ! Kirath</span>
-                </div>
-            </div>
-        </header>
 
-        <div class="main-layout">
-            <!-- Sidebar -->
-            <aside class="sidebar" id="sidebar">
-                <nav class="sidebar-nav">
-                    <ul class="nav-list">
-                        <li class="nav-item active">
-                            <a href="#" class="nav-link" data-section="dashboard">
-                                <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <rect x="3" y="3" width="7" height="7"/>
-                                    <rect x="14" y="3" width="7" height="7"/>
-                                    <rect x="14" y="14" width="7" height="7"/>
-                                    <rect x="3" y="14" width="7" height="7"/>
-                                </svg>
-                                Dashboard
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link" data-section="timetable">
-                                <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-                                    <line x1="16" x2="16" y1="2" y2="6"/>
-                                    <line x1="8" x2="8" y1="2" y2="6"/>
-                                    <line x1="3" x2="21" y1="10" y2="10"/>
-                                </svg>
-                                Current Time Table
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link" data-section="users">
-                                <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
-                                    <circle cx="9" cy="7" r="4"/>
-                                    <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
-                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-                                </svg>
-                                Users
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link" data-section="settings">
-                                <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <circle cx="12" cy="12" r="3"/>
-                                    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1 1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
-                                </svg>
-                                Settings
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link disabled" data-section="classroom">
-                                <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M2 3h20v18H2z"/>
-                                    <path d="M8 21v-4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v4"/>
-                                    <path d="M9 9h6v6H9z"/>
-                                </svg>
-                                Advance Classroom
-                                <span class="nav-badge">Enabled Later</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="../index.html" class="nav-link" id="logout-btn">
-                                <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
-                                    <polyline points="16,17 21,12 16,7"/>
-                                    <line x1="21" x2="9" y1="12" y2="12"/>
-                                </svg>
-                                Logout
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-            </aside>
-
-            <!-- Main Content -->
-            <main class="main-content">
-                <!-- Dashboard Section -->
-                <section class="content-section active" id="dashboard-section">
-                    <div class="welcome-section">
-                        <h2 class="welcome-title">Welcome Admin</h2>
-                        <p class="welcome-subtitle">Manage your timetables and events with ease</p>
-                    </div>
-
-                    <div class="action-cards">
-                        <div class="action-card" id="new-timetable-card">
-                            <div class="action-icon">
-                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-                                    <line x1="16" x2="16" y1="2" y2="6"/>
-                                    <line x1="8" x2="8" y1="2" y2="6"/>
-                                    <line x1="3" x2="21" y1="10" y2="10"/>
-                                    <line x1="12" x2="12" y1="14" y2="18"/>
-                                    <line x1="10" x2="14" y1="16" y2="16"/>
-                                </svg>
-                            </div>
-                            <h3>New Time Table</h3>
-                            <p>Create and manage comprehensive timetables for your institution</p>
-                        </div>
-
-                        <div class="action-card" id="manage-events-card">
-                            <div class="action-icon">
-                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"></svg>
-                                    <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/>
-                                    <rect x="8" y="2" width="8" height="4" rx="1" ry="1"/>
-                                    <path d="M9 14l2 2 4-4"/>
-                                </svg>
-                            </div>
-                            <h3>Manage Events</h3>
-                            <p>Organize events, generate QR codes, and manage registrations</p>
-                        </div>
-                    </div>
-
-                    <div class="latest-events">
-                        <h3>Latest Events</h3>
-                        <div class="events-list" id="events-list">
-                            <div class="event-item">
-                                <div class="event-info">
-                                    <h4>Annual Tech Symposium</h4>
-                                    <p>Feb 15-17, 2024 • Main Auditorium</p>
-                                    <span class="event-status active">Active</span>
-                                </div>
-                                <div class="event-actions">
-                                    <button class="btn btn--sm btn--outline">Edit</button>
-                                    <button class="btn btn--sm btn--primary">View QR</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="tagline-section">
-                        <h3>Welcome to ScheduleFlow</h3>
-                        <p>Your comprehensive platform for managing timetables and events. Streamline your scheduling process with our advanced tools and intuitive interface.</p>
-                    </div>
-                </section>
-
-                <!-- Users Section -->
-                <section class="content-section" id="users-section">
-                    <h2>User Management</h2>
-                    <p class="section-description">Manage user credentials and access permissions</p>
-                    
-                    <div class="card">
-                        <div class="card__body">
-                            <div class="users-header">
-                                <h3>Active Users</h3>
-                                <button class="btn btn--primary" id="add-user-btn">Add User</button>
-                            </div>
-                            <div class="users-table">
-                                <div class="table-container">
-                                    <table class="data-table">
-                                        <thead>
-                                            <tr>
-                                                <th>Name</th>
-                                                <th>Position</th>
-                                                <th>Email</th>
-                                                <th>Credentials</th>
-                                                <th>Access Level</th>
-                                                <th>Actions</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="users-tbody">
-                                            <tr>
-                                                <td>John Doe</td>
-                                                <td>Event Coordinator</td>
-                                                <td>john.doe@scheduleflow.com</td>
-                                                <td><code>EC2024JD</code></td>
-                                                <td><span class="status status--info">Editor</span></td>
-                                                <td>
-                                                    <div class="table-actions">
-                                                        <button class="action-btn">Edit</button>
-                                                        <button class="action-btn action-btn--danger">Delete</button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Jane Smith</td>
-                                                <td>Timetable Manager</td>
-                                                <td>jane.smith@scheduleflow.com</td>
-                                                <td><code>TM2024JS</code></td>
-                                                <td><span class="status status--success">Admin</span></td>
-                                                <td>
-                                                    <div class="table-actions">
-                                                        <button class="action-btn">Edit</button>
-                                                        <button class="action-btn action-btn--danger">Delete</button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Settings Section -->
-                <section class="content-section" id="settings-section">
-                    <h2>Settings</h2>
-                    <p class="section-description">Customize your profile and platform preferences</p>
-                    
-                    <div class="settings-grid">
-                        <div class="card">
-                            <div class="card__body">
-                                <h3>Name Display</h3>
-                                <div class="form-group">
-                                    <label class="form-label">Display Name</label>
-                                    <input type="text" class="form-control" value="Admin User">
-                                </div>
-                                <button class="btn btn--primary">Update</button>
-                            </div>
-                        </div>
-
-                        <div class="card">
-                            <div class="card__body">
-                                <h3>Profile Settings</h3>
-                                <div class="form-group">
-                                    <label class="form-label">Email Address</label>
-                                    <input type="email" class="form-control" value="admin@scheduleflow.com">
-                                </div>
-                                <div class="form-group">
-                                    <label class="form-label">Phone Number</label>
-                                    <input type="tel" class="form-control" placeholder="Enter phone number">
-                                </div>
-                                <button class="btn btn--primary">Save Changes</button>
-                            </div>
-                        </div>
-
-                        <div class="card">
-                            <div class="card__body">
-                                <h3>Refer Platform</h3>
-                                <p>Share ScheduleFlow with others and help them streamline their scheduling process.</p>
-                                <div class="form-group">
-                                    <label class="form-label">Referral Link</label>
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" value="https://github/KIRATH25" readonly>
-                                        <button class="btn btn--outline">Copy</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card">
-                            <div class="card__body">
-                                <h3>Theme Settings</h3>
-                                <div class="theme-option disabled">
-                                    <span>Dark Theme</span>
-                                    <span class="unlock-badge">Unlock Later</span>
-                                </div>
-                                <div class="theme-option disabled">
-                                    <span>Custom Colors</span>
-                                    <span class="unlock-badge">Unlock Later</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Current Time Table Section -->
-                <section class="content-section" id="timetable-section">
-                    <h2>Current Time Table</h2>
-                    <p class="section-description">View and manage your current timetable</p>
-                    
-                    <div class="card">
-                        <div class="card__body">
-                            <div class="timetable-header">
-                                <h3>Academic Year 2024-2025</h3>
-                                <div class="timetable-actions">
-                                    <button class="btn btn--outline">Export PDF</button>
-                                    <button class="btn btn--primary">Edit Schedule</button>
-                                </div>
-                            </div>
-                            <div class="timetable-placeholder">
-                                <p>No active timetable found. Create a new timetable to get started.</p>
-                                <button class="btn btn--primary" id="create-timetable-btn" onclick="window.location.href='timetable.html'">Create New Timetable</button>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </main>
-        </div>
-
-        <!-- Manage Events Modal -->
-        <div class="modal hidden" id="manage-events-modal">
-            <div class="modal-overlay"></div>
-            <div class="modal-content modal-content--large">
-                <div class="modal-header">
-                    <h3 class="modal-title">Manage Events</h3>
-                    <button class="modal-close" id="modal-close-events">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <line x1="18" x2="6" y1="6" y2="18"/>
-                            <line x1="6" x2="18" y1="6" y2="18"/>
-                        </svg>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form id="event-form">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label class="form-label">Event Title *</label>
-                                <input type="text" class="form-control" name="eventTitle" required>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">Event Type</label>
-                                <select class="form-control" name="eventType">
-                                    <option value="academic">Academic</option>
-                                    <option value="cultural">Cultural</option>
-                                    <option value="sports">Sports</option>
-                                    <option value="workshop">Workshop</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label class="form-label">Start Date *</label>
-                                <input type="date" class="form-control" name="startDate" required>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">End Date *</label>
-                                <input type="date" class="form-control" name="endDate" required>
-                            </div>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label class="form-label">Start Time *</label>
-                                <input type="time" class="form-control" name="startTime" required>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">End Time *</label>
-                                <input type="time" class="form-control" name="endTime" required>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="form-label">Venue/Location *</label>
-                            <input type="text" class="form-control" name="venue" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="form-label">Organizing Club/Individual *</label>
-                            <input type="text" class="form-control" name="organizer" required>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label class="form-label">President Name</label>
-                                <input type="text" class="form-control" name="presidentName">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">President Contact</label>
-                                <input type="tel" class="form-control" name="presidentContact">
-                            </div>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label class="form-label">Vice President Name</label>
-                                <input type="text" class="form-control" name="vicePresidentName">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">Vice President Contact</label>
-                                <input type="tel" class="form-control" name="vicePresidentContact">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="form-label">Event Description</label>
-                            <textarea class="form-control" name="description" rows="3"></textarea>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label class="form-label">Registration Fee</label>
-                                <input type="number" class="form-control" name="registrationFee" min="0" step="0.01">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">Event Credentials</label>
-                                <input type="text" class="form-control" name="credentials" placeholder="Auto-generated" readonly>
-                            </div>
-                        </div>
-
-                        <div class="modal-actions">
-                            <button type="button" class="btn btn--outline" id="modal-cancel-events">Cancel</button>
-                            <button type="submit" class="btn btn--primary">Create Event & Generate QR</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-
-        <!-- QR Code Display Modal -->
-        <div class="modal hidden" id="qr-modal">
-            <div class="modal-overlay"></div>
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h3 class="modal-title">Event QR Code</h3>
-                    <button class="modal-close" id="modal-close-qr">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <line x1="18" x2="6" y1="6" y2="18"/>
-                            <line x1="6" x2="18" y1="6" y2="18"/>
-                        </svg>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="qr-container">
-                        <canvas id="qr-canvas"></canvas>
-                        <h4 id="qr-event-title">Event Title</h4>
-                        <p id="qr-event-details">Event details will appear here</p>
-                    </div>
-                    <div class="modal-actions">
-                        <button type="button" class="btn btn--outline" id="back-to-dashboard">Back to Dashboard</button>
-                        <button type="button" class="btn btn--primary" id="download-qr">Download QR Code</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Mobile Sidebar Toggle -->
-        <button class="mobile-toggle" id="mobile-toggle">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <line x1="3" x2="21" y1="6" y2="6"/>
-                <line x1="3" x2="21" y1="12" y2="12"/>
-                <line x1="3" x2="21" y1="18" y2="18"/>
+    <!-- Manage Events Modal -->
+    <div class="modal hidden" id="manage-events-modal">
+      <div class="modal-overlay"></div>
+      <div class="modal-content modal-content--large">
+        <div class="modal-header">
+          <h3 class="modal-title">Manage Events</h3>
+          <button class="modal-close" id="modal-close-events">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="18" x2="6" y1="6" y2="18" />
+              <line x1="6" x2="18" y1="6" y2="18" />
             </svg>
-        </button>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form id="event-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Event Title *</label>
+                <input type="text" class="form-control" name="eventTitle" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Event Type</label>
+                <select class="form-control" name="eventType">
+                  <option value="academic">Academic</option>
+                  <option value="cultural">Cultural</option>
+                  <option value="sports">Sports</option>
+                  <option value="workshop">Workshop</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Start Date *</label>
+                <input type="date" class="form-control" name="startDate" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">End Date *</label>
+                <input type="date" class="form-control" name="endDate" required>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Start Time *</label>
+                <input type="time" class="form-control" name="startTime" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">End Time *</label>
+                <input type="time" class="form-control" name="endTime" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Venue/Location *</label>
+              <input type="text" class="form-control" name="venue" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Organizing Club/Individual *</label>
+              <input type="text" class="form-control" name="organizer" required>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">President Name</label>
+                <input type="text" class="form-control" name="presidentName">
+              </div>
+              <div class="form-group">
+                <label class="form-label">President Contact</label>
+                <input type="tel" class="form-control" name="presidentContact">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Vice President Name</label>
+                <input type="text" class="form-control" name="vicePresidentName">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Vice President Contact</label>
+                <input type="tel" class="form-control" name="vicePresidentContact">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Event Description</label>
+              <textarea class="form-control" name="description" rows="3"></textarea>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Registration Fee</label>
+                <input type="number" class="form-control" name="registrationFee" min="0" step="0.01">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Event Credentials</label>
+                <input type="text" class="form-control" name="credentials" placeholder="Auto-generated" readonly>
+              </div>
+            </div>
+
+            <div class="modal-actions">
+              <button type="button" class="btn btn--outline" id="modal-cancel-events">Cancel</button>
+              <button type="submit" class="btn btn--primary">Create Event & Generate QR</button>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
 
-    <script>
-      /* ----------------------------
-         Corrected / Completed JS
-         - Uses your exact markup and IDs
-         - Wires navigation, modals, events, QR
-         ---------------------------- */
+    <!-- QR Code Display Modal -->
+    <div class="modal hidden" id="qr-modal">
+      <div class="modal-overlay"></div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title">Event QR Code</h3>
+          <button class="modal-close" id="modal-close-qr">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="18" x2="6" y1="6" y2="18" />
+              <line x1="6" x2="18" y1="6" y2="18" />
+            </svg>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="qr-container">
+            <canvas id="qr-canvas"></canvas>
+            <h4 id="qr-event-title">Event Title</h4>
+            <p id="qr-event-details">Event details will appear here</p>
+          </div>
+          <div class="modal-actions">
+            <button type="button" class="btn btn--outline" id="back-to-dashboard">Back to Dashboard</button>
+            <button type="button" class="btn btn--primary" id="download-qr">Download QR Code</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
-      // ---------- Utility & state ----------
-      const events = []; // store events in memory
-      let editingIndex = null;
+    <!-- Mobile Sidebar Toggle -->
+    <button class="mobile-toggle" id="mobile-toggle">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="3" x2="21" y1="6" y2="6" />
+        <line x1="3" x2="21" y1="12" y2="12" />
+        <line x1="3" x2="21" y1="18" y2="18" />
+      </svg>
+    </button>
+  </div>
 
-      // DOM refs (match your HTML)
-      const eventsList = document.getElementById('events-list');
-      const manageEventsModal = document.getElementById('manage-events-modal');
-      const eventForm = document.getElementById('event-form');
-      const modalCloseEvents = document.getElementById('modal-close-events');
-      const modalCancelEvents = document.getElementById('modal-cancel-events');
-      const createTimetableBtn = document.getElementById('create-timetable-btn');
-      const newTimetableCard = document.getElementById('new-timetable-card');
-      const navTimetableLink = document.querySelector('.nav-link[data-section="timetable"]');
-      const logoutBtn = document.getElementById('logout-btn');
+  <script>
+    /* ----------------------------
+       Corrected / Completed JS
+       - Uses your exact markup and IDs
+       - Wires navigation, modals, events, QR
+       ---------------------------- */
 
-      const qrModal = document.getElementById('qr-modal');
-      const modalCloseQr = document.getElementById('modal-close-qr');
-      const qrCanvas = document.getElementById('qr-canvas');
-      const qrEventTitle = document.getElementById('qr-event-title');
-      const qrEventDetails = document.getElementById('qr-event-details');
-      const downloadQrBtn = document.getElementById('download-qr');
-      const backToDashboardBtn = document.getElementById('back-to-dashboard');
+    // ---------- Utility & state ----------
+    const events = []; // store events in memory
+    let editingIndex = null;
 
-      // helper to show/hide modals
-      function showModal(modal) {
-        if (!modal) return;
-        modal.classList.remove('hidden');
-      }
-      function hideModal(modal) {
-        if (!modal) return;
-        modal.classList.add('hidden');
-      }
+    // DOM refs (match your HTML)
+    const eventsList = document.getElementById('events-list');
+    const manageEventsModal = document.getElementById('manage-events-modal');
+    const eventForm = document.getElementById('event-form');
+    const modalCloseEvents = document.getElementById('modal-close-events');
+    const modalCancelEvents = document.getElementById('modal-cancel-events');
+    const createTimetableBtn = document.getElementById('create-timetable-btn');
+    const newTimetableCard = document.getElementById('new-timetable-card');
+    const navTimetableLink = document.querySelector('.nav-link[data-section="timetable"]');
+    const logoutBtn = document.getElementById('logout-btn');
 
-      // create simple credentials
-      function generateCredentials() {
-        return 'EV' + Math.random().toString(36).slice(2,8).toUpperCase();
-      }
+    const qrModal = document.getElementById('qr-modal');
+    const modalCloseQr = document.getElementById('modal-close-qr');
+    const qrCanvas = document.getElementById('qr-canvas');
+    const qrEventTitle = document.getElementById('qr-event-title');
+    const qrEventDetails = document.getElementById('qr-event-details');
+    const downloadQrBtn = document.getElementById('download-qr');
+    const backToDashboardBtn = document.getElementById('back-to-dashboard');
 
-      // QR rendering wrapper: if text is full dataURL, draw image; else use QR lib
-      function renderQrToCanvas(text, canvas) {
-        return new Promise((resolve, reject) => {
-          if (!canvas) return reject('No canvas');
-          // if text is a data URL, draw image
-          if (typeof text === 'string' && text.startsWith('data:')) {
-            const ctx = canvas.getContext('2d');
-            const img = new Image();
-            img.onload = () => {
-              ctx.clearRect(0,0,canvas.width, canvas.height);
-              ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-              resolve();
-            };
-            img.onerror = reject;
-            img.src = text;
-            return;
-          }
-          // else create QR code
-          if (typeof QRCode !== 'undefined' && QRCode.toCanvas) {
-            QRCode.toCanvas(canvas, text, { width: Math.min(180, canvas.width) }, function (error) {
-              if (error) reject(error);
-              else resolve();
-            });
-          } else {
-            // fallback: draw text
-            const ctx = canvas.getContext('2d');
-            ctx.clearRect(0,0,canvas.width, canvas.height);
-            ctx.fillStyle = '#000';
-            ctx.font = '12px sans-serif';
-            ctx.fillText(text.slice(0,80), 6, 20);
+    // helper to show/hide modals
+    function showModal(modal) {
+      if (!modal) return;
+      modal.classList.remove('hidden');
+    }
+    function hideModal(modal) {
+      if (!modal) return;
+      modal.classList.add('hidden');
+    }
+
+    // create simple credentials
+    function generateCredentials() {
+      return 'EV' + Math.random().toString(36).slice(2, 8).toUpperCase();
+    }
+
+    // QR rendering wrapper: if text is full dataURL, draw image; else use QR lib
+    function renderQrToCanvas(text, canvas) {
+      return new Promise((resolve, reject) => {
+        if (!canvas) return reject('No canvas');
+        // if text is a data URL, draw image
+        if (typeof text === 'string' && text.startsWith('data:')) {
+          const ctx = canvas.getContext('2d');
+          const img = new Image();
+          img.onload = () => {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
             resolve();
-          }
-        });
-      }
-
-      // ------------- Event Form submit (create/update) -------------
-      eventForm.addEventListener('submit', async function(e) {
-        e.preventDefault();
-        // map fields (note: in your original form some names differ; map both possibilities)
-        const data = {
-          eventTitle: eventForm.eventTitle?.value?.trim() || '',
-          eventType: eventForm.eventType?.value || 'academic',
-          startDate: eventForm.startDate?.value || '',
-          endDate: eventForm.endDate?.value || '',
-          startTime: eventForm.startTime?.value || '',
-          endTime: eventForm.endTime?.value || '',
-          location: eventForm.venue?.value || eventForm.location?.value || '',
-          club: eventForm.organizer?.value || eventForm.club?.value || '',
-          presidentName: eventForm.presidentName?.value || '',
-          presidentContact: eventForm.presidentContact?.value || '',
-          vicePresidentName: eventForm.vicePresidentName?.value || '',
-          vicePresidentContact: eventForm.vicePresidentContact?.value || '',
-          description: eventForm.description?.value || '',
-          fee: eventForm.registrationFee?.value || eventForm.fee?.value || '',
-          credentials: eventForm.credentials?.value || generateCredentials()
-        };
-
-        // validation
-        if (!data.eventTitle || !data.startDate || !data.endDate || !data.startTime || !data.endTime || !data.location || !data.club) {
-          alert('Please fill all required fields.');
+          };
+          img.onerror = reject;
+          img.src = text;
           return;
         }
-
-        // construct payload for QR
-        const payload = JSON.stringify({
-          title: data.eventTitle,
-          startDate: data.startDate,
-          endDate: data.endDate,
-          startTime: data.startTime,
-          endTime: data.endTime,
-          venue: data.location,
-          credentials: data.credentials
-        });
-
-        // render QR in temp canvas to get dataURL
-        try {
-          const tmp = document.createElement('canvas');
-          tmp.width = 240; tmp.height = 240;
-          await renderQrToCanvas(payload, tmp);
-          data.qr = tmp.toDataURL('image/png');
-        } catch (err) {
-          console.warn('QR generation failed, storing empty qr', err);
-          data.qr = '';
-        }
-
-        if (editingIndex !== null) {
-          events[editingIndex] = data;
-          editingIndex = null;
-          alert('Event updated successfully!');
+        // else create QR code
+        if (typeof QRCode !== 'undefined' && QRCode.toCanvas) {
+          QRCode.toCanvas(canvas, text, { width: Math.min(180, canvas.width) }, function (error) {
+            if (error) reject(error);
+            else resolve();
+          });
         } else {
-          events.unshift(data);
-          alert('Event created successfully!');
+          // fallback: draw text
+          const ctx = canvas.getContext('2d');
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          ctx.fillStyle = '#000';
+          ctx.font = '12px sans-serif';
+          ctx.fillText(text.slice(0, 80), 6, 20);
+          resolve();
         }
+      });
+    }
 
-        // reset form
-        eventForm.reset();
-        if (eventForm.credentials) eventForm.credentials.value = generateCredentials();
-        hideModal(manageEventsModal);
-        renderEvents();
+    // ------------- Event Form submit (create/update) -------------
+    eventForm.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      // map fields (note: in your original form some names differ; map both possibilities)
+      const data = {
+        eventTitle: eventForm.eventTitle?.value?.trim() || '',
+        eventType: eventForm.eventType?.value || 'academic',
+        startDate: eventForm.startDate?.value || '',
+        endDate: eventForm.endDate?.value || '',
+        startTime: eventForm.startTime?.value || '',
+        endTime: eventForm.endTime?.value || '',
+        location: eventForm.venue?.value || eventForm.location?.value || '',
+        club: eventForm.organizer?.value || eventForm.club?.value || '',
+        presidentName: eventForm.presidentName?.value || '',
+        presidentContact: eventForm.presidentContact?.value || '',
+        vicePresidentName: eventForm.vicePresidentName?.value || '',
+        vicePresidentContact: eventForm.vicePresidentContact?.value || '',
+        description: eventForm.description?.value || '',
+        fee: eventForm.registrationFee?.value || eventForm.fee?.value || '',
+        credentials: eventForm.credentials?.value || generateCredentials()
+      };
+
+      // validation
+      if (!data.eventTitle || !data.startDate || !data.endDate || !data.startTime || !data.endTime || !data.location || !data.club) {
+        alert('Please fill all required fields.');
+        return;
+      }
+
+      // construct payload for QR
+      const payload = JSON.stringify({
+        title: data.eventTitle,
+        startDate: data.startDate,
+        endDate: data.endDate,
+        startTime: data.startTime,
+        endTime: data.endTime,
+        venue: data.location,
+        credentials: data.credentials
       });
 
-      // ------------- Render events list -------------
-      function renderEvents() {
-        if (!eventsList) return;
-        eventsList.innerHTML = '';
-        if (events.length === 0) {
-          eventsList.innerHTML = '<div class="no-events">No events registered.</div>';
-          return;
-        }
-        events.forEach((ev, idx) => {
-          const div = document.createElement('div');
-          div.className = 'event-item';
-          div.style.display = 'flex';
-          div.style.justifyContent = 'space-between';
-          div.style.alignItems = 'center';
-          div.style.gap = '12px';
+      // render QR in temp canvas to get dataURL
+      try {
+        const tmp = document.createElement('canvas');
+        tmp.width = 240; tmp.height = 240;
+        await renderQrToCanvas(payload, tmp);
+        data.qr = tmp.toDataURL('image/png');
+      } catch (err) {
+        console.warn('QR generation failed, storing empty qr', err);
+        data.qr = '';
+      }
 
-          const info = document.createElement('div');
-          info.innerHTML = `<div><strong>${ev.eventTitle}</strong></div>
+      if (editingIndex !== null) {
+        events[editingIndex] = data;
+        editingIndex = null;
+        alert('Event updated successfully!');
+      } else {
+        events.unshift(data);
+        alert('Event created successfully!');
+      }
+
+      // reset form
+      eventForm.reset();
+      if (eventForm.credentials) eventForm.credentials.value = generateCredentials();
+      hideModal(manageEventsModal);
+      renderEvents();
+    });
+
+    // ------------- Render events list -------------
+    function renderEvents() {
+      if (!eventsList) return;
+      eventsList.innerHTML = '';
+      if (events.length === 0) {
+        eventsList.innerHTML = '<div class="no-events">No events registered.</div>';
+        return;
+      }
+      events.forEach((ev, idx) => {
+        const div = document.createElement('div');
+        div.className = 'event-item';
+        div.style.display = 'flex';
+        div.style.justifyContent = 'space-between';
+        div.style.alignItems = 'center';
+        div.style.gap = '12px';
+
+        const info = document.createElement('div');
+        info.innerHTML = `<div><strong>${ev.eventTitle}</strong></div>
             <div style="font-size:0.9em;color:#555">${ev.startDate} to ${ev.endDate} • ${ev.location}</div>
             <div style="font-size:0.85em;color:#666">Type: ${ev.eventType} • By: ${ev.club} • Fee: ₹${ev.fee || 0}</div>`;
 
-          const actions = document.createElement('div');
-          actions.style.display = 'flex';
-          actions.style.gap = '8px';
+        const actions = document.createElement('div');
+        actions.style.display = 'flex';
+        actions.style.gap = '8px';
 
-          const showBtn = document.createElement('button');
-          showBtn.className = 'btn btn--outline';
-          showBtn.textContent = 'Show QR';
-          showBtn.addEventListener('click', () => showQrModal(ev));
+        const showBtn = document.createElement('button');
+        showBtn.className = 'btn btn--outline';
+        showBtn.textContent = 'Show QR';
+        showBtn.addEventListener('click', () => showQrModal(ev));
 
-          const editBtn = document.createElement('button');
-          editBtn.className = 'btn';
-          editBtn.textContent = 'Edit';
-          editBtn.addEventListener('click', () => editEvent(idx));
+        const editBtn = document.createElement('button');
+        editBtn.className = 'btn';
+        editBtn.textContent = 'Edit';
+        editBtn.addEventListener('click', () => editEvent(idx));
 
-          const delBtn = document.createElement('button');
-          delBtn.className = 'btn';
-          delBtn.style.background = '#fff';
-          delBtn.style.color = '#e74c3c';
-          delBtn.style.border = '1px solid #e74c3c';
-          delBtn.textContent = 'Delete';
-          delBtn.addEventListener('click', () => {
-            if (confirm('Are you sure you want to delete this event?')) {
-              events.splice(idx,1);
-              renderEvents();
-            }
-          });
-
-          actions.appendChild(showBtn);
-          actions.appendChild(editBtn);
-          actions.appendChild(delBtn);
-          div.appendChild(info);
-          div.appendChild(actions);
-          eventsList.appendChild(div);
-        });
-      }
-
-      // ------------- Edit event -------------
-      function editEvent(idx) {
-        const ev = events[idx];
-        if (!ev) return;
-        editingIndex = idx;
-        // map values back to the form fields (use both possible field names)
-        if (eventForm.eventTitle) eventForm.eventTitle.value = ev.eventTitle || '';
-        if (eventForm.eventType) eventForm.eventType.value = ev.eventType || 'academic';
-        if (eventForm.startDate) eventForm.startDate.value = ev.startDate || '';
-        if (eventForm.endDate) eventForm.endDate.value = ev.endDate || '';
-        if (eventForm.startTime) eventForm.startTime.value = ev.startTime || '';
-        if (eventForm.endTime) eventForm.endTime.value = ev.endTime || '';
-        if (eventForm.venue) eventForm.venue.value = ev.location || '';
-        if (eventForm.location) eventForm.location.value = ev.location || '';
-        if (eventForm.organizer) eventForm.organizer.value = ev.club || '';
-        if (eventForm.club) eventForm.club.value = ev.club || '';
-        if (eventForm.presidentName) eventForm.presidentName.value = ev.presidentName || '';
-        if (eventForm.presidentContact) eventForm.presidentContact.value = ev.presidentContact || '';
-        if (eventForm.vicePresidentName) eventForm.vicePresidentName.value = ev.vicePresidentName || '';
-        if (eventForm.vicePresidentContact) eventForm.vicePresidentContact.value = ev.vicePresidentContact || '';
-        if (eventForm.description) eventForm.description.value = ev.description || '';
-        if (eventForm.registrationFee) eventForm.registrationFee.value = ev.fee || '';
-        if (eventForm.fee) eventForm.fee.value = ev.fee || '';
-        if (eventForm.credentials) eventForm.credentials.value = ev.credentials || generateCredentials();
-
-        showModal(manageEventsModal);
-      }
-
-      // ------------- Show QR modal -------------
-      async function showQrModal(ev) {
-        if (!ev) return;
-        qrEventTitle.textContent = ev.eventTitle || 'Event';
-        qrEventDetails.textContent = `${ev.startDate || ''} ${ev.startTime || ''} — ${ev.location || ''}`;
-        // If ev.qr is dataURL, draw it; else create QR
-        try {
-          await renderQrToCanvas(ev.qr || JSON.stringify(ev), qrCanvas);
-        } catch (err) {
-          console.warn('render QR failed', err);
-          const ctx = qrCanvas.getContext('2d');
-          ctx.clearRect(0,0,qrCanvas.width, qrCanvas.height);
-          ctx.fillStyle = '#000';
-          ctx.font = '12px sans-serif';
-          ctx.fillText(ev.eventTitle || 'Event', 10, 20);
-        }
-        showModal(qrModal);
-      }
-
-      // Download QR
-      downloadQrBtn?.addEventListener('click', () => {
-        const link = document.createElement('a');
-        link.href = qrCanvas.toDataURL('image/png');
-        link.download = `${(qrEventTitle.textContent||'event').replace(/\s+/g,'_')}_qr.png`;
-        link.click();
-      });
-      modalCloseQr?.addEventListener('click', () => hideModal(qrModal));
-      backToDashboardBtn?.addEventListener('click', () => hideModal(qrModal));
-
-      // ------------- Modal open/close for manage events -------------
-      // Hook up original buttons: your HTML had 'Manage Events' card and modal triggers — add click to open modal
-      const manageEventsCard = document.getElementById('manage-events-card');
-      manageEventsCard?.addEventListener('click', () => {
-        editingIndex = null;
-        eventForm.reset();
-        if (eventForm.credentials) eventForm.credentials.value = generateCredentials();
-        showModal(manageEventsModal);
-      });
-
-      modalCloseEvents?.addEventListener('click', () => hideModal(manageEventsModal));
-      modalCancelEvents?.addEventListener('click', () => hideModal(manageEventsModal));
-
-      // set initial credentials if field exists
-      if (eventForm && eventForm.credentials) eventForm.credentials.value = generateCredentials();
-
-      // ------------- Chatbot logic (kept simple & functional) -------------
-      (function() {
-        const logo = document.getElementById('chatbot-logo');
-        const container = document.getElementById('chatbot-container');
-        let isDragging = false, dragOffsetX = 0, dragOffsetY = 0;
-
-        window.toggleChatbot = function() {
-          if (container.classList.contains('active')) {
-            container.classList.remove('active');
-            container.style.display = 'none';
-          } else {
-            container.classList.add('active');
-            container.style.display = 'flex';
+        const delBtn = document.createElement('button');
+        delBtn.className = 'btn';
+        delBtn.style.background = '#fff';
+        delBtn.style.color = '#e74c3c';
+        delBtn.style.border = '1px solid #e74c3c';
+        delBtn.textContent = 'Delete';
+        delBtn.addEventListener('click', () => {
+          if (confirm('Are you sure you want to delete this event?')) {
+            events.splice(idx, 1);
+            renderEvents();
           }
-        };
-        window.closeChatbot = function() {
+        });
+
+        actions.appendChild(showBtn);
+        actions.appendChild(editBtn);
+        actions.appendChild(delBtn);
+        div.appendChild(info);
+        div.appendChild(actions);
+        eventsList.appendChild(div);
+      });
+    }
+
+    // ------------- Edit event -------------
+    function editEvent(idx) {
+      const ev = events[idx];
+      if (!ev) return;
+      editingIndex = idx;
+      // map values back to the form fields (use both possible field names)
+      if (eventForm.eventTitle) eventForm.eventTitle.value = ev.eventTitle || '';
+      if (eventForm.eventType) eventForm.eventType.value = ev.eventType || 'academic';
+      if (eventForm.startDate) eventForm.startDate.value = ev.startDate || '';
+      if (eventForm.endDate) eventForm.endDate.value = ev.endDate || '';
+      if (eventForm.startTime) eventForm.startTime.value = ev.startTime || '';
+      if (eventForm.endTime) eventForm.endTime.value = ev.endTime || '';
+      if (eventForm.venue) eventForm.venue.value = ev.location || '';
+      if (eventForm.location) eventForm.location.value = ev.location || '';
+      if (eventForm.organizer) eventForm.organizer.value = ev.club || '';
+      if (eventForm.club) eventForm.club.value = ev.club || '';
+      if (eventForm.presidentName) eventForm.presidentName.value = ev.presidentName || '';
+      if (eventForm.presidentContact) eventForm.presidentContact.value = ev.presidentContact || '';
+      if (eventForm.vicePresidentName) eventForm.vicePresidentName.value = ev.vicePresidentName || '';
+      if (eventForm.vicePresidentContact) eventForm.vicePresidentContact.value = ev.vicePresidentContact || '';
+      if (eventForm.description) eventForm.description.value = ev.description || '';
+      if (eventForm.registrationFee) eventForm.registrationFee.value = ev.fee || '';
+      if (eventForm.fee) eventForm.fee.value = ev.fee || '';
+      if (eventForm.credentials) eventForm.credentials.value = ev.credentials || generateCredentials();
+
+      showModal(manageEventsModal);
+    }
+
+    // ------------- Show QR modal -------------
+    async function showQrModal(ev) {
+      if (!ev) return;
+      qrEventTitle.textContent = ev.eventTitle || 'Event';
+      qrEventDetails.textContent = `${ev.startDate || ''} ${ev.startTime || ''} — ${ev.location || ''}`;
+      // If ev.qr is dataURL, draw it; else create QR
+      try {
+        await renderQrToCanvas(ev.qr || JSON.stringify(ev), qrCanvas);
+      } catch (err) {
+        console.warn('render QR failed', err);
+        const ctx = qrCanvas.getContext('2d');
+        ctx.clearRect(0, 0, qrCanvas.width, qrCanvas.height);
+        ctx.fillStyle = '#000';
+        ctx.font = '12px sans-serif';
+        ctx.fillText(ev.eventTitle || 'Event', 10, 20);
+      }
+      showModal(qrModal);
+    }
+
+    // Download QR
+    downloadQrBtn?.addEventListener('click', () => {
+      const link = document.createElement('a');
+      link.href = qrCanvas.toDataURL('image/png');
+      link.download = `${(qrEventTitle.textContent || 'event').replace(/\s+/g, '_')}_qr.png`;
+      link.click();
+    });
+    modalCloseQr?.addEventListener('click', () => hideModal(qrModal));
+    backToDashboardBtn?.addEventListener('click', () => hideModal(qrModal));
+
+    // ------------- Modal open/close for manage events -------------
+    // Hook up original buttons: your HTML had 'Manage Events' card and modal triggers — add click to open modal
+    const manageEventsCard = document.getElementById('manage-events-card');
+    manageEventsCard?.addEventListener('click', () => {
+      editingIndex = null;
+      eventForm.reset();
+      if (eventForm.credentials) eventForm.credentials.value = generateCredentials();
+      showModal(manageEventsModal);
+    });
+
+    modalCloseEvents?.addEventListener('click', () => hideModal(manageEventsModal));
+    modalCancelEvents?.addEventListener('click', () => hideModal(manageEventsModal));
+
+    // set initial credentials if field exists
+    if (eventForm && eventForm.credentials) eventForm.credentials.value = generateCredentials();
+
+    // ------------- Chatbot logic (kept simple & functional) -------------
+    (function () {
+      const logo = document.getElementById('chatbot-logo');
+      const container = document.getElementById('chatbot-container');
+      let isDragging = false, dragOffsetX = 0, dragOffsetY = 0;
+
+      window.toggleChatbot = function () {
+        if (container.classList.contains('active')) {
           container.classList.remove('active');
           container.style.display = 'none';
-        };
+        } else {
+          container.classList.add('active');
+          container.style.display = 'flex';
+        }
+      };
+      window.closeChatbot = function () {
+        container.classList.remove('active');
+        container.style.display = 'none';
+      };
 
-        logo.addEventListener('mousedown', function(e) {
-          isDragging = true;
-          dragOffsetX = e.clientX - logo.offsetLeft;
-          dragOffsetY = e.clientY - logo.offsetTop;
-          document.body.style.userSelect = 'none';
-        });
-        document.addEventListener('mousemove', function(e) {
-          if (!isDragging) return;
-          let x = e.clientX - dragOffsetX;
-          let y = e.clientY - dragOffsetY;
-          x = Math.max(0, Math.min(window.innerWidth - logo.offsetWidth, x));
-          y = Math.max(0, Math.min(window.innerHeight - logo.offsetHeight, y));
-          logo.style.right = 'auto';
-          logo.style.left = x + 'px';
-          logo.style.top = y + 'px';
-          logo.style.bottom = 'auto';
-          container.style.right = 'auto';
-          container.style.left = x + 'px';
-          container.style.top = (y - container.offsetHeight - 10) + 'px';
-        });
-        document.addEventListener('mouseup', function() { isDragging = false; document.body.style.userSelect = ''; });
-
-        // touch
-        logo.addEventListener('touchstart', function(e) {
-          isDragging = true;
-          const t = e.touches[0];
-          dragOffsetX = t.clientX - logo.offsetLeft;
-          dragOffsetY = t.clientY - logo.offsetTop;
-        }, {passive:false});
-        document.addEventListener('touchmove', function(e) {
-          if (!isDragging) return;
-          const t = e.touches[0];
-          let x = t.clientX - dragOffsetX;
-          let y = t.clientY - dragOffsetY;
-          x = Math.max(0, Math.min(window.innerWidth - logo.offsetWidth, x));
-          y = Math.max(0, Math.min(window.innerHeight - logo.offsetHeight, y));
-          logo.style.right = 'auto';
-          logo.style.left = x + 'px';
-          logo.style.top = y + 'px';
-          container.style.left = x + 'px';
-          container.style.top = (y - container.offsetHeight - 10) + 'px';
-          e.preventDefault();
-        }, {passive:false});
-        document.addEventListener('touchend', function() { isDragging = false; });
-
-        logo.addEventListener('keydown', function(e) {
-          if (e.key === 'Enter' || e.key === ' ') toggleChatbot();
-        });
-
-        window.addEventListener('resize', function() {
-          const rect = logo.getBoundingClientRect();
-          if (rect.right < 0 || rect.bottom < 0 || rect.left > window.innerWidth || rect.top > window.innerHeight) {
-            logo.style.left = '';
-            logo.style.top = '';
-            logo.style.right = '32px';
-            logo.style.bottom = '32px';
-            container.style.left = '';
-            container.style.top = '';
-            container.style.right = '32px';
-            container.style.bottom = '110px';
-          }
-        });
-
-      })();
-
-      // ------------- Sidebar nav & timetable redirect -------------
-      function goToTimetablePage() {
-        document.body.style.transition = 'opacity 0.5s';
-        document.body.style.opacity = 0;
-        setTimeout(() => {
-          window.location.href = 'timetable.html';
-        }, 350);
-      }
-
-      // nav links behavior
-      document.querySelectorAll('.nav-link[data-section]').forEach(a => {
-        a.addEventListener('click', (e) => {
-          e.preventDefault();
-          const section = a.getAttribute('data-section');
-          if (section === 'timetable') {
-            goToTimetablePage();
-            return;
-          }
-          // show/hide content sections (your markup has ids like 'dashboard-section')
-          document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
-          const target = document.getElementById(section + '-section');
-          if (target) target.classList.add('active');
-        });
+      logo.addEventListener('mousedown', function (e) {
+        isDragging = true;
+        dragOffsetX = e.clientX - logo.offsetLeft;
+        dragOffsetY = e.clientY - logo.offsetTop;
+        document.body.style.userSelect = 'none';
       });
+      document.addEventListener('mousemove', function (e) {
+        if (!isDragging) return;
+        let x = e.clientX - dragOffsetX;
+        let y = e.clientY - dragOffsetY;
+        x = Math.max(0, Math.min(window.innerWidth - logo.offsetWidth, x));
+        y = Math.max(0, Math.min(window.innerHeight - logo.offsetHeight, y));
+        logo.style.right = 'auto';
+        logo.style.left = x + 'px';
+        logo.style.top = y + 'px';
+        logo.style.bottom = 'auto';
+        container.style.right = 'auto';
+        container.style.left = x + 'px';
+        container.style.top = (y - container.offsetHeight - 10) + 'px';
+      });
+      document.addEventListener('mouseup', function () { isDragging = false; document.body.style.userSelect = ''; });
 
-      // attach new timetable card and create button
-      newTimetableCard?.addEventListener('click', (e) => { e.preventDefault(); goToTimetablePage(); });
-      createTimetableBtn?.addEventListener('click', (e) => { e.preventDefault(); goToTimetablePage(); });
-
-      // logout
-      logoutBtn?.addEventListener('click', function(e) {
+      // touch
+      logo.addEventListener('touchstart', function (e) {
+        isDragging = true;
+        const t = e.touches[0];
+        dragOffsetX = t.clientX - logo.offsetLeft;
+        dragOffsetY = t.clientY - logo.offsetTop;
+      }, { passive: false });
+      document.addEventListener('touchmove', function (e) {
+        if (!isDragging) return;
+        const t = e.touches[0];
+        let x = t.clientX - dragOffsetX;
+        let y = t.clientY - dragOffsetY;
+        x = Math.max(0, Math.min(window.innerWidth - logo.offsetWidth, x));
+        y = Math.max(0, Math.min(window.innerHeight - logo.offsetHeight, y));
+        logo.style.right = 'auto';
+        logo.style.left = x + 'px';
+        logo.style.top = y + 'px';
+        container.style.left = x + 'px';
+        container.style.top = (y - container.offsetHeight - 10) + 'px';
         e.preventDefault();
-        try { localStorage.removeItem('userName'); } catch (err) { /* ignore */ }
-        window.location.href = '../index.html';
+      }, { passive: false });
+      document.addEventListener('touchend', function () { isDragging = false; });
+
+      logo.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') toggleChatbot();
       });
 
-      // render initial events (the static example in your HTML will be replaced)
-      renderEvents();
+      window.addEventListener('resize', function () {
+        const rect = logo.getBoundingClientRect();
+        if (rect.right < 0 || rect.bottom < 0 || rect.left > window.innerWidth || rect.top > window.innerHeight) {
+          logo.style.left = '';
+          logo.style.top = '';
+          logo.style.right = '32px';
+          logo.style.bottom = '32px';
+          container.style.left = '';
+          container.style.top = '';
+          container.style.right = '32px';
+          container.style.bottom = '110px';
+        }
+      });
 
-    </script>
+    })();
+
+    // ------------- Sidebar nav & timetable redirect -------------
+    function goToTimetablePage() {
+      document.body.style.transition = 'opacity 0.5s';
+      document.body.style.opacity = 0;
+      setTimeout(() => {
+        window.location.href = 'timetable.html';
+      }, 350);
+    }
+
+    // nav links behavior
+    document.querySelectorAll('.nav-link[data-section]').forEach(a => {
+      a.addEventListener('click', (e) => {
+        e.preventDefault();
+        const section = a.getAttribute('data-section');
+        if (section === 'timetable') {
+          goToTimetablePage();
+          return;
+        }
+        // show/hide content sections (your markup has ids like 'dashboard-section')
+        document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
+        const target = document.getElementById(section + '-section');
+        if (target) target.classList.add('active');
+      });
+    });
+
+    // attach new timetable card and create button
+    newTimetableCard?.addEventListener('click', (e) => { e.preventDefault(); goToTimetablePage(); });
+    createTimetableBtn?.addEventListener('click', (e) => { e.preventDefault(); goToTimetablePage(); });
+
+    // logout
+    logoutBtn?.addEventListener('click', function (e) {
+      e.preventDefault();
+      try { localStorage.removeItem('userName'); } catch (err) { /* ignore */ }
+      window.location.href = '../index.html';
+    });
+
+    // render initial events (the static example in your HTML will be replaced)
+    renderEvents();
+
+  </script>
 </body>
+
 </html>
