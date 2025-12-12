@@ -167,6 +167,22 @@ function addTeacher(id, name, listEl, inputEl) {
   buildMapping(id);
 }
 
+/* === Helper: Get Teacher Load === */
+function getTeacherLoad(teacherName, excludeSectionId = null, excludeSubject = null) {
+  let total = 0;
+  sections.forEach(sec => {
+    sec.subjects.forEach(sub => {
+      // If this subject is mapped to the target teacher
+      if (sec.mapping[sub] === teacherName) {
+        // Don't count the entry we are currently editing (to avoid double counting)
+        if (sec.id === excludeSectionId && sub === excludeSubject) return;
+        total += parseInt(sec.lectures[sub]) || 0;
+      }
+    });
+  });
+  return total;
+}
+
 /* === Mapping UI === */
 function buildMapping(id) {
   const s = sections.find(x => x.id === id);
@@ -176,29 +192,70 @@ function buildMapping(id) {
     const row = el("div", "grid grid-cols-3 gap-2 items-center");
     const label = el("div", "font-medium", sub);
     const sel = el("select", "select");
-    sel.innerHTML = `<option value="">Select teacher</option>` + s.teachers.map(t => `<option>${t}</option>`).join("");
-    sel.onchange = () => (s.mapping[sub] = sel.value);
+
+    // Build options
+    let opts = `<option value="">Select teacher</option>`;
+    s.teachers.forEach(t => {
+      const selected = s.mapping[sub] === t ? "selected" : "";
+      opts += `<option value="${t}" ${selected}>${t}</option>`;
+    });
+    sel.innerHTML = opts;
+
     const lec = el("input", "input");
     lec.type = "number";
     lec.placeholder = "Lectures/week";
     lec.min = 0;
     lec.max = 30;
+    // Set initial value
+    lec.value = s.lectures[sub] || "";
+
+    // Teacher Change Handler
+    sel.onchange = () => {
+      const newTeacher = sel.value;
+      const currentLec = parseInt(lec.value) || 0;
+
+      if (newTeacher && currentLec > 0) {
+        const existingLoad = getTeacherLoad(newTeacher, s.id, sub);
+        if (existingLoad + currentLec > 30) {
+          const remaining = 30 - existingLoad;
+          alert(`Teacher ${newTeacher} has ${existingLoad} lectures assigned. Cannot take ${currentLec} more. Max allowed: ${remaining}.`);
+          sel.value = ""; // Reset dropdown
+          s.mapping[sub] = "";
+          return;
+        }
+      }
+      s.mapping[sub] = newTeacher;
+    };
+
+    // Lecture Input Handler
     lec.oninput = () => {
       let val = parseInt(lec.value) || 0;
 
-      // Calculate total of other subjects
-      let otherTotal = 0;
+      // 1. Check Section Total Limit (Sum of all subjects in this section)
+      let sectionOtherTotal = 0;
       s.subjects.forEach(subj => {
         if (subj !== sub) {
-          otherTotal += parseInt(s.lectures[subj]) || 0;
+          sectionOtherTotal += parseInt(s.lectures[subj]) || 0;
         }
       });
 
-      if (otherTotal + val > 30) {
-        let remaining = 30 - otherTotal;
-        alert(`Total lectures cannot exceed 30. You can add max ${remaining} more.`);
+      if (sectionOtherTotal + val > 30) {
+        let remaining = 30 - sectionOtherTotal;
+        alert(`Total lectures for this section cannot exceed 30. You can add max ${remaining} more.`);
         val = remaining;
         lec.value = val;
+      }
+
+      // 2. Check Teacher Total Limit (Global across sections)
+      const currentTeacher = s.mapping[sub];
+      if (currentTeacher) {
+        const teacherOtherLoad = getTeacherLoad(currentTeacher, s.id, sub);
+        if (teacherOtherLoad + val > 30) {
+          let remaining = 30 - teacherOtherLoad;
+          alert(`Teacher ${currentTeacher} already has ${teacherOtherLoad} lectures. You can add max ${remaining} more.`);
+          val = remaining;
+          lec.value = val;
+        }
       }
 
       if (val < 0) {
@@ -208,6 +265,7 @@ function buildMapping(id) {
 
       s.lectures[sub] = val;
     };
+
     row.append(label, sel, lec);
     list.appendChild(row);
   });
