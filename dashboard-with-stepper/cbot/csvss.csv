@@ -1,80 +1,501 @@
-Question,Answer
-What does the capacitive touch sensor do in the ring?,"The capacitive touch sensor detects touch or proximity to activate SOS, alerts, or other functionalities of the ring."
-How sensitive is the touch sensor?,"The sensor is highly sensitive and can detect proximity within 5mm-10mm, even without direct contact."
-Can the sensor detect proximity without direct touch?,"Yes, capacitive touch sensors work by detecting changes in electrical fields, allowing them to sense objects without physical contact."
-What happens if the touch sensor gets wet?,All sensors are waterproof.
-How does the touch sensor activate the SOS or alert function?,"The sensor responds to a specific touch pattern, duration, or sequence to prevent accidental activations and trigger SOS alerts."
-How does the piezoelectric sensor enhance security?,"It detects sudden force, pressure, or impact, helping recognize snatching attempts or physical threats and triggering alerts."
-Can it detect if someone tries to snatch the ring?,"Yes, the sensor identifies rapid force changes, indicating unauthorized removal or forceful actions on the ring."
-Does the sensor respond to accidental bumps or only strong impacts?,"It is designed to respond only to strong impacts or forceful interactions, avoiding false alarms from minor bumps."
-"Is the piezoelectric sensor always active, or does it need to be enabled manually?",The sensor is always active in monitoring mode but can be configured to turn off if needed.
-How does this sensor help in emergency situations?,"It can automatically trigger alerts, activate GPS tracking, or notify emergency contacts when strong force is detected."
-How does the GPS module track my location?,The GPS module communicates with satellites to determine the ring’s precise real-time location.
-Does the GPS work indoors or only outdoors?,GPS works best outdoors but may function indoors with reduced accuracy if assisted by Wi-Fi or cellular networks.
-How accurate is the GPS tracking in real-time?,"GPS accuracy ranges between 3-10 meters, depending on satellite signals and network assistance."
-Can I turn off GPS tracking for privacy?,"Yes, GPS tracking can usually be enabled or disabled through an app or device settings."
-What sensors are used in the ring?,"The ring includes the Capacitive Touch Sensor, Piezoelectric Sensor, GPS Module, Microphone Module, NFC Tag, and a Rechargeable Battery Sensor."
-How do the sensors work?,Each sensor serves a unique purpose: ○ Capacitive Touch Sensor detects touch/proximity for activation. ○ Piezoelectric Sensor identifies sudden force or impact. ○ GPS Module tracks real-time location. ○ Microphone Module captures audio during emergencies. ○ NFC Tag allows wireless data transfer.
-"Are the sensors always active, or do they activate only when needed?","Some sensors, like GPS and microphone, activate only when required to save battery. Others, like the piezoelectric sensor, stay active for security."
-Can I disable some sensors if I don’t need them?,"Yes, GPS and the microphone can be turned off manually through settings."
-Do the sensors affect battery life?,"Yes, they consume power. GPS and microphone use the most battery, while NFC and piezoelectric sensors use minimal power."
-What does the capacitive touch sensor do?,It detects touch or proximity to activate functions like SOS alerts.
-How sensitive is the touch sensor?,"It is highly sensitive and can detect light touches, but some models allow sensitivity adjustments."
-What happens if the touch sensor is damaged?,A damaged touch sensor may cause false activations or stop responding and may need recalibration or replacement.
-What is the function of the piezoelectric sensor?,"It detects sudden force, impacts, or snatching attempts."
-How does the ring detect snatching or sudden force?,"The piezoelectric sensor reacts to sudden pressure changes, triggering an alert."
-"Can the sensor detect light touches, or only strong impacts?",It mainly detects strong impacts or forceful pressure to avoid false triggers.
-How accurate is the GPS tracking?,"GPS accuracy varies but typically ranges between 3 to 10 meters, depending on satellite connectivity and environmental factors."
-Does the GPS work without an internet connection?,"Yes, GPS works independently, but an internet connection is required for real-time location sharing."
-How do I track my location using the ring?,The GPS location is available through a mobile app that syncs with the ring.
-Can the GPS be turned off for privacy reasons?,"Yes, GPS can be manually turned off in the app or settings."
-Does the ring store my location history?,"Some models store recent locations for security, but this depends on storage settings."
-What is the purpose of the microphone in the ring?,It records audio during emergencies for evidence or security.
-How far can the microphone pick up sound?,The range varies but typically captures clear audio within 1-2 meters.
-"Does the ring record continuously, or only in emergencies?",The microphone activates only in emergencies to save power.
-How is the recorded audio stored?,The audio is stored either in the ring’s internal memory or on a connected device.
-Can I access the audio recordings later?,"Yes, recordings can be accessed through a paired mobile device or cloud storage."
-What can I do with the NFC feature?,"NFC allows quick data transfer, such as sharing emergency contacts or unlocking smart devices."
-How do I use NFC to connect my ring with other devices?,Simply tap the ring against an NFC-enabled device to transfer data or trigger actions.
-Can I customize the NFC functionality?,"Yes, custom actions like opening apps, sharing business cards, or making quick payments can be assigned."
-What is the range of the NFC sensor?,"NFC operates within 2-10 cm, requiring close contact."
-Do the sensors drain a lot of battery?,"It depends on the sensor. GPS and microphone use the most power, while NFC and piezoelectric sensors consume very little."
-Which sensor uses the most power?,"The GPS module consumes the most battery, followed by the microphone."
-Does the ring turn off sensors to save power when the battery is low?,"Yes, it has power-saving modes that disable non-essential sensors when the battery is low."
-How does the capacitive touch sensor differentiate between intentional and accidental touches?,"It uses signal strength, duration, and pattern recognition to distinguish between a light accidental touch and a deliberate interaction."
-Does the sensor work with gloves on?,"It depends on the glove material. Thin conductive gloves may work, but thicker ones might block detection."
-What materials affect the performance of the capacitive sensor?,"Metal surfaces, water, and certain thick insulators can interfere with touch detection."
-How much power does the capacitive sensor consume?,"It uses minimal power, typically in the range of a few microamps to milliamps, depending on usage."
-How quickly does the piezoelectric sensor detect impact or force?,It reacts almost instantly (within milliseconds) upon detecting sudden force or pressure.
-Can this sensor be used to trigger an automatic alert?,"Yes, if a sudden impact or snatching motion is detected, it can send an emergency alert."
-Can the sensor detect vibrations from external sources like vehicles or machinery?,"Yes, but its algorithms focus on differentiating human interactions from external vibrations."
-How does it differentiate between intentional and accidental force?,"It analyzes pressure intensity, duration, and movement patterns to identify threats."
-Does the GPS module work in underground or enclosed spaces?,GPS requires a clear sky view. It may work in tunnels or buildings but with reduced accuracy.
-Can I set specific geofencing alerts with the GPS module?,"Yes, geofencing allows you to set alerts if you leave or enter predefined locations."
-How often does the GPS update my location?,"The update frequency varies based on settings, typically every few seconds to minutes."
-Can the GPS work without a smartphone connection?,"Yes, but real-time tracking requires syncing with a smartphone or another device."
-Does the microphone activate automatically during an emergency?,"Yes, it can be triggered by sudden impacts or specific activation gestures."
-Can the microphone detect specific keywords for activation?,Some models allow voice activation with preset keywords.
-Is there a way to adjust microphone sensitivity?,"Yes, microphone sensitivity may be adjusted via the app."
-How is the recorded data encrypted and stored?,Audio is stored locally with encryption or uploaded to a secure cloud storage.
-Does the microphone consume a lot of battery power?,"It depends on usage. Continuous recording drains more power, but event-based activation helps conserve battery."
-Can I program custom functions for the NFC tag?,"Yes, NFC tags can be customized to perform actions like unlocking devices, sending messages, or triggering apps."
-Is it possible to use NFC for two-way communication with other devices?,"NFC primarily supports one-way data transfer, but some implementations allow two-way interactions."
-Can NFC be used to share emergency contact information instantly?,"Yes, NFC can store and instantly transfer emergency contacts when tapped against a compatible device."
-How fast does the NFC tag transfer data?,"NFC operates at up to 424 kbps, transferring small data files within milliseconds."
-Can the NFC tag be disabled if not needed?,"Yes, NFC can be turned off via the app or settings."
-What is the expected lifespan of the rechargeable battery?,The battery typically lasts 2-3 years before noticeable degradation.
-How many charge cycles can the battery handle before performance degrades?,It can handle 300-500 full charge cycles before capacity starts to reduce.
-Is there a way to enable low-power mode to extend battery life?,"Yes, enabling low-power mode disables non-essential sensors when the battery is low."
-Does the ring notify me when the battery is critically low?,"Yes, it provides alerts via an LED indicator, haptic feedback, or a mobile notification."
-Can I use a power bank to charge the ring on the go?,"Yes, as long as the power bank supports the ring’s charging port type and voltage requirements."
-Does the microphone support noise cancellation?,"Yes, it uses digital noise reduction to filter out background noise."
-How do I transfer data using NFC?,Bring the ring close to an NFC-compatible device and tap to transfer data.
-Can I use the NFC tag to unlock doors or make payments?,"Yes, if it is linked to a supported smart lock or payment system."
-What devices are compatible with the ring’s NFC feature?,"Most smartphones, tablets, smart locks, and payment terminals with NFC support."
-Does NFC work without an internet connection?,"Yes, NFC operates using short-range wireless communication without requiring the internet."
-How long does the battery last on a full charge?,"Depending on usage, it can last 1-7 days on a full charge."
-How do I recharge the ring’s battery?,It can be charged using a wireless charger or a proprietary charging dock.
-Can I replace the battery if it stops working?,"Some models have non-replaceable batteries, requiring professional servicing."
-Does the battery affect the ring’s weight?,"The battery is lightweight, contributing minimal additional weight."
-What happens if the battery runs out while I’m using an emergency feature?,"Some features, like last-known GPS location or a low-power distress signal, may still function briefly before shutting down."
+question,answer
+hi,Hello! 👋 I'm the Smart Timetable Scheduler chatbot. How can I help you with your timetable today?
+Hi,Hello! 👋 I'm the Smart Timetable Scheduler chatbot. How can I help you with your timetable today?
+hello,"Hi there! I can help you create, edit, and download timetables section-wise. What would you like to do?"
+Hello,"Hi there! I can help you create, edit, and download timetables section-wise. What would you like to do?"
+hey,"Hey! Need a timetable made smart? Tell me your subjects, teachers and lecture counts and I'll help."
+Hey,"Hey! Need a timetable made smart? Tell me your subjects, teachers and lecture counts and I'll help."
+hey there,Good day! I can generate free class timetables and let you download them. Ask me anything about schedules.
+Hey there,Good day! I can generate free class timetables and let you download them. Ask me anything about schedules.
+good morning,Hello! 👋 I'm the Smart Timetable Scheduler chatbot. How can I help you with your timetable today?
+Good morning,Hello! 👋 I'm the Smart Timetable Scheduler chatbot. How can I help you with your timetable today?
+good afternoon,"Hi there! I can help you create, edit, and download timetables section-wise. What would you like to do?"
+Good afternoon,"Hi there! I can help you create, edit, and download timetables section-wise. What would you like to do?"
+good evening,"Hey! Need a timetable made smart? Tell me your subjects, teachers and lecture counts and I'll help."
+Good evening,"Hey! Need a timetable made smart? Tell me your subjects, teachers and lecture counts and I'll help."
+hiya,Good day! I can generate free class timetables and let you download them. Ask me anything about schedules.
+Hiya,Good day! I can generate free class timetables and let you download them. Ask me anything about schedules.
+what's up,Hello! 👋 I'm the Smart Timetable Scheduler chatbot. How can I help you with your timetable today?
+What's up,Hello! 👋 I'm the Smart Timetable Scheduler chatbot. How can I help you with your timetable today?
+sup,"Hi there! I can help you create, edit, and download timetables section-wise. What would you like to do?"
+Sup,"Hi there! I can help you create, edit, and download timetables section-wise. What would you like to do?"
+yo,"Hey! Need a timetable made smart? Tell me your subjects, teachers and lecture counts and I'll help."
+Yo,"Hey! Need a timetable made smart? Tell me your subjects, teachers and lecture counts and I'll help."
+greetings,Good day! I can generate free class timetables and let you download them. Ask me anything about schedules.
+Greetings,Good day! I can generate free class timetables and let you download them. Ask me anything about schedules.
+bye,See you! Feel free to come back to download or edit your timetable.
+Bye,Bye! Hope your timetable rocks 🤘
+goodbye,"Goodbye! If you need help again, I'll be here."
+Goodbye,See you! Feel free to come back to download or edit your timetable.
+see you,"Goodbye! If you need help again, I'll be here."
+See you,See you! Feel free to come back to download or edit your timetable.
+see ya,Bye! Hope your timetable rocks 🤘
+See ya,Bye! Hope your timetable rocks 🤘
+talk to you later,"Goodbye! If you need help again, I'll be here."
+Talk to you later,"Goodbye! If you need help again, I'll be here."
+cya,See you! Feel free to come back to download or edit your timetable.
+Cya,"Goodbye! If you need help again, I'll be here."
+farewell,"Goodbye! If you need help again, I'll be here."
+Farewell,"Goodbye! If you need help again, I'll be here."
+what does this website do?,"Smart Timetable Scheduler creates section-wise timetables from your inputs (subjects, teachers, lectures/week) and provides downloads and chatbot help."
+What does this website do?,"Smart Timetable Scheduler creates section-wise timetables from your inputs (subjects, teachers, lectures/week) and provides downloads and chatbot help."
+what is Smart Timetable Scheduler?,"It's a web tool that converts your subject/teacher/lecture inputs into a smart, conflict-free timetable for each section."
+What is smart timetable scheduler?,"It's a web tool that converts your subject/teacher/lecture inputs into a smart, conflict-free timetable for each section."
+how does this work?,"You provide subjects, teachers, and lectures/week; the scheduler assigns slots while avoiding clashes and respecting constraints."
+How does this work?,"You provide subjects, teachers, and lectures/week; the scheduler assigns slots while avoiding clashes and respecting constraints."
+who are you?,I'm the chatbot for Smart Timetable Scheduler — here to guide you through creating and downloading timetables.
+Who are you?,I'm the chatbot for Smart Timetable Scheduler — here to guide you through creating and downloading timetables.
+how are you?,I'm running perfectly — ready to make your timetable smarter! How can I help?
+How are you?,I'm running perfectly — ready to make your timetable smarter! How can I help?
+can you help me?,"Yes — tell me what you want to do: add subjects, assign teachers, generate or download a timetable, or fix clashes."
+Can you help me?,"Yes — tell me what you want to do: add subjects, assign teachers, generate or download a timetable, or fix clashes."
+what can you do?,"I can guide you through data input, generate section-wise timetables, resolve clashes, and help download schedules (PDF/CSV)."
+What can you do?,"I can guide you through data input, generate section-wise timetables, resolve clashes, and help download schedules (PDF/CSV)."
+where can I download the timetable?,"After generating, use the 'Download Timetable' button — you can choose PDF or CSV formats."
+Where can i download the timetable?,"After generating, use the 'Download Timetable' button — you can choose PDF or CSV formats."
+how do I create a timetable?,"Go to 'Create Timetable', enter subjects, teachers, and lecture counts per week, then click 'Generate'."
+How do i create a timetable?,"Go to 'Create Timetable', enter subjects, teachers, and lecture counts per week, then click 'Generate'."
+how to add subjects?,"In the 'Subjects' tab click 'Add Subject' and fill name, code, type (theory/lab), and preferred slots if any."
+How to add subjects?,"In the 'Subjects' tab click 'Add Subject' and fill name, code, type (theory/lab), and preferred slots if any."
+how to add teachers?,"Go to 'Teachers' → 'Add Teacher' and enter name, availability, max lectures/day, and contact details."
+How to add teachers?,"Go to 'Teachers' → 'Add Teacher' and enter name, availability, max lectures/day, and contact details."
+how to set number of lectures per week?,"When adding a subject, set the 'Lectures/Week' field — the generator will allocate that many slots."
+How to set number of lectures per week?,"When adding a subject, set the 'Lectures/Week' field — the generator will allocate that many slots."
+what is section-wise timetable?,It means each class section (A/B/C) gets its own timetable based on students and subjects for that section.
+What is section-wise timetable?,It means each class section (A/B/C) gets its own timetable based on students and subjects for that section.
+how do I change a lecture time?,"Open the timetable, drag-and-drop the lecture to a new slot or use 'Edit slot' to change time."
+How do i change a lecture time?,"Open the timetable, drag-and-drop the lecture to a new slot or use 'Edit slot' to change time."
+how can I edit a timetable?,"Use the timetable editor to move, swap, or delete slots; save changes after editing."
+How can i edit a timetable?,"Use the timetable editor to move, swap, or delete slots; save changes after editing."
+how do I delete a subject?,"In Subjects list, click the trash icon next to the subject to remove it. Confirm to delete."
+How do i delete a subject?,"In Subjects list, click the trash icon next to the subject to remove it. Confirm to delete."
+can I export the timetable?,"Yes — export options include PDF, CSV, and Google Calendar sync (if enabled)."
+Can i export the timetable?,"Yes — export options include PDF, CSV, and Google Calendar sync (if enabled)."
+can I import data from CSV?,Yes — go to 'Import' and upload a CSV following our sample template. The site will map fields automatically.
+Can i import data from csv?,Yes — go to 'Import' and upload a CSV following our sample template. The site will map fields automatically.
+does it support multiple sections?,"Yes, the scheduler supports multiple sections and generates timetables for each section separately."
+Does it support multiple sections?,"Yes, the scheduler supports multiple sections and generates timetables for each section separately."
+is this free?,The basic timetable generation and downloads are free. Some advanced features may require signup or premium.
+Is this free?,The basic timetable generation and downloads are free. Some advanced features may require signup or premium.
+how can I contact support?,Use the 'Contact' form in footer or email support@smarttimetable.example (replace with actual support email).
+How can i contact support?,Use the 'Contact' form in footer or email support@smarttimetable.example (replace with actual support email).
+how do I reset my password?,Use 'Forgot Password' on login — we'll send a reset link to your account email.
+How do i reset my password?,Use 'Forgot Password' on login — we'll send a reset link to your account email.
+do you have a mobile app?,Currently the site is mobile-friendly. A native app may be coming soon.
+Do you have a mobile app?,Currently the site is mobile-friendly. A native app may be coming soon.
+can students view the timetable?,Yes — you can share a public link or allow student accounts to view their section's timetable.
+Can students view the timetable?,Yes — you can share a public link or allow student accounts to view their section's timetable.
+can teachers view their schedules?,Yes — teacher accounts can view and download their personal schedule.
+Can teachers view their schedules?,Yes — teacher accounts can view and download their personal schedule.
+how to set 5 lectures per week for Economics?,"To handle this: go to the relevant tab (Subjects/Teachers/Timetable), enter the details, and click 'Save' or 'Generate'. If there's a conflict I'll suggest alternate slots."
+how to create a custom timetable template?,"To handle this: go to the relevant tab (Subjects/Teachers/Timetable), enter the details, and click 'Save' or 'Generate'. If there's a conflict I'll suggest alternate slots."
+how to assign Mr. Khan to Physics?,"To handle this: go to the relevant tab (Subjects/Teachers/Timetable), enter the details, and click 'Save' or 'Generate'. If there's a conflict I'll suggest alternate slots."
+how to share timetable via link?,"To handle this: go to the relevant tab (Subjects/Teachers/Timetable), enter the details, and click 'Save' or 'Generate'. If there's a conflict I'll suggest alternate slots."
+how to add elective subjects?,"To handle this: go to the relevant tab (Subjects/Teachers/Timetable), enter the details, and click 'Save' or 'Generate'. If there's a conflict I'll suggest alternate slots."
+how to assign Dr. Iyer to History?,"To handle this: go to the relevant tab (Subjects/Teachers/Timetable), enter the details, and click 'Save' or 'Generate'. If there's a conflict I'll suggest alternate slots."
+how to set 4 lectures per week for Economics?,"To handle this: go to the relevant tab (Subjects/Teachers/Timetable), enter the details, and click 'Save' or 'Generate'. If there's a conflict I'll suggest alternate slots."
+how to assign Dr. Singh to Biology?,"To handle this: go to the relevant tab (Subjects/Teachers/Timetable), enter the details, and click 'Save' or 'Generate'. If there's a conflict I'll suggest alternate slots."
+how to print the timetable?,"To handle this: go to the relevant tab (Subjects/Teachers/Timetable), enter the details, and click 'Save' or 'Generate'. If there's a conflict I'll suggest alternate slots."
+how to export timetable to Google Calendar?,"To handle this: go to the relevant tab (Subjects/Teachers/Timetable), enter the details, and click 'Save' or 'Generate'. If there's a conflict I'll suggest alternate slots."
+how to set 3 lectures per week for Physics?,"To handle this: go to the relevant tab (Subjects/Teachers/Timetable), enter the details, and click 'Save' or 'Generate'. If there's a conflict I'll suggest alternate slots."
+how to set 1 lectures per week for Electronics?,"To handle this: go to the relevant tab (Subjects/Teachers/Timetable), enter the details, and click 'Save' or 'Generate'. If there's a conflict I'll suggest alternate slots."
+how to add a substitute teacher for Ms. Patel?,"To handle this: go to the relevant tab (Subjects/Teachers/Timetable), enter the details, and click 'Save' or 'Generate'. If there's a conflict I'll suggest alternate slots."
+how do I add Biology to section C?,"To do this: go to the relevant tab (Subjects/Teachers/Timetable), enter the details, and click 'Save' or 'Generate'. If there's a conflict I'll suggest alternate slots."
+how to set break times and lunch break?,"To handle this: go to the relevant tab (Subjects/Teachers/Timetable), enter the details, and click 'Save' or 'Generate'. If there's a conflict I'll suggest alternate slots."
+how to swap two lectures?,"To handle this: go to the relevant tab (Subjects/Teachers/Timetable), enter the details, and click 'Save' or 'Generate'. If there's a conflict I'll suggest alternate slots."
+how to add tutorials and practicals?,"To handle this: go to the relevant tab (Subjects/Teachers/Timetable), enter the details, and click 'Save' or 'Generate'. If there's a conflict I'll suggest alternate slots."
+how to resolve clashes between Math and Physics?,"To handle this: go to the relevant tab (Subjects/Teachers/Timetable), enter the details, and click 'Save' or 'Generate'. If there's a conflict I'll suggest alternate slots."
+how to set max consecutive lectures?,"To handle this: go to the relevant tab (Subjects/Teachers/Timetable), enter the details, and click 'Save' or 'Generate'. If there's a conflict I'll suggest alternate slots."
+how do I add Biology to section 2?,"To do this: go to the relevant tab (Subjects/Teachers/Timetable), enter the details, and click 'Save' or 'Generate'. If there's a conflict I'll suggest alternate slots."
+how to add a substitute teacher for Dr. Singh?,"To handle this: go to the relevant tab (Subjects/Teachers/Timetable), enter the details, and click 'Save' or 'Generate'. If there's a conflict I'll suggest alternate slots."
+how to resolve clashes between Chemistry and Biology?,"To handle this: go to the relevant tab (Subjects/Teachers/Timetable), enter the details, and click 'Save' or 'Generate'. If there's a conflict I'll suggest alternate slots."
+how to add a substitute teacher for Mr. Sharma?,"To handle this: go to the relevant tab (Subjects/Teachers/Timetable), enter the details, and click 'Save' or 'Generate'. If there's a conflict I'll suggest alternate slots."
+how to balance load between teachers?,"To handle this: go to the relevant tab (Subjects/Teachers/Timetable), enter the details, and click 'Save' or 'Generate'. If there's a conflict I'll suggest alternate slots."
+can I download the timetable for section D as PDF?,"To do this: go to the relevant tab (Subjects/Teachers/Timetable), enter the details, and click 'Save' or 'Generate'. If there's a conflict I'll suggest alternate slots."
+how to include lab sessions in timetable?,"To handle this: go to the relevant tab (Subjects/Teachers/Timetable), enter the details, and click 'Save' or 'Generate'. If there's a conflict I'll suggest alternate slots."
+can I download the timetable for section 2 as PDF?,"To do this: go to the relevant tab (Subjects/Teachers/Timetable), enter the details, and click 'Save' or 'Generate'. If there's a conflict I'll suggest alternate slots."
+how to add classroom numbers?,"To handle this: go to the relevant tab (Subjects/Teachers/Timetable), enter the details, and click 'Save' or 'Generate'. If there's a conflict I'll suggest alternate slots."
+how to generate timetable section-wise?,"To handle this: go to the relevant tab (Subjects/Teachers/Timetable), enter the details, and click 'Save' or 'Generate'. If there's a conflict I'll suggest alternate slots."
+how to resolve clashes between English and History?,"To handle this: go to the relevant tab (Subjects/Teachers/Timetable), enter the details, and click 'Save' or 'Generate'. If there's a conflict I'll suggest alternate slots."
+can I download the timetable for section C as PDF?,"To do this: go to the relevant tab (Subjects/Teachers/Timetable), enter the details, and click 'Save' or 'Generate'. If there's a conflict I'll suggest alternate slots."
+"my Prof. Rao is unavailable on Friday, how to reschedule?","To handle this: go to the relevant tab (Subjects/Teachers/Timetable), enter the details, and click 'Save' or 'Generate'. If there's a conflict I'll suggest alternate slots."
+how do I add Chemistry to section A?,"To do this: go to the relevant tab (Subjects/Teachers/Timetable), enter the details, and click 'Save' or 'Generate'. If there's a conflict I'll suggest alternate slots."
+how to add a substitute teacher for Dr. Iyer?,"To handle this: go to the relevant tab (Subjects/Teachers/Timetable), enter the details, and click 'Save' or 'Generate'. If there's a conflict I'll suggest alternate slots."
+how to set 2 lectures per week for History?,"To handle this: go to the relevant tab (Subjects/Teachers/Timetable), enter the details, and click 'Save' or 'Generate'. If there's a conflict I'll suggest alternate slots."
+can I change time slot durations?,"To do this: go to the relevant tab (Subjects/Teachers/Timetable), enter the details, and click 'Save' or 'Generate'. If there's a conflict I'll suggest alternate slots."
+how to assign Dr. Singh to Physics?,"To handle this: go to the relevant tab (Subjects/Teachers/Timetable), enter the details, and click 'Save' or 'Generate'. If there's a conflict I'll suggest alternate slots."
+how to assign Mr. Sharma to Physics?,"To handle this: go to the relevant tab (Subjects/Teachers/Timetable), enter the details, and click 'Save' or 'Generate'. If there's a conflict I'll suggest alternate slots."
+how to set 4 lectures per week for Chemistry?,"To handle this: go to the relevant tab (Subjects/Teachers/Timetable), enter the details, and click 'Save' or 'Generate'. If there's a conflict I'll suggest alternate slots."
+how to set 8 lectures per week for Electronics?,"To handle this: go to the relevant tab (Subjects/Teachers/Timetable), enter the details, and click 'Save' or 'Generate'. If there's a conflict I'll suggest alternate slots."
+"my Dr. Iyer is unavailable on Sunday, how to reschedule?","To handle this: go to the relevant tab (Subjects/Teachers/Timetable), enter the details, and click 'Save' or 'Generate'. If there's a conflict I'll suggest alternate slots."
+how to resolve clashes between CS and Electronics?,"To handle this: go to the relevant tab (Subjects/Teachers/Timetable), enter the details, and click 'Save' or 'Generate'. If there's a conflict I'll suggest alternate slots."
+how to assign Ms. Verma to Physics?,"To handle this: go to the relevant tab (Subjects/Teachers/Timetable), enter the details, and click 'Save' or 'Generate'. If there's a conflict I'll suggest alternate slots."
+how to add a substitute teacher for Mrs. Gupta?,"To handle this: go to the relevant tab (Subjects/Teachers/Timetable), enter the details, and click 'Save' or 'Generate'. If there's a conflict I'll suggest alternate slots."
+can I download the timetable for section B as PDF?,"To do this: go to the relevant tab (Subjects/Teachers/Timetable), enter the details, and click 'Save' or 'Generate'. If there's a conflict I'll suggest alternate slots."
+"my Mrs. Gupta is unavailable on Saturday, how to reschedule?","To handle this: go to the relevant tab (Subjects/Teachers/Timetable), enter the details, and click 'Save' or 'Generate'. If there's a conflict I'll suggest alternate slots."
+"my Mr. Khan is unavailable on Saturday, how to reschedule?","To handle this: go to the relevant tab (Subjects/Teachers/Timetable), enter the details, and click 'Save' or 'Generate'. If there's a conflict I'll suggest alternate slots."
+how to assign Dr. Iyer to Economics?,"To handle this: go to the relevant tab (Subjects/Teachers/Timetable), enter the details, and click 'Save' or 'Generate'. If there's a conflict I'll suggest alternate slots."
+how to assign Mr. Sharma to History?,"To handle this: go to the relevant tab (Subjects/Teachers/Timetable), enter the details, and click 'Save' or 'Generate'. If there's a conflict I'll suggest alternate slots."
+"my Ms. Patel is unavailable on Thursday, how to reschedule?","To handle this: go to the relevant tab (Subjects/Teachers/Timetable), enter the details, and click 'Save' or 'Generate'. If there's a conflict I'll suggest alternate slots."
+how do I add Physics to section A?,"To do this: go to the relevant tab (Subjects/Teachers/Timetable), enter the details, and click 'Save' or 'Generate'. If there's a conflict I'll suggest alternate slots."
+"my Mr. Sharma is unavailable on Monday, how to reschedule?","To handle this: go to the relevant tab (Subjects/Teachers/Timetable), enter the details, and click 'Save' or 'Generate'. If there's a conflict I'll suggest alternate slots."
+how to add a substitute teacher for Mr. Khan?,"To handle this: go to the relevant tab (Subjects/Teachers/Timetable), enter the details, and click 'Save' or 'Generate'. If there's a conflict I'll suggest alternate slots."
+how do I add Geography to section 3?,"To do this: go to the relevant tab (Subjects/Teachers/Timetable), enter the details, and click 'Save' or 'Generate'. If there's a conflict I'll suggest alternate slots."
+how to assign Dr. Iyer to Geography?,"To handle this: go to the relevant tab (Subjects/Teachers/Timetable), enter the details, and click 'Save' or 'Generate'. If there's a conflict I'll suggest alternate slots."
+how do I add English to section D?,"To do this: go to the relevant tab (Subjects/Teachers/Timetable), enter the details, and click 'Save' or 'Generate'. If there's a conflict I'll suggest alternate slots."
+how do I add Math to section 2?,"To do this: go to the relevant tab (Subjects/Teachers/Timetable), enter the details, and click 'Save' or 'Generate'. If there's a conflict I'll suggest alternate slots."
+how to set 6 lectures per week for Physics?,"To handle this: go to the relevant tab (Subjects/Teachers/Timetable), enter the details, and click 'Save' or 'Generate'. If there's a conflict I'll suggest alternate slots."
+how to set 5 lectures per week for Electronics?,"To handle this: go to the relevant tab (Subjects/Teachers/Timetable), enter the details, and click 'Save' or 'Generate'. If there's a conflict I'll suggest alternate slots."
+how to add a substitute teacher for Prof. Rao?,"To handle this: go to the relevant tab (Subjects/Teachers/Timetable), enter the details, and click 'Save' or 'Generate'. If there's a conflict I'll suggest alternate slots."
+how to set 2 lectures per week for Electronics?,"To handle this: go to the relevant tab (Subjects/Teachers/Timetable), enter the details, and click 'Save' or 'Generate'. If there's a conflict I'll suggest alternate slots."
+how to set 5 lectures per week for Geography?,"To handle this: go to the relevant tab (Subjects/Teachers/Timetable), enter the details, and click 'Save' or 'Generate'. If there's a conflict I'll suggest alternate slots."
+"my Mr. Khan is unavailable on Monday, how to reschedule?","To handle this: go to the relevant tab (Subjects/Teachers/Timetable), enter the details, and click 'Save' or 'Generate'. If there's a conflict I'll suggest alternate slots."
+how do I add Math to section A?,"To do this: go to the relevant tab (Subjects/Teachers/Timetable), enter the details, and click 'Save' or 'Generate'. If there's a conflict I'll suggest alternate slots."
+can I download the timetable for section E as PDF?,"To do this: go to the relevant tab (Subjects/Teachers/Timetable), enter the details, and click 'Save' or 'Generate'. If there's a conflict I'll suggest alternate slots."
+how to assign Dr. Iyer to Biology?,"To handle this: go to the relevant tab (Subjects/Teachers/Timetable), enter the details, and click 'Save' or 'Generate'. If there's a conflict I'll suggest alternate slots."
+how to set 3 lectures per week for History?,"To handle this: go to the relevant tab (Subjects/Teachers/Timetable), enter the details, and click 'Save' or 'Generate'. If there's a conflict I'll suggest alternate slots."
+how to assign Mr. Khan to History?,"To handle this: go to the relevant tab (Subjects/Teachers/Timetable), enter the details, and click 'Save' or 'Generate'. If there's a conflict I'll suggest alternate slots."
+how do I add Chemistry to section 2?,"To do this: go to the relevant tab (Subjects/Teachers/Timetable), enter the details, and click 'Save' or 'Generate'. If there's a conflict I'll suggest alternate slots."
+how to set 2 lectures per week for Biology?,"To handle this: go to the relevant tab (Subjects/Teachers/Timetable), enter the details, and click 'Save' or 'Generate'. If there's a conflict I'll suggest alternate slots."
+how do I add Economics to section A?,"To do this: go to the relevant tab (Subjects/Teachers/Timetable), enter the details, and click 'Save' or 'Generate'. If there's a conflict I'll suggest alternate slots."
+how to assign Mr. Sharma to Chemistry?,"To handle this: go to the relevant tab (Subjects/Teachers/Timetable), enter the details, and click 'Save' or 'Generate'. If there's a conflict I'll suggest alternate slots."
+"the timetable has clashes, how to fix?",Use 'Resolve Clashes' tool — it suggests changes or allows manual swap. Check teacher availability and room assignments.
+"i uploaded CSV but mapping failed, help?",Open 'Import History' and see the error details. Ensure your CSV columns match the sample template and try again.
+the download button is not working,Try refreshing the page; if it persists clear cache or try another browser. Contact support if it still fails.
+how to set time slot length to 45 minutes?,In Settings → Time Slots set slot duration to 45 minutes and regenerate the timetable.
+can I restrict a teacher to max 3 lectures per day?,Yes — edit teacher profile and set 'Max lectures per day' to 3.
+how to include weekend classes?,"Enable Saturday/Sunday in Settings → Working Days, then regenerate to include weekend slots."
+how to schedule make-up classes?,"Use 'Add Special Session' and pick date/time, mark it as a make-up class and assign teacher & room."
+how to add holidays so no classes on that day?,Go to Settings → Holidays and add dates; the generator will avoid those days.
+how to change language to Hindi?,"If multilingual is supported, change language in Settings → Language. Otherwise contact support for localization."
+does the site save drafts automatically?,Autosave runs periodically; you can also click 'Save Draft' to store progress explicitly.
+is my data private?,Yes — we store data securely. Check our Privacy Policy for details on storage and retention.
+how long do you keep my data?,Data retention depends on account settings — see Privacy Policy or contact support to request deletion.
+can I delete my account?,Yes — in Account Settings choose 'Delete Account' and follow the confirmation steps.
+is the site GDPR compliant?,We aim to comply with privacy regulations; contact support for enterprise or compliance-specific questions.
+how secure is the timetable data?,"We use secure protocols and access controls. For specifics, request our security whitepaper from support."
+how to export timetable for a single teacher?,Open Timetables → Choose 'By Teacher' → Select teacher → Export as PDF/CSV.
+how to export all sections at once?,Use 'Bulk Export' in Timetables and choose format (ZIP of PDFs or single CSV).
+can I color-code subjects?,Yes — go to Settings → Colors and assign colors to subject categories.
+does it detect duplicate subjects?,Yes — the import/validation step flags duplicates by name/code.
+can I set preferred time slots for a teacher?,In the teacher profile add preferred/blocked slots to influence scheduling.
+how to print timetable in A4 landscape?,Choose 'Print' → Page Setup → A4 Landscape and print from PDF viewer.
+can I undo changes?,There's an 'Undo' for recent edits and a version history to restore earlier saves.
+tell me a joke,Why did the lecture cross the timetable? To get to the other side of the schedule. 😄
+i'm bored,Make your timetable spicy: add a surprise guest lecture! Or ask me to auto-generate one.
+what's your name?,I'm the Smart Timetable Scheduler chatbot — your timetable's hype friend.
+do you have feelings?,I have one feeling: optimized schedules.
+can you sing?,"I can provide a playlist suggestion, but singing is out of scope — for now!"
+is it possible to include labs for section 1?,"To include labs: open the appropriate settings or tab, enter the details (section 1), and click Save/Generate. Use the validation tool to check for issues."
+how to include labs for section A?,"To include labs: open the appropriate settings or tab, enter the details (section A), and click Save/Generate. Use the validation tool to check for issues."
+where do i resolve clashes for section C?,"To resolve clashes: open the appropriate settings or tab, enter the details (section C), and click Save/Generate. Use the validation tool to check for issues."
+what happens if i enable weekend for section A?,"To enable weekend: open the appropriate settings or tab, enter the details (section A), and click Save/Generate. Use the validation tool to check for issues."
+help me with merge sections for section 1?,"To merge sections: open the appropriate settings or tab, enter the details (section 1), and click Save/Generate. Use the validation tool to check for issues."
+what happens if i set time slots for section 1?,"To set time slots: open the appropriate settings or tab, enter the details (section 1), and click Save/Generate. Use the validation tool to check for issues."
+how do i set lunch time for section A?,"To set lunch time: open the appropriate settings or tab, enter the details (section A), and click Save/Generate. Use the validation tool to check for issues."
+can i export PDF for section E?,"To export PDF: open the appropriate settings or tab, enter the details (section E), and click Save/Generate. Use the validation tool to check for issues."
+how to include labs for section D?,"To include labs: open the appropriate settings or tab, enter the details (section D), and click Save/Generate. Use the validation tool to check for issues."
+is it possible to disable holiday for section D?,"To disable holiday: open the appropriate settings or tab, enter the details (section D), and click Save/Generate. Use the validation tool to check for issues."
+where do i enable weekend for section A?,"To enable weekend: open the appropriate settings or tab, enter the details (section A), and click Save/Generate. Use the validation tool to check for issues."
+how to add subjects for section D?,"To add subjects: open the appropriate settings or tab, enter the details (section D), and click Save/Generate. Use the validation tool to check for issues."
+what happens if i set time slots for section 2?,"To set time slots: open the appropriate settings or tab, enter the details (section 2), and click Save/Generate. Use the validation tool to check for issues."
+how do i add subjects for section E?,"To add subjects: open the appropriate settings or tab, enter the details (section E), and click Save/Generate. Use the validation tool to check for issues."
+what happens if i enable weekend for section D?,"To enable weekend: open the appropriate settings or tab, enter the details (section D), and click Save/Generate. Use the validation tool to check for issues."
+help me with set lunch time for English with Mr. Khan?,"To set lunch time: open the appropriate settings or tab, enter the details (section D), and click Save/Generate. Use the validation tool to check for issues."
+is it possible to merge sections for section 1?,"To merge sections: open the appropriate settings or tab, enter the details (section 1), and click Save/Generate. Use the validation tool to check for issues."
+why is add teachers for Math with Mrs. Gupta?,"To add teachers: open the appropriate settings or tab, enter the details (section D), and click Save/Generate. Use the validation tool to check for issues."
+help me with import CSV for section 3?,"To import CSV: open the appropriate settings or tab, enter the details (section 3), and click Save/Generate. Use the validation tool to check for issues."
+why is export PDF for Math with Ms. Patel?,"To export PDF: open the appropriate settings or tab, enter the details (section 2), and click Save/Generate. Use the validation tool to check for issues."
+how do i split a class for section C?,"To split a class: open the appropriate settings or tab, enter the details (section C), and click Save/Generate. Use the validation tool to check for issues."
+is it possible to set consecutive lecture limit for section 3?,"To set consecutive lecture limit: open the appropriate settings or tab, enter the details (section 3), and click Save/Generate. Use the validation tool to check for issues."
+help me with set lunch time for Physics with Prof. Rao?,"To set lunch time: open the appropriate settings or tab, enter the details (section D), and click Save/Generate. Use the validation tool to check for issues."
+where do i include labs for section C?,"To include labs: open the appropriate settings or tab, enter the details (section C), and click Save/Generate. Use the validation tool to check for issues."
+what happens if i merge sections for section D?,"To merge sections: open the appropriate settings or tab, enter the details (section D), and click Save/Generate. Use the validation tool to check for issues."
+how to import CSV for Geography with Ms. Patel?,"To import CSV: open the appropriate settings or tab, enter the details (section E), and click Save/Generate. Use the validation tool to check for issues."
+where do i assign classroom for section B?,"To assign classroom: open the appropriate settings or tab, enter the details (section B), and click Save/Generate. Use the validation tool to check for issues."
+is it possible to set teacher availability for section B?,"To set teacher availability: open the appropriate settings or tab, enter the details (section B), and click Save/Generate. Use the validation tool to check for issues."
+help me with set breaks for section E?,"To set breaks: open the appropriate settings or tab, enter the details (section E), and click Save/Generate. Use the validation tool to check for issues."
+how do i export PDF for section C?,"To export PDF: open the appropriate settings or tab, enter the details (section C), and click Save/Generate. Use the validation tool to check for issues."
+is it possible to set time slots for English with Mr. Khan?,"To set time slots: open the appropriate settings or tab, enter the details (section 3), and click Save/Generate. Use the validation tool to check for issues."
+how do i split a class for section 3?,"To split a class: open the appropriate settings or tab, enter the details (section 3), and click Save/Generate. Use the validation tool to check for issues."
+how to set time slots for section E?,"To set time slots: open the appropriate settings or tab, enter the details (section E), and click Save/Generate. Use the validation tool to check for issues."
+how do i download timetable for Biology with Mrs. Gupta?,"To download timetable: open the appropriate settings or tab, enter the details (section A), and click Save/Generate. Use the validation tool to check for issues."
+help me with set lunch time for section E?,"To set lunch time: open the appropriate settings or tab, enter the details (section E), and click Save/Generate. Use the validation tool to check for issues."
+help me with share link for History with Ms. Verma?,"To share link: open the appropriate settings or tab, enter the details (section 2), and click Save/Generate. Use the validation tool to check for issues."
+is it possible to include labs for English with Dr. Singh?,"To include labs: open the appropriate settings or tab, enter the details (section 2), and click Save/Generate. Use the validation tool to check for issues."
+can i merge sections for section E?,"To merge sections: open the appropriate settings or tab, enter the details (section E), and click Save/Generate. Use the validation tool to check for issues."
+why is download timetable for section C?,"To download timetable: open the appropriate settings or tab, enter the details (section C), and click Save/Generate. Use the validation tool to check for issues."
+how do i set lunch time for section 1?,"To set lunch time: open the appropriate settings or tab, enter the details (section 1), and click Save/Generate. Use the validation tool to check for issues."
+how to resolve clashes for section C?,"To resolve clashes: open the appropriate settings or tab, enter the details (section C), and click Save/Generate. Use the validation tool to check for issues."
+where do i change section name for Geography with Ms. Patel?,"To change section name: open the appropriate settings or tab, enter the details (section C), and click Save/Generate. Use the validation tool to check for issues."
+how do i add subjects for History with Ms. Verma?,"To add subjects: open the appropriate settings or tab, enter the details (section C), and click Save/Generate. Use the validation tool to check for issues."
+what happens if i change section name for section B?,"To change section name: open the appropriate settings or tab, enter the details (section B), and click Save/Generate. Use the validation tool to check for issues."
+help me with set time slots for section C?,"To set time slots: open the appropriate settings or tab, enter the details (section C), and click Save/Generate. Use the validation tool to check for issues."
+why is set teacher availability for Computer Science with Mr. Khan?,"To set teacher availability: open the appropriate settings or tab, enter the details (section C), and click Save/Generate. Use the validation tool to check for issues."
+how to include labs for Biology with Mr. Khan?,"To include labs: open the appropriate settings or tab, enter the details (section B), and click Save/Generate. Use the validation tool to check for issues."
+help me with add teachers for section A?,"To add teachers: open the appropriate settings or tab, enter the details (section A), and click Save/Generate. Use the validation tool to check for issues."
+where do i resolve clashes for Biology with Mr. Sharma?,"To resolve clashes: open the appropriate settings or tab, enter the details (section A), and click Save/Generate. Use the validation tool to check for issues."
+where do i set max lectures per day for section D?,"To set max lectures per day: open the appropriate settings or tab, enter the details (section D), and click Save/Generate. Use the validation tool to check for issues."
+is it possible to merge sections for section D?,"To merge sections: open the appropriate settings or tab, enter the details (section D), and click Save/Generate. Use the validation tool to check for issues."
+where do i export PDF for section C?,"To export PDF: open the appropriate settings or tab, enter the details (section C), and click Save/Generate. Use the validation tool to check for issues."
+is it possible to share link for Economics with Mr. Khan?,"To share link: open the appropriate settings or tab, enter the details (section C), and click Save/Generate. Use the validation tool to check for issues."
+why is import CSV for section 3?,"To import CSV: open the appropriate settings or tab, enter the details (section 3), and click Save/Generate. Use the validation tool to check for issues."
+how to import CSV for section C?,"To import CSV: open the appropriate settings or tab, enter the details (section C), and click Save/Generate. Use the validation tool to check for issues."
+how to download timetable for section 3?,"To download timetable: open the appropriate settings or tab, enter the details (section 3), and click Save/Generate. Use the validation tool to check for issues."
+is it possible to set teacher availability for English with Mr. Khan?,"To set teacher availability: open the appropriate settings or tab, enter the details (section D), and click Save/Generate. Use the validation tool to check for issues."
+how do i set breaks for section 2?,"To set breaks: open the appropriate settings or tab, enter the details (section 2), and click Save/Generate. Use the validation tool to check for issues."
+how to set teacher availability for section E?,"To set teacher availability: open the appropriate settings or tab, enter the details (section E), and click Save/Generate. Use the validation tool to check for issues."
+how do i enable weekend for Computer Science with Mrs. Gupta?,"To enable weekend: open the appropriate settings or tab, enter the details (section 3), and click Save/Generate. Use the validation tool to check for issues."
+how to assign classroom for Physics with Dr. Iyer?,"To assign classroom: open the appropriate settings or tab, enter the details (section D), and click Save/Generate. Use the validation tool to check for issues."
+can i add subjects for Electronics with Prof. Rao?,"To add subjects: open the appropriate settings or tab, enter the details (section 2), and click Save/Generate. Use the validation tool to check for issues."
+how do i set breaks for section C?,"To set breaks: open the appropriate settings or tab, enter the details (section C), and click Save/Generate. Use the validation tool to check for issues."
+how to split a class for section C?,"To split a class: open the appropriate settings or tab, enter the details (section C), and click Save/Generate. Use the validation tool to check for issues."
+how to assign classroom for section 1?,"To assign classroom: open the appropriate settings or tab, enter the details (section 1), and click Save/Generate. Use the validation tool to check for issues."
+help me with resolve clashes for section B?,"To resolve clashes: open the appropriate settings or tab, enter the details (section B), and click Save/Generate. Use the validation tool to check for issues."
+is it possible to enable weekend for Biology with Dr. Singh?,"To enable weekend: open the appropriate settings or tab, enter the details (section E), and click Save/Generate. Use the validation tool to check for issues."
+can i split a class for Biology with Dr. Iyer?,"To split a class: open the appropriate settings or tab, enter the details (section 1), and click Save/Generate. Use the validation tool to check for issues."
+how do i add subjects for section 1?,"To add subjects: open the appropriate settings or tab, enter the details (section 1), and click Save/Generate. Use the validation tool to check for issues."
+is it possible to assign classroom for section A?,"To assign classroom: open the appropriate settings or tab, enter the details (section A), and click Save/Generate. Use the validation tool to check for issues."
+how do i download timetable for section 2?,"To download timetable: open the appropriate settings or tab, enter the details (section 2), and click Save/Generate. Use the validation tool to check for issues."
+is it possible to split a class for Electronics with Ms. Verma?,"To split a class: open the appropriate settings or tab, enter the details (section A), and click Save/Generate. Use the validation tool to check for issues."
+is it possible to include labs for Physics with Ms. Patel?,"To include labs: open the appropriate settings or tab, enter the details (section 1), and click Save/Generate. Use the validation tool to check for issues."
+where do i resolve clashes for Biology with Ms. Patel?,"To resolve clashes: open the appropriate settings or tab, enter the details (section B), and click Save/Generate. Use the validation tool to check for issues."
+is it possible to add subjects for section B?,"To add subjects: open the appropriate settings or tab, enter the details (section B), and click Save/Generate. Use the validation tool to check for issues."
+why is merge sections for section D?,"To merge sections: open the appropriate settings or tab, enter the details (section D), and click Save/Generate. Use the validation tool to check for issues."
+can i set breaks for section 1?,"To set breaks: open the appropriate settings or tab, enter the details (section 1), and click Save/Generate. Use the validation tool to check for issues."
+can i set teacher availability for section E?,"To set teacher availability: open the appropriate settings or tab, enter the details (section E), and click Save/Generate. Use the validation tool to check for issues."
+can i enable weekend for section E?,"To enable weekend: open the appropriate settings or tab, enter the details (section E), and click Save/Generate. Use the validation tool to check for issues."
+is it possible to include labs for section C?,"To include labs: open the appropriate settings or tab, enter the details (section C), and click Save/Generate. Use the validation tool to check for issues."
+where do i enable weekend for Economics with Mr. Khan?,"To enable weekend: open the appropriate settings or tab, enter the details (section A), and click Save/Generate. Use the validation tool to check for issues."
+how do i set time slots for section E?,"To set time slots: open the appropriate settings or tab, enter the details (section E), and click Save/Generate. Use the validation tool to check for issues."
+help me with include labs for section B?,"To include labs: open the appropriate settings or tab, enter the details (section B), and click Save/Generate. Use the validation tool to check for issues."
+is it possible to enable weekend for section E?,"To enable weekend: open the appropriate settings or tab, enter the details (section E), and click Save/Generate. Use the validation tool to check for issues."
+how to import CSV for section A?,"To import CSV: open the appropriate settings or tab, enter the details (section A), and click Save/Generate. Use the validation tool to check for issues."
+what happens if i import CSV for section 1?,"To import CSV: open the appropriate settings or tab, enter the details (section 1), and click Save/Generate. Use the validation tool to check for issues."
+where do i add teachers for section E?,"To add teachers: open the appropriate settings or tab, enter the details (section E), and click Save/Generate. Use the validation tool to check for issues."
+why is set time slots for section C?,"To set time slots: open the appropriate settings or tab, enter the details (section C), and click Save/Generate. Use the validation tool to check for issues."
+help me with export PDF for section 2?,"To export PDF: open the appropriate settings or tab, enter the details (section 2), and click Save/Generate. Use the validation tool to check for issues."
+what happens if i assign classroom for section 1?,"To assign classroom: open the appropriate settings or tab, enter the details (section 1), and click Save/Generate. Use the validation tool to check for issues."
+where do i merge sections for Geography with Ms. Verma?,"To merge sections: open the appropriate settings or tab, enter the details (section C), and click Save/Generate. Use the validation tool to check for issues."
+what happens if i add teachers for section 2?,"To add teachers: open the appropriate settings or tab, enter the details (section 2), and click Save/Generate. Use the validation tool to check for issues."
+how do i enable weekend for section D?,"To enable weekend: open the appropriate settings or tab, enter the details (section D), and click Save/Generate. Use the validation tool to check for issues."
+can i add subjects for section 2?,"To add subjects: open the appropriate settings or tab, enter the details (section 2), and click Save/Generate. Use the validation tool to check for issues."
+where do i include labs for section 3?,"To include labs: open the appropriate settings or tab, enter the details (section 3), and click Save/Generate. Use the validation tool to check for issues."
+how to import CSV for section 1?,"To import CSV: open the appropriate settings or tab, enter the details (section 1), and click Save/Generate. Use the validation tool to check for issues."
+how do i add subjects for section B?,"To add subjects: open the appropriate settings or tab, enter the details (section B), and click Save/Generate. Use the validation tool to check for issues."
+help me with split a class for section 1?,"To split a class: open the appropriate settings or tab, enter the details (section 1), and click Save/Generate. Use the validation tool to check for issues."
+is it possible to disable holiday for section E?,"To disable holiday: open the appropriate settings or tab, enter the details (section E), and click Save/Generate. Use the validation tool to check for issues."
+help me with set lunch time for section 1?,"To set lunch time: open the appropriate settings or tab, enter the details (section 1), and click Save/Generate. Use the validation tool to check for issues."
+how do i import CSV for section 3?,"To import CSV: open the appropriate settings or tab, enter the details (section 3), and click Save/Generate. Use the validation tool to check for issues."
+help me with import CSV for Electronics with Mrs. Gupta?,"To import CSV: open the appropriate settings or tab, enter the details (section E), and click Save/Generate. Use the validation tool to check for issues."
+how to download timetable for History with Ms. Verma?,"To download timetable: open the appropriate settings or tab, enter the details (section A), and click Save/Generate. Use the validation tool to check for issues."
+is it possible to import CSV for section B?,"To import CSV: open the appropriate settings or tab, enter the details (section B), and click Save/Generate. Use the validation tool to check for issues."
+where do i set consecutive lecture limit for section A?,"To set consecutive lecture limit: open the appropriate settings or tab, enter the details (section A), and click Save/Generate. Use the validation tool to check for issues."
+can i set breaks for section 2?,"To set breaks: open the appropriate settings or tab, enter the details (section 2), and click Save/Generate. Use the validation tool to check for issues."
+how do i download timetable for section D?,"To download timetable: open the appropriate settings or tab, enter the details (section D), and click Save/Generate. Use the validation tool to check for issues."
+is it possible to set breaks for section 2?,"To set breaks: open the appropriate settings or tab, enter the details (section 2), and click Save/Generate. Use the validation tool to check for issues."
+how to download timetable for section A?,"To download timetable: open the appropriate settings or tab, enter the details (section A), and click Save/Generate. Use the validation tool to check for issues."
+what happens if i change section name for section 2?,"To change section name: open the appropriate settings or tab, enter the details (section 2), and click Save/Generate. Use the validation tool to check for issues."
+help me with assign classroom for English with Dr. Singh?,"To assign classroom: open the appropriate settings or tab, enter the details (section 2), and click Save/Generate. Use the validation tool to check for issues."
+can i add subjects for section D?,"To add subjects: open the appropriate settings or tab, enter the details (section D), and click Save/Generate. Use the validation tool to check for issues."
+how do i enable weekend for Biology with Mr. Khan?,"To enable weekend: open the appropriate settings or tab, enter the details (section A), and click Save/Generate. Use the validation tool to check for issues."
+help me with include labs for section D?,"To include labs: open the appropriate settings or tab, enter the details (section D), and click Save/Generate. Use the validation tool to check for issues."
+is it possible to set consecutive lecture limit for section E?,"To set consecutive lecture limit: open the appropriate settings or tab, enter the details (section E), and click Save/Generate. Use the validation tool to check for issues."
+how do i import CSV for section A?,"To import CSV: open the appropriate settings or tab, enter the details (section A), and click Save/Generate. Use the validation tool to check for issues."
+is it possible to split a class for Computer Science with Mrs. Gupta?,"To split a class: open the appropriate settings or tab, enter the details (section A), and click Save/Generate. Use the validation tool to check for issues."
+how to set max lectures per day for Computer Science with Ms. Verma?,"To set max lectures per day: open the appropriate settings or tab, enter the details (section 3), and click Save/Generate. Use the validation tool to check for issues."
+help me with share link for section 1?,"To share link: open the appropriate settings or tab, enter the details (section 1), and click Save/Generate. Use the validation tool to check for issues."
+how to set breaks for section D?,"To set breaks: open the appropriate settings or tab, enter the details (section D), and click Save/Generate. Use the validation tool to check for issues."
+how to add teachers for section B?,"To add teachers: open the appropriate settings or tab, enter the details (section B), and click Save/Generate. Use the validation tool to check for issues."
+where do i set lunch time for section 3?,"To set lunch time: open the appropriate settings or tab, enter the details (section 3), and click Save/Generate. Use the validation tool to check for issues."
+what happens if i set breaks for section 2?,"To set breaks: open the appropriate settings or tab, enter the details (section 2), and click Save/Generate. Use the validation tool to check for issues."
+can i share link for section 1?,"To share link: open the appropriate settings or tab, enter the details (section 1), and click Save/Generate. Use the validation tool to check for issues."
+how do i assign classroom for Biology with Ms. Patel?,"To assign classroom: open the appropriate settings or tab, enter the details (section 2), and click Save/Generate. Use the validation tool to check for issues."
+help me with change section name for section 1?,"To change section name: open the appropriate settings or tab, enter the details (section 1), and click Save/Generate. Use the validation tool to check for issues."
+where do i set time slots for section C?,"To set time slots: open the appropriate settings or tab, enter the details (section C), and click Save/Generate. Use the validation tool to check for issues."
+is it possible to set lunch time for Chemistry with Dr. Iyer?,"To set lunch time: open the appropriate settings or tab, enter the details (section B), and click Save/Generate. Use the validation tool to check for issues."
+why is set max lectures per day for section 2?,"To set max lectures per day: open the appropriate settings or tab, enter the details (section 2), and click Save/Generate. Use the validation tool to check for issues."
+how to add subjects for History with Ms. Verma?,"To add subjects: open the appropriate settings or tab, enter the details (section A), and click Save/Generate. Use the validation tool to check for issues."
+can i set teacher availability for section B?,"To set teacher availability: open the appropriate settings or tab, enter the details (section B), and click Save/Generate. Use the validation tool to check for issues."
+where do i change section name for section D?,"To change section name: open the appropriate settings or tab, enter the details (section D), and click Save/Generate. Use the validation tool to check for issues."
+where do i export PDF for Electronics with Mr. Khan?,"To export PDF: open the appropriate settings or tab, enter the details (section B), and click Save/Generate. Use the validation tool to check for issues."
+sample question 1,Sample answer 1: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 2,Sample answer 2: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 3,Sample answer 3: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 4,Sample answer 4: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 5,Sample answer 5: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 6,Sample answer 6: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 7,Sample answer 7: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 8,Sample answer 8: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 9,Sample answer 9: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 10,Sample answer 10: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 11,Sample answer 11: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 12,Sample answer 12: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 13,Sample answer 13: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 14,Sample answer 14: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 15,Sample answer 15: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 16,Sample answer 16: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 17,Sample answer 17: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 18,Sample answer 18: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 19,Sample answer 19: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 20,Sample answer 20: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 21,Sample answer 21: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 22,Sample answer 22: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 23,Sample answer 23: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 24,Sample answer 24: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 25,Sample answer 25: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 26,Sample answer 26: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 27,Sample answer 27: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 28,Sample answer 28: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 29,Sample answer 29: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 30,Sample answer 30: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 31,Sample answer 31: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 32,Sample answer 32: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 33,Sample answer 33: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 34,Sample answer 34: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 35,Sample answer 35: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 36,Sample answer 36: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 37,Sample answer 37: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 38,Sample answer 38: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 39,Sample answer 39: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 40,Sample answer 40: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 41,Sample answer 41: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 42,Sample answer 42: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 43,Sample answer 43: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 44,Sample answer 44: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 45,Sample answer 45: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 46,Sample answer 46: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 47,Sample answer 47: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 48,Sample answer 48: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 49,Sample answer 49: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 50,Sample answer 50: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 51,Sample answer 51: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 52,Sample answer 52: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 53,Sample answer 53: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 54,Sample answer 54: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 55,Sample answer 55: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 56,Sample answer 56: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 57,Sample answer 57: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 58,Sample answer 58: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 59,Sample answer 59: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 60,Sample answer 60: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 61,Sample answer 61: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 62,Sample answer 62: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 63,Sample answer 63: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 64,Sample answer 64: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 65,Sample answer 65: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 66,Sample answer 66: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 67,Sample answer 67: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 68,Sample answer 68: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 69,Sample answer 69: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 70,Sample answer 70: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 71,Sample answer 71: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 72,Sample answer 72: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 73,Sample answer 73: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 74,Sample answer 74: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 75,Sample answer 75: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 76,Sample answer 76: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 77,Sample answer 77: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 78,Sample answer 78: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 79,Sample answer 79: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 80,Sample answer 80: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 81,Sample answer 81: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 82,Sample answer 82: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 83,Sample answer 83: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 84,Sample answer 84: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 85,Sample answer 85: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 86,Sample answer 86: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 87,Sample answer 87: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 88,Sample answer 88: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 89,Sample answer 89: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 90,Sample answer 90: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 91,Sample answer 91: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 92,Sample answer 92: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 93,Sample answer 93: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 94,Sample answer 94: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 95,Sample answer 95: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 96,Sample answer 96: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 97,Sample answer 97: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 98,Sample answer 98: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 99,Sample answer 99: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 100,Sample answer 100: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 101,Sample answer 101: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 102,Sample answer 102: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 103,Sample answer 103: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 104,Sample answer 104: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 105,Sample answer 105: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 106,Sample answer 106: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 107,Sample answer 107: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 108,Sample answer 108: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 109,Sample answer 109: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 110,Sample answer 110: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 111,Sample answer 111: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 112,Sample answer 112: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 113,Sample answer 113: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 114,Sample answer 114: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 115,Sample answer 115: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 116,Sample answer 116: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 117,Sample answer 117: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 118,Sample answer 118: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 119,Sample answer 119: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 120,Sample answer 120: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 121,Sample answer 121: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 122,Sample answer 122: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 123,Sample answer 123: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 124,Sample answer 124: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 125,Sample answer 125: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 126,Sample answer 126: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 127,Sample answer 127: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 128,Sample answer 128: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 129,Sample answer 129: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 130,Sample answer 130: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 131,Sample answer 131: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 132,Sample answer 132: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 133,Sample answer 133: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 134,Sample answer 134: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 135,Sample answer 135: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 136,Sample answer 136: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 137,Sample answer 137: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 138,Sample answer 138: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 139,Sample answer 139: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 140,Sample answer 140: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 141,Sample answer 141: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 142,Sample answer 142: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 143,Sample answer 143: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 144,Sample answer 144: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 145,Sample answer 145: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 146,Sample answer 146: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 147,Sample answer 147: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 148,Sample answer 148: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 149,Sample answer 149: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 150,Sample answer 150: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 151,Sample answer 151: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 152,Sample answer 152: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 153,Sample answer 153: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 154,Sample answer 154: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 155,Sample answer 155: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 156,Sample answer 156: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 157,Sample answer 157: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 158,Sample answer 158: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 159,Sample answer 159: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 160,Sample answer 160: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 161,Sample answer 161: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 162,Sample answer 162: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 163,Sample answer 163: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 164,Sample answer 164: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 165,Sample answer 165: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 166,Sample answer 166: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 167,Sample answer 167: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 168,Sample answer 168: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 169,Sample answer 169: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 170,Sample answer 170: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 171,Sample answer 171: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 172,Sample answer 172: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 173,Sample answer 173: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 174,Sample answer 174: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 175,Sample answer 175: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 176,Sample answer 176: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 177,Sample answer 177: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 178,Sample answer 178: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 179,Sample answer 179: This is a placeholder QA about timetable features. Replace with a real one if needed.
+sample question 180,Sample answer 180: This is a placeholder QA about timetable features. Replace with a real one if needed.
